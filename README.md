@@ -3,7 +3,7 @@ patch to improve usability of xmgrace
 
 ## Additional software
 
-* [libGD](https://libgd.github.io) is reqyuired for bounding boxes of raster image formats. It will be automatically detected.
+* [libGD](https://libgd.github.io) is required for bounding boxes of raster image formats. It will be automatically detected.
 
 ## How to apply
 
