@@ -61,6 +61,9 @@ bbox:page
 
 9. file with legend captions can now be added on command line
 
+## Developers
+
+A shell script is provided to create the patch file. It is called `make_iu_patch`. Instructions are commented inside the script.
 
 ## Acknowledgements
 
