@@ -1,0 +1,17 @@
+*.o
+*.a
+*.so
+*.orig
+*.rej
+xmgrace
+Make.conf
+tags
+config.cache
+config.h
+config.log
+config.status
+grconvert
+convcal
+buildinfo.h
+pars.c
+

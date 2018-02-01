@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# purpose: create a patch for instantaneous updating
+# The patched directory must be the same name as the new release with "iu"
+# appended
+#
+# Go to the unpatched directory and run this script
+
+wd=`basename $PWD`
+release=${wd#grace-}
+ef=../exclude-iu-file
+diff -C 3 -P --exclude-from=$ef  -r . ../${wd}iu > ../patch.instup.$release
+
