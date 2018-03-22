@@ -1,5 +1,5 @@
 # xmgrace-patch
-patch to improve usability of xmgrace
+patch to improve usability of the 2D plotting program [xmgrace](http://plasma-gate.weizmann.ac.il/Grace/)
 
 ## Additional software
 
