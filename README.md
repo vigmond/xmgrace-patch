@@ -61,6 +61,16 @@ bbox:page
 
 9. file with legend captions can now be added on command line
 
+10. Default print resolution for all printing devices have been bumped to 300 dpi (from 72dpi).
+
+11. The vertical toolbar has been extended to include buttons for common operations such as: ASCII import and export, Print settings, Objects, and other data manipulation functions.
+
+12. Pointer coordinates: under the Window menu, the new function allows the user to click over the plot to get the coordinates of the points in the external console.
+
+13. Resized the default width of the xmgrace window (HighRes: 1200; LowRes: 1000).
+
+14. New Library of non-linear fitting functions is now included in Debian unstable/testing and in the official version of grace in Maverick.
+
 ## Developers
 
 A shell script is provided to create the patch file. It is called `make_iu_patch`. Instructions are commented inside the script.
@@ -68,3 +78,5 @@ A shell script is provided to create the patch file. It is called `make_iu_patch
 ## Acknowledgements
 
 Thanks to Rob Summers for catching some IU bugs.
+
+Features from 10 onwards are made available by incorporating the patch of Nicola Ferralis feranick@hotmail.com 
