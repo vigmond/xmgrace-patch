@@ -8,6 +8,6 @@
 
 wd=`basename $PWD`
 release=${wd#grace-}
-ef=../exclude-iu-file
-diff -C 3 -P --exclude-from=$ef  -r . ../${wd}iu > ../patch.instup.$release
+ef=~/Software/exclude-iu-file
+diff -C 3 -P  --new-file --exclude-from=$ef  -r . ../${wd}iu > ../patch.instup.$release
 

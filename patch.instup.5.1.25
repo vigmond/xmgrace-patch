@@ -1,6 +1,64 @@
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./ac-tools/autom4te.cache/output.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/aclocal.m4 ../grace-5.1.25iu/ac-tools/aclocal.m4
+*** ./ac-tools/aclocal.m4	2014-08-16 23:54:51.000000000 +0200
+--- ../grace-5.1.25iu/ac-tools/aclocal.m4	2018-03-26 21:37:35.761047650 +0200
+***************
+*** 684,689 ****
+--- 684,735 ----
+  ])dnl
+  
+  
++ dnl ACX_CHECK_GD
++ dnl --------------
++ AC_DEFUN(ACX_CHECK_GDLIB,
++ [
++   AC_ARG_WITH(gd_library,
++   [  --with-gd-library=OBJ        use OBJ as GD library [[-lgd]]],
++   gd_library="$withval")
++   if test "x$gd_library" = "x"
++   then
++     gd_library=-lgd
++   fi
++ 
++   AC_CACHE_CHECK([for GD library >= $1], acx_cv_gd,
++     AC_CACHE_VAL(acx_cv_gd_library, acx_cv_gd_library=$gd_library)
++     ACX_SAVE_STATE
++     LIBS="$acx_cv_gd_library $LIBS"
++     AC_TRY_RUN([
++ #include "gd.h"
++       int main(void) {
++         gdImagePtr im = gdImageCreate(64,64);
++         if( !im )
++           exit(1);
++         else
++           exit(0);
++       }
++       ],
++ 
++       acx_cv_gd="yes",
++       acx_cv_gd="no",
++       acx_cv_gd="no"
++     )
++ 
++     ACX_RESTORE_STATE
++   )
++   if test "$acx_cv_gd" = "yes"
++   then
++     GD_LIB="$acx_cv_gd_library"
++     $2
++   else
++     GD_LIB=
++     $3
++   fi
++ 
++  ])dnl
++ 
++ 
+  dnl ACX_CHECK_XMHTML
+  dnl --------------
+  AC_DEFUN(ACX_CHECK_XMHTML,
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/autom4te.cache/output.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t
 *** ./ac-tools/autom4te.cache/output.0t	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t	2017-01-05 11:42:20.595263751 +0100
+--- ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t	2018-03-26 21:37:35.773047650 +0200
 ***************
 *** 0 ****
 --- 1,11233 ----
@@ -11237,9 +11295,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./ac-tools/autom4te.cache/ou
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./ac-tools/autom4te.cache/traces.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/autom4te.cache/traces.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t
 *** ./ac-tools/autom4te.cache/traces.0t	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t	2017-01-05 11:42:20.599263771 +0100
+--- ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t	2018-03-26 21:37:35.773047650 +0200
 ***************
 *** 0 ****
 --- 1,865 ----
@@ -12108,12 +12166,119 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./ac-tools/autom4te.cache/tr
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([abs_builddir])
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([abs_top_builddir])
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([INSTALL])
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/output.0 ../grace-5.1.25iu/autom4te.cache/output.0
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/config.h.in ../grace-5.1.25iu/ac-tools/config.h.in
+*** ./ac-tools/config.h.in	2004-07-03 22:47:45.000000000 +0200
+--- ../grace-5.1.25iu/ac-tools/config.h.in	2018-03-26 21:37:35.773047650 +0200
+***************
+*** 332,337 ****
+--- 332,340 ----
+  /* Define if PDFlib library is available */
+  #undef HAVE_LIBPDF
+  
++ /* Define if GDlib library is available */
++ #undef HAVE_GDLIB
++ 
+  /* Define if you want to compile a Fortran wrapper for grace_np lib.  */
+  #undef WITH_F77_WRAPPER
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/configure.in ../grace-5.1.25iu/ac-tools/configure.in
+*** ./ac-tools/configure.in	2014-08-16 23:56:08.000000000 +0200
+--- ../grace-5.1.25iu/ac-tools/configure.in	2018-03-26 21:37:35.773047650 +0200
+***************
+*** 33,38 ****
+--- 33,39 ----
+  AC_SUBST(JPEG_LIB)
+  AC_SUBST(PNG_LIB)
+  AC_SUBST(PDF_LIB)
++ AC_SUBST(GD_LIB)
+  AC_SUBST(XBAE_INC)
+  AC_SUBST(SUBDIRS)
+  
+***************
+*** 153,158 ****
+--- 154,168 ----
+    *) AC_MSG_ERROR(bad value ${enableval} for --enable-pdfdrv) ;;
+  esac],[pdfdrv=true])
+  
++ dnl **** whether to use GDlib
++ AC_ARG_ENABLE(gd,
++ [  --enable-gd              use GDlib [[yes]]],
++ [case "${enableval}" in
++   yes) gd=true ;;
++   no)  gd=false;;
++   *) AC_MSG_ERROR(bad value ${enableval} for --enable-gd) ;;
++ esac],[gd=true])
++ 
+  dnl **** check if user wants to compile grace_np lib with support for Fortran
+  AC_ARG_ENABLE(f77_wrapper,
+  [  --enable-f77-wrapper         include Fortran wrapper for libgrace_np [[yes]]],
+***************
+*** 554,561 ****
+  
+  if test $fftw = true
+  then
+!   ACX_CHECK_FFTW(2.1.3, AC_DEFINE(HAVE_FFTW),
+!                  AC_MSG_RESULT(--> using legacy unoptimized FFT code))
+  fi
+  
+  dnl **** check for libz - needed for PDF and PNG drivers and XmHTML
+--- 564,580 ----
+  
+  if test $fftw = true
+  then
+!   AC_CHECK_HEADERS(fftw3.h,
+!   [
+! 	AC_CHECK_LIB(fftw3, fftw_execute,
+! 	[
+! 		FFTW_LIB="-lfftw3"
+! 		AC_DEFINE(HAVE_FFTW)
+! 	],
+! 	[AC_MSG_RESULT([--> using legacy unoptimized FFT code])]
+! 	)
+!   ],
+!   [AC_MSG_RESULT([--> using legacy unoptimized FFT code])])
+  fi
+  
+  dnl **** check for libz - needed for PDF and PNG drivers and XmHTML
+***************
+*** 587,592 ****
+--- 606,620 ----
+    AC_MSG_RESULT(--> PDF driver is disabled)
+  fi
+  
++ dnl **** check for GDlib
++ if test $gd = true
++ then
++   ACX_CHECK_GDLIB(2.0.0, AC_DEFINE(HAVE_GDLIB), gd=false)
++ fi
++ if test $gd != true; then
++   AC_MSG_RESULT(--> GDlib is disabled)
++ fi
++ 
+  dnl **** TODO: undefine unneeded libraries
+  
+  NOGUI_LIBS="$LIBS"
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/Make.conf.in ../grace-5.1.25iu/ac-tools/Make.conf.in
+*** ./ac-tools/Make.conf.in	2005-11-20 21:58:42.000000000 +0100
+--- ../grace-5.1.25iu/ac-tools/Make.conf.in	2018-03-26 21:37:35.773047650 +0200
+***************
+*** 60,65 ****
+--- 60,68 ----
+  # PDFlib library
+  PDF_LIB=@PDF_LIB@
+  
++ # GD library
++ GD_LIB=@GD_LIB@
++ 
+  # Xbae include path
+  XBAE_INC=@XBAE_INC@
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./autom4te.cache/output.0 ../grace-5.1.25iu/autom4te.cache/output.0
 *** ./autom4te.cache/output.0	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/autom4te.cache/output.0	2017-01-05 11:42:20.615263850 +0100
+--- ../grace-5.1.25iu/autom4te.cache/output.0	2018-03-26 21:37:35.785047650 +0200
 ***************
 *** 0 ****
---- 1,11270 ----
+--- 1,11253 ----
 + @%:@! /bin/sh
 + @%:@ Guess values for system-dependent variables and create Makefiles.
 + @%:@ Generated by GNU Autoconf 2.69.
@@ -12866,7 +13031,6 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/output.0 ..
 + enable_debug
 + enable_maintainer
 + with_netcdf_libraries
-+ with_fftw_library
 + with_zlib_library
 + with_jpeg_library
 + with_png_library
@@ -13532,7 +13696,6 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/output.0 ..
 +   --with-helpviewer=COMMAND    define help viewer command ["mozilla %s"]
 +   --with-printcmd=PROG         use PROG for printing
 +   --with-netcdf-libraries=OBJ  use OBJ as netCDF libraries [-lnetcdf]
-+   --with-fftw-library=OBJ      use OBJ as FFTW library [-lfftw]
 +   --with-zlib-library=OBJ      use OBJ as ZLIB library [-lz]
 +   --with-jpeg-library=OBJ      use OBJ as JPEG library [-ljpeg]
 +   --with-png-library=OBJ       use OBJ as PNG library [-lpng]
@@ -20361,84 +20524,69 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/output.0 ..
 + 
 + if test $fftw = true
 + then
-+   
-+   
-+ @%:@ Check whether --with-fftw_library was given.
-+ if test "${with_fftw_library+set}" = set; then :
-+   withval=$with_fftw_library; fftw_library="$withval"
-+ fi
-+ 
-+   if test "x$fftw_library" = "x"
-+   then
-+     fftw_library=-lfftw
-+   fi
-+ 
-+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for FFTW library >= 2.1.3" >&5
-+ $as_echo_n "checking for FFTW library >= 2.1.3... " >&6; }
-+ if ${acx_cv_fftw+:} false; then :
++   for ac_header in fftw3.h
++ do :
++   ac_fn_c_check_header_mongrel "$LINENO" "fftw3.h" "ac_cv_header_fftw3_h" "$ac_includes_default"
++ if test "x$ac_cv_header_fftw3_h" = xyes; then :
++   cat >>confdefs.h <<_ACEOF
++ @%:@define HAVE_FFTW3_H 1
++ _ACEOF
++  
++ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for fftw_execute in -lfftw3" >&5
++ $as_echo_n "checking for fftw_execute in -lfftw3... " >&6; }
++ if ${ac_cv_lib_fftw3_fftw_execute+:} false; then :
 +   $as_echo_n "(cached) " >&6
 + else
-+   if ${acx_cv_fftw_library+:} false; then :
-+   $as_echo_n "(cached) " >&6
-+ else
-+   acx_cv_fftw_library=$fftw_library
-+ fi
-+ 
-+     
-+     save_CFLAGS=$CFLAGS
-+     save_CPPFLAGS=$CPPFLAGS
-+     save_LDFLAGS=$LDFLAGS
-+     save_LIBS=$LIBS
-+ 
-+     LIBS="$acx_cv_fftw_library $LIBS"
-+     if test "$cross_compiling" = yes; then :
-+   acx_cv_fftw="no"
-+     
-+ else
-+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++   ac_check_lib_save_LIBS=$LIBS
++ LIBS="-lfftw3  $LIBS"
++ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 + /* end confdefs.h.  */
 + 
-+ #include <fftw.h>
-+ #include <string.h>
-+       int main(void) {
-+         char *vlib = (char *) fftw_version;
-+         if (strcmp(vlib, "2.1.3") < 0) {
-+           exit(1);
-+         }
-+         exit(0);
-+       }
-+       
++ /* Override any GCC internal prototype to avoid an error.
++    Use char because int might match the return type of a GCC
++    builtin and then its argument prototype would still apply.  */
++ #ifdef __cplusplus
++ extern "C"
++ #endif
++ char fftw_execute ();
++ int
++ main ()
++ {
++ return fftw_execute ();
++   ;
++   return 0;
++ }
 + _ACEOF
-+ if ac_fn_c_try_run "$LINENO"; then :
-+   acx_cv_fftw="yes"
++ if ac_fn_c_try_link "$LINENO"; then :
++   ac_cv_lib_fftw3_fftw_execute=yes
 + else
-+   acx_cv_fftw="no"
++   ac_cv_lib_fftw3_fftw_execute=no
 + fi
-+ rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-+   conftest.$ac_objext conftest.beam conftest.$ac_ext
++ rm -f core conftest.err conftest.$ac_objext \
++     conftest$ac_exeext conftest.$ac_ext
++ LIBS=$ac_check_lib_save_LIBS
 + fi
++ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_fftw3_fftw_execute" >&5
++ $as_echo "$ac_cv_lib_fftw3_fftw_execute" >&6; }
++ if test "x$ac_cv_lib_fftw3_fftw_execute" = xyes; then :
++   
++ 		FFTW_LIB="-lfftw3"
++ 		$as_echo "@%:@define HAVE_FFTW 1" >>confdefs.h
 + 
-+ 
-+     
-+     CFLAGS=$save_CFLAGS
-+     CPPFLAGS=$save_CPPFLAGS
-+     LDFLAGS=$save_LDFLAGS
-+     LIBS=$save_LIBS
++ 	
++ else
++   { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
++ $as_echo "--> using legacy unoptimized FFT code" >&6; }
++ 	
++ fi
 + 
 +   
-+ fi
-+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $acx_cv_fftw" >&5
-+ $as_echo "$acx_cv_fftw" >&6; }
-+   if test "$acx_cv_fftw" = "yes"
-+   then
-+     FFTW_LIB="$acx_cv_fftw_library"
-+     $as_echo "@%:@define HAVE_FFTW 1" >>confdefs.h
-+ 
-+   else
-+     FFTW_LIB=
-+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
++ else
++   { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
 + $as_echo "--> using legacy unoptimized FFT code" >&6; }
-+   fi
++ fi
++ 
++ done
 + 
 + fi
 + 
@@ -23384,9 +23532,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/output.0 ..
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/requests ../grace-5.1.25iu/autom4te.cache/requests
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./autom4te.cache/requests ../grace-5.1.25iu/autom4te.cache/requests
 *** ./autom4te.cache/requests	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/autom4te.cache/requests	2017-01-05 11:42:20.615263850 +0100
+--- ../grace-5.1.25iu/autom4te.cache/requests	2018-03-26 21:37:35.785047650 +0200
 ***************
 *** 0 ****
 --- 1,77 ----
@@ -23406,70 +23554,70 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/requests ..
 +                         'ac-tools/configure.in'
 +                       ],
 +                       {
-+                         'AM_ENABLE_MULTILIB' => 1,
-+                         'AC_INIT' => 1,
-+                         'AM_GNU_GETTEXT_INTL_SUBDIR' => 1,
-+                         'AM_PATH_GUILE' => 1,
-+                         'AM_PROG_F77_C_O' => 1,
-+                         'include' => 1,
-+                         'AC_CONFIG_LIBOBJ_DIR' => 1,
-+                         'm4_pattern_allow' => 1,
-+                         'AM_MAINTAINER_MODE' => 1,
-+                         'AM_PROG_FC_C_O' => 1,
-+                         'AC_FC_PP_SRCEXT' => 1,
-+                         'AM_POT_TOOLS' => 1,
-+                         '_AM_SUBST_NOTMAKE' => 1,
-+                         '_LT_AC_TAGCONFIG' => 1,
-+                         'AC_CONFIG_SUBDIRS' => 1,
++                         'AM_AUTOMAKE_VERSION' => 1,
++                         'AC_REQUIRE_AUX_FILE' => 1,
++                         'AC_CANONICAL_BUILD' => 1,
++                         'm4_include' => 1,
++                         'AM_NLS' => 1,
 +                         '_AM_MAKEFILE_INCLUDE' => 1,
++                         'AC_CONFIG_LINKS' => 1,
++                         'AC_INIT' => 1,
++                         '_m4_warn' => 1,
++                         'm4_sinclude' => 1,
++                         'AC_CONFIG_SUBDIRS' => 1,
++                         'm4_pattern_allow' => 1,
++                         'AC_CANONICAL_TARGET' => 1,
++                         'AM_XGETTEXT_OPTION' => 1,
++                         'LT_INIT' => 1,
++                         '_AM_COND_ELSE' => 1,
++                         'AM_SILENT_RULES' => 1,
++                         'AC_DEFINE_TRACE_LITERAL' => 1,
++                         'AC_CONFIG_FILES' => 1,
++                         '_AM_COND_ENDIF' => 1,
++                         '_AM_COND_IF' => 1,
++                         'AM_GNU_GETTEXT' => 1,
++                         'sinclude' => 1,
++                         'AH_OUTPUT' => 1,
++                         'AM_MAINTAINER_MODE' => 1,
++                         'AM_GNU_GETTEXT_INTL_SUBDIR' => 1,
++                         'AM_PROG_AR' => 1,
++                         'AM_MAKEFILE_INCLUDE' => 1,
++                         'AC_CONFIG_LIBOBJ_DIR' => 1,
++                         'AM_PROG_F77_C_O' => 1,
++                         'AC_FC_PP_SRCEXT' => 1,
++                         'AC_CANONICAL_HOST' => 1,
++                         'AM_POT_TOOLS' => 1,
++                         'AM_ENABLE_MULTILIB' => 1,
++                         'AC_FC_PP_DEFINE' => 1,
++                         'AM_PROG_MOC' => 1,
++                         'AM_CONDITIONAL' => 1,
++                         'AC_CONFIG_AUX_DIR' => 1,
++                         'AC_CONFIG_HEADERS' => 1,
++                         'AC_FC_SRCEXT' => 1,
++                         '_AM_SUBST_NOTMAKE' => 1,
++                         'AM_PATH_GUILE' => 1,
++                         'AM_PROG_CC_C_O' => 1,
++                         'm4_pattern_forbid' => 1,
 +                         'AM_INIT_AUTOMAKE' => 1,
 +                         'AC_CANONICAL_SYSTEM' => 1,
-+                         'AC_CONFIG_LINKS' => 1,
-+                         'AC_REQUIRE_AUX_FILE' => 1,
-+                         'AM_GNU_GETTEXT' => 1,
-+                         'AC_CANONICAL_HOST' => 1,
-+                         'AC_CONFIG_FILES' => 1,
-+                         'AC_FC_SRCEXT' => 1,
-+                         'AM_CONDITIONAL' => 1,
++                         'LT_SUPPORTED_TAG' => 1,
 +                         'AC_SUBST_TRACE' => 1,
-+                         '_AM_COND_ELSE' => 1,
-+                         'AC_PROG_LIBTOOL' => 1,
-+                         'm4_include' => 1,
-+                         '_AM_COND_ENDIF' => 1,
-+                         'sinclude' => 1,
-+                         'AM_NLS' => 1,
-+                         'AM_XGETTEXT_OPTION' => 1,
-+                         'AC_FC_PP_DEFINE' => 1,
-+                         'm4_pattern_forbid' => 1,
-+                         'AM_PROG_CC_C_O' => 1,
 +                         'AM_PROG_CXX_C_O' => 1,
-+                         'AC_FC_FREEFORM' => 1,
-+                         'AC_CONFIG_AUX_DIR' => 1,
++                         'AC_LIBSOURCE' => 1,
++                         '_LT_AC_TAGCONFIG' => 1,
++                         'include' => 1,
++                         'AM_PROG_FC_C_O' => 1,
++                         'AC_PROG_LIBTOOL' => 1,
 +                         'LT_CONFIG_LTDL_DIR' => 1,
 +                         'AC_SUBST' => 1,
-+                         'AM_SILENT_RULES' => 1,
-+                         'LT_INIT' => 1,
-+                         'AC_CANONICAL_TARGET' => 1,
-+                         'AC_CANONICAL_BUILD' => 1,
-+                         'AC_LIBSOURCE' => 1,
-+                         'AH_OUTPUT' => 1,
-+                         'AM_MAKEFILE_INCLUDE' => 1,
-+                         '_AM_COND_IF' => 1,
-+                         'm4_sinclude' => 1,
-+                         'AM_PROG_AR' => 1,
-+                         'AM_PROG_MOC' => 1,
-+                         '_m4_warn' => 1,
-+                         'AC_CONFIG_HEADERS' => 1,
-+                         'LT_SUPPORTED_TAG' => 1,
-+                         'AC_DEFINE_TRACE_LITERAL' => 1,
-+                         'AM_AUTOMAKE_VERSION' => 1
++                         'AC_FC_FREEFORM' => 1
 +                       }
 +                     ], 'Autom4te::Request' )
 +            );
 + 
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/traces.0 ../grace-5.1.25iu/autom4te.cache/traces.0
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./autom4te.cache/traces.0 ../grace-5.1.25iu/autom4te.cache/traces.0
 *** ./autom4te.cache/traces.0	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/autom4te.cache/traces.0	2017-01-05 11:42:20.619263870 +0100
+--- ../grace-5.1.25iu/autom4te.cache/traces.0	2018-03-26 21:37:35.785047650 +0200
 ***************
 *** 0 ****
 --- 1,868 ----
@@ -24236,117 +24384,593 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/traces.0 ..
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
 + ac-tools/aclocal.m4:596: ACX_CHECK_NETCDF is expanded from...
 + ac-tools/configure.in:561: the top level])
-+ m4trace:ac-tools/configure.in:567: -2- AC_DEFINE_TRACE_LITERAL([HAVE_FFTW])
-+ m4trace:ac-tools/configure.in:567: -2- m4_pattern_allow([^HAVE_FFTW$])
-+ m4trace:ac-tools/configure.in:567: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
-+ You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
-+ ac-tools/aclocal.m4:643: ACX_CHECK_FFTW is expanded from...
-+ ac-tools/configure.in:567: the top level])
-+ m4trace:ac-tools/configure.in:574: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
++ m4trace:ac-tools/configure.in:567: -1- AH_OUTPUT([HAVE_FFTW3_H], [/* Define to 1 if you have the <fftw3.h> header file. */
++ @%:@undef HAVE_FFTW3_H])
++ m4trace:ac-tools/configure.in:567: -1- AC_DEFINE_TRACE_LITERAL([HAVE_FFTW3_H])
++ m4trace:ac-tools/configure.in:567: -1- m4_pattern_allow([^HAVE_FFTW3_H$])
++ m4trace:ac-tools/configure.in:567: -1- AC_DEFINE_TRACE_LITERAL([HAVE_FFTW])
++ m4trace:ac-tools/configure.in:567: -1- m4_pattern_allow([^HAVE_FFTW$])
++ m4trace:ac-tools/configure.in:583: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
 + ac-tools/aclocal.m4:401: ACX_CHECK_ZLIB is expanded from...
-+ ac-tools/configure.in:574: the top level])
-+ m4trace:ac-tools/configure.in:580: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBJPEG])
-+ m4trace:ac-tools/configure.in:580: -2- m4_pattern_allow([^HAVE_LIBJPEG$])
-+ m4trace:ac-tools/configure.in:580: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
++ ac-tools/configure.in:583: the top level])
++ m4trace:ac-tools/configure.in:589: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBJPEG])
++ m4trace:ac-tools/configure.in:589: -2- m4_pattern_allow([^HAVE_LIBJPEG$])
++ m4trace:ac-tools/configure.in:589: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
 + ac-tools/aclocal.m4:450: ACX_CHECK_JPEG is expanded from...
-+ ac-tools/configure.in:580: the top level])
-+ m4trace:ac-tools/configure.in:587: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBPNG])
-+ m4trace:ac-tools/configure.in:587: -2- m4_pattern_allow([^HAVE_LIBPNG$])
-+ m4trace:ac-tools/configure.in:587: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
++ ac-tools/configure.in:589: the top level])
++ m4trace:ac-tools/configure.in:596: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBPNG])
++ m4trace:ac-tools/configure.in:596: -2- m4_pattern_allow([^HAVE_LIBPNG$])
++ m4trace:ac-tools/configure.in:596: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
 + ac-tools/aclocal.m4:497: ACX_CHECK_PNG is expanded from...
-+ ac-tools/configure.in:587: the top level])
-+ m4trace:ac-tools/configure.in:594: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBPDF])
-+ m4trace:ac-tools/configure.in:594: -2- m4_pattern_allow([^HAVE_LIBPDF$])
-+ m4trace:ac-tools/configure.in:594: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
-+ You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
-+ ac-tools/aclocal.m4:546: ACX_CHECK_PDFLIB is expanded from...
-+ ac-tools/configure.in:594: the top level])
-+ m4trace:ac-tools/configure.in:603: -2- AC_DEFINE_TRACE_LITERAL([HAVE_GDLIB])
-+ m4trace:ac-tools/configure.in:603: -2- m4_pattern_allow([^HAVE_GDLIB$])
++ ac-tools/configure.in:596: the top level])
++ m4trace:ac-tools/configure.in:603: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBPDF])
++ m4trace:ac-tools/configure.in:603: -2- m4_pattern_allow([^HAVE_LIBPDF$])
 + m4trace:ac-tools/configure.in:603: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
-+ ac-tools/aclocal.m4:689: ACX_CHECK_GDLIB is expanded from...
++ ac-tools/aclocal.m4:546: ACX_CHECK_PDFLIB is expanded from...
 + ac-tools/configure.in:603: the top level])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST([XMKMF])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST_TRACE([XMKMF])
-+ m4trace:ac-tools/configure.in:618: -1- m4_pattern_allow([^XMKMF$])
-+ m4trace:ac-tools/configure.in:618: -1- AC_DEFINE_TRACE_LITERAL([X_DISPLAY_MISSING])
-+ m4trace:ac-tools/configure.in:618: -1- m4_pattern_allow([^X_DISPLAY_MISSING$])
-+ m4trace:ac-tools/configure.in:618: -1- AH_OUTPUT([X_DISPLAY_MISSING], [/* Define to 1 if the X Window System is missing or not being used. */
++ m4trace:ac-tools/configure.in:612: -2- AC_DEFINE_TRACE_LITERAL([HAVE_GDLIB])
++ m4trace:ac-tools/configure.in:612: -2- m4_pattern_allow([^HAVE_GDLIB$])
++ m4trace:ac-tools/configure.in:612: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
++ You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
++ ac-tools/aclocal.m4:689: ACX_CHECK_GDLIB is expanded from...
++ ac-tools/configure.in:612: the top level])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST([XMKMF])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST_TRACE([XMKMF])
++ m4trace:ac-tools/configure.in:627: -1- m4_pattern_allow([^XMKMF$])
++ m4trace:ac-tools/configure.in:627: -1- AC_DEFINE_TRACE_LITERAL([X_DISPLAY_MISSING])
++ m4trace:ac-tools/configure.in:627: -1- m4_pattern_allow([^X_DISPLAY_MISSING$])
++ m4trace:ac-tools/configure.in:627: -1- AH_OUTPUT([X_DISPLAY_MISSING], [/* Define to 1 if the X Window System is missing or not being used. */
 + @%:@undef X_DISPLAY_MISSING])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST([X_CFLAGS])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST_TRACE([X_CFLAGS])
-+ m4trace:ac-tools/configure.in:618: -1- m4_pattern_allow([^X_CFLAGS$])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST([X_PRE_LIBS])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST_TRACE([X_PRE_LIBS])
-+ m4trace:ac-tools/configure.in:618: -1- m4_pattern_allow([^X_PRE_LIBS$])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST([X_LIBS])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST_TRACE([X_LIBS])
-+ m4trace:ac-tools/configure.in:618: -1- m4_pattern_allow([^X_LIBS$])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST([X_EXTRA_LIBS])
-+ m4trace:ac-tools/configure.in:618: -1- AC_SUBST_TRACE([X_EXTRA_LIBS])
-+ m4trace:ac-tools/configure.in:618: -1- m4_pattern_allow([^X_EXTRA_LIBS$])
-+ m4trace:ac-tools/configure.in:634: -2- AC_DEFINE_TRACE_LITERAL([WITH_EDITRES])
-+ m4trace:ac-tools/configure.in:634: -2- m4_pattern_allow([^WITH_EDITRES$])
-+ m4trace:ac-tools/configure.in:646: -2- AC_DEFINE_TRACE_LITERAL([HAVE_XPM])
-+ m4trace:ac-tools/configure.in:646: -2- m4_pattern_allow([^HAVE_XPM$])
-+ m4trace:ac-tools/configure.in:649: -1- AH_OUTPUT([HAVE_XPM_H], [/* Define to 1 if you have the <xpm.h> header file. */
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST([X_CFLAGS])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST_TRACE([X_CFLAGS])
++ m4trace:ac-tools/configure.in:627: -1- m4_pattern_allow([^X_CFLAGS$])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST([X_PRE_LIBS])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST_TRACE([X_PRE_LIBS])
++ m4trace:ac-tools/configure.in:627: -1- m4_pattern_allow([^X_PRE_LIBS$])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST([X_LIBS])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST_TRACE([X_LIBS])
++ m4trace:ac-tools/configure.in:627: -1- m4_pattern_allow([^X_LIBS$])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST([X_EXTRA_LIBS])
++ m4trace:ac-tools/configure.in:627: -1- AC_SUBST_TRACE([X_EXTRA_LIBS])
++ m4trace:ac-tools/configure.in:627: -1- m4_pattern_allow([^X_EXTRA_LIBS$])
++ m4trace:ac-tools/configure.in:643: -2- AC_DEFINE_TRACE_LITERAL([WITH_EDITRES])
++ m4trace:ac-tools/configure.in:643: -2- m4_pattern_allow([^WITH_EDITRES$])
++ m4trace:ac-tools/configure.in:655: -2- AC_DEFINE_TRACE_LITERAL([HAVE_XPM])
++ m4trace:ac-tools/configure.in:655: -2- m4_pattern_allow([^HAVE_XPM$])
++ m4trace:ac-tools/configure.in:658: -1- AH_OUTPUT([HAVE_XPM_H], [/* Define to 1 if you have the <xpm.h> header file. */
 + @%:@undef HAVE_XPM_H])
-+ m4trace:ac-tools/configure.in:649: -1- AH_OUTPUT([HAVE_X11_XPM_H], [/* Define to 1 if you have the <X11/xpm.h> header file. */
++ m4trace:ac-tools/configure.in:658: -1- AH_OUTPUT([HAVE_X11_XPM_H], [/* Define to 1 if you have the <X11/xpm.h> header file. */
 + @%:@undef HAVE_X11_XPM_H])
-+ m4trace:ac-tools/configure.in:654: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
++ m4trace:ac-tools/configure.in:663: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
 + ac-tools/aclocal.m4:259: ACX_CHECK_MOTIF is expanded from...
-+ ac-tools/configure.in:654: the top level])
-+ m4trace:ac-tools/configure.in:654: -1- AC_DEFINE_TRACE_LITERAL([HAVE_MOTIF])
-+ m4trace:ac-tools/configure.in:654: -1- m4_pattern_allow([^HAVE_MOTIF$])
-+ m4trace:ac-tools/configure.in:654: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LESSTIF])
-+ m4trace:ac-tools/configure.in:654: -1- m4_pattern_allow([^HAVE_LESSTIF$])
-+ m4trace:ac-tools/configure.in:654: -2- _m4_warn([obsolete], [The macro `AC_TRY_LINK' is obsolete.
++ ac-tools/configure.in:663: the top level])
++ m4trace:ac-tools/configure.in:663: -1- AC_DEFINE_TRACE_LITERAL([HAVE_MOTIF])
++ m4trace:ac-tools/configure.in:663: -1- m4_pattern_allow([^HAVE_MOTIF$])
++ m4trace:ac-tools/configure.in:663: -1- AC_DEFINE_TRACE_LITERAL([HAVE_LESSTIF])
++ m4trace:ac-tools/configure.in:663: -1- m4_pattern_allow([^HAVE_LESSTIF$])
++ m4trace:ac-tools/configure.in:663: -2- _m4_warn([obsolete], [The macro `AC_TRY_LINK' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2687: AC_TRY_LINK is expanded from...
 + ac-tools/aclocal.m4:342: ACX_CHECK_XMVERSIONSTRING is expanded from...
 + ac-tools/aclocal.m4:259: ACX_CHECK_MOTIF is expanded from...
-+ ac-tools/configure.in:654: the top level])
-+ m4trace:ac-tools/configure.in:654: -1- AC_DEFINE_TRACE_LITERAL([HAVE__XMVERSIONSTRING])
-+ m4trace:ac-tools/configure.in:654: -1- m4_pattern_allow([^HAVE__XMVERSIONSTRING$])
-+ m4trace:ac-tools/configure.in:676: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBXBAE])
-+ m4trace:ac-tools/configure.in:676: -2- m4_pattern_allow([^HAVE_LIBXBAE$])
-+ m4trace:ac-tools/configure.in:691: -2- AC_DEFINE_TRACE_LITERAL([WITH_LIBHELP])
-+ m4trace:ac-tools/configure.in:691: -2- m4_pattern_allow([^WITH_LIBHELP$])
-+ m4trace:ac-tools/configure.in:698: -2- AC_DEFINE_TRACE_LITERAL([WITH_XMHTML])
-+ m4trace:ac-tools/configure.in:698: -2- m4_pattern_allow([^WITH_XMHTML$])
-+ m4trace:ac-tools/configure.in:698: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
++ ac-tools/configure.in:663: the top level])
++ m4trace:ac-tools/configure.in:663: -1- AC_DEFINE_TRACE_LITERAL([HAVE__XMVERSIONSTRING])
++ m4trace:ac-tools/configure.in:663: -1- m4_pattern_allow([^HAVE__XMVERSIONSTRING$])
++ m4trace:ac-tools/configure.in:685: -2- AC_DEFINE_TRACE_LITERAL([HAVE_LIBXBAE])
++ m4trace:ac-tools/configure.in:685: -2- m4_pattern_allow([^HAVE_LIBXBAE$])
++ m4trace:ac-tools/configure.in:700: -2- AC_DEFINE_TRACE_LITERAL([WITH_LIBHELP])
++ m4trace:ac-tools/configure.in:700: -2- m4_pattern_allow([^WITH_LIBHELP$])
++ m4trace:ac-tools/configure.in:707: -2- AC_DEFINE_TRACE_LITERAL([WITH_XMHTML])
++ m4trace:ac-tools/configure.in:707: -2- m4_pattern_allow([^WITH_XMHTML$])
++ m4trace:ac-tools/configure.in:707: -2- _m4_warn([obsolete], [The macro `AC_TRY_RUN' is obsolete.
 + You should run autoupdate.], [../../lib/autoconf/general.m4:2764: AC_TRY_RUN is expanded from...
 + ac-tools/aclocal.m4:735: ACX_CHECK_XMHTML is expanded from...
-+ ac-tools/configure.in:698: the top level])
-+ m4trace:ac-tools/configure.in:713: -1- AC_CONFIG_FILES([Make.conf:ac-tools/Make.conf.in])
-+ m4trace:ac-tools/configure.in:713: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
++ ac-tools/configure.in:707: the top level])
++ m4trace:ac-tools/configure.in:722: -1- AC_CONFIG_FILES([Make.conf:ac-tools/Make.conf.in])
++ m4trace:ac-tools/configure.in:722: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 + You should run autoupdate.], [])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([LIB@&t@OBJS])
-+ m4trace:ac-tools/configure.in:713: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([LTLIBOBJS])
-+ m4trace:ac-tools/configure.in:713: -1- m4_pattern_allow([^LTLIBOBJS$])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([top_builddir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([top_build_prefix])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([srcdir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([abs_srcdir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([top_srcdir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([abs_top_srcdir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([builddir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([abs_builddir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([abs_top_builddir])
-+ m4trace:ac-tools/configure.in:713: -1- AC_SUBST_TRACE([INSTALL])
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./README.new_features ../grace-5.1.25iu/README.new_features
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST([LIB@&t@OBJS], [$ac_libobjs])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([LIB@&t@OBJS])
++ m4trace:ac-tools/configure.in:722: -1- m4_pattern_allow([^LIB@&t@OBJS$])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST([LTLIBOBJS], [$ac_ltlibobjs])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([LTLIBOBJS])
++ m4trace:ac-tools/configure.in:722: -1- m4_pattern_allow([^LTLIBOBJS$])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([top_builddir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([top_build_prefix])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([srcdir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_srcdir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([top_srcdir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_top_srcdir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([builddir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_builddir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_top_builddir])
++ m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([INSTALL])
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./configure ../grace-5.1.25iu/configure
+*** ./configure	2015-02-14 23:59:46.000000000 +0100
+--- ../grace-5.1.25iu/configure	2018-03-26 21:37:35.785047650 +0200
+***************
+*** 664,669 ****
+--- 664,670 ----
+  GRACE_EDITOR
+  SUBDIRS
+  XBAE_INC
++ GD_LIB
+  PDF_LIB
+  PNG_LIB
+  JPEG_LIB
+***************
+*** 738,743 ****
+--- 739,745 ----
+  enable_jpegdrv
+  enable_pngdrv
+  enable_pdfdrv
++ enable_gd
+  enable_f77_wrapper
+  enable_editres
+  enable_libhelp
+***************
+*** 748,758 ****
+  enable_debug
+  enable_maintainer
+  with_netcdf_libraries
+- with_fftw_library
+  with_zlib_library
+  with_jpeg_library
+  with_png_library
+  with_pdf_library
+  with_x
+  with_motif_library
+  with_xmhtml_library
+--- 750,760 ----
+  enable_debug
+  enable_maintainer
+  with_netcdf_libraries
+  with_zlib_library
+  with_jpeg_library
+  with_png_library
+  with_pdf_library
++ with_gd_library
+  with_x
+  with_motif_library
+  with_xmhtml_library
+***************
+*** 1391,1396 ****
+--- 1393,1399 ----
+    --enable-jpegdrv             build JPEG driver [yes]
+    --enable-pngdrv              build PNG driver [yes]
+    --enable-pdfdrv              build PDF driver [yes]
++   --enable-gd              use GDlib [yes]
+    --enable-f77-wrapper         include Fortran wrapper for libgrace_np [yes]
+    --enable-editres             enable editres support [yes]
+    --enable-libhelp             use libhelp [no]
+***************
+*** 1412,1422 ****
+    --with-helpviewer=COMMAND    define help viewer command ["mozilla %s"]
+    --with-printcmd=PROG         use PROG for printing
+    --with-netcdf-libraries=OBJ  use OBJ as netCDF libraries [-lnetcdf]
+-   --with-fftw-library=OBJ      use OBJ as FFTW library [-lfftw]
+    --with-zlib-library=OBJ      use OBJ as ZLIB library [-lz]
+    --with-jpeg-library=OBJ      use OBJ as JPEG library [-ljpeg]
+    --with-png-library=OBJ       use OBJ as PNG library [-lpng]
+    --with-pdf-library=OBJ       use OBJ as PDFlib library [-lpdf]
+    --with-x                use the X Window System
+    --with-motif-library=OBJ     use OBJ as Motif library [-lXm]
+    --with-xmhtml-library=OBJ    use OBJ as XmHTML library [-lXmHTML]
+--- 1415,1425 ----
+    --with-helpviewer=COMMAND    define help viewer command ["mozilla %s"]
+    --with-printcmd=PROG         use PROG for printing
+    --with-netcdf-libraries=OBJ  use OBJ as netCDF libraries [-lnetcdf]
+    --with-zlib-library=OBJ      use OBJ as ZLIB library [-lz]
+    --with-jpeg-library=OBJ      use OBJ as JPEG library [-ljpeg]
+    --with-png-library=OBJ       use OBJ as PNG library [-lpng]
+    --with-pdf-library=OBJ       use OBJ as PDFlib library [-lpdf]
++   --with-gd-library=OBJ        use OBJ as GD library [-lgd]
+    --with-x                use the X Window System
+    --with-motif-library=OBJ     use OBJ as Motif library [-lXm]
+    --with-xmhtml-library=OBJ    use OBJ as XmHTML library [-lXmHTML]
+***************
+*** 2558,2563 ****
+--- 2561,2569 ----
+  
+  
+  
++ 
++ 
++ 
+  if test "x${prefix}" = "xNONE"
+  then
+    GRACE_HOME=${ac_default_prefix}/grace
+***************
+*** 2698,2703 ****
+--- 2704,2721 ----
+  fi
+  
+  
++ # Check whether --enable-gd was given.
++ if test "${enable_gd+set}" = set; then :
++   enableval=$enable_gd; case "${enableval}" in
++   yes) gd=true ;;
++   no)  gd=false;;
++   *) as_fn_error $? "bad value ${enableval} for --enable-gd" "$LINENO" 5 ;;
++ esac
++ else
++   gd=true
++ fi
++ 
++ 
+  # Check whether --enable-f77_wrapper was given.
+  if test "${enable_f77_wrapper+set}" = set; then :
+    enableval=$enable_f77_wrapper; case "${enableval}" in
+***************
+*** 8225,8308 ****
+  
+  if test $fftw = true
+  then
+  
+! 
+! # Check whether --with-fftw_library was given.
+! if test "${with_fftw_library+set}" = set; then :
+!   withval=$with_fftw_library; fftw_library="$withval"
+! fi
+! 
+!   if test "x$fftw_library" = "x"
+!   then
+!     fftw_library=-lfftw
+!   fi
+! 
+!   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for FFTW library >= 2.1.3" >&5
+! $as_echo_n "checking for FFTW library >= 2.1.3... " >&6; }
+! if ${acx_cv_fftw+:} false; then :
+    $as_echo_n "(cached) " >&6
+  else
+!   if ${acx_cv_fftw_library+:} false; then :
+!   $as_echo_n "(cached) " >&6
+! else
+!   acx_cv_fftw_library=$fftw_library
+! fi
+! 
+! 
+!     save_CFLAGS=$CFLAGS
+!     save_CPPFLAGS=$CPPFLAGS
+!     save_LDFLAGS=$LDFLAGS
+!     save_LIBS=$LIBS
+! 
+!     LIBS="$acx_cv_fftw_library $LIBS"
+!     if test "$cross_compiling" = yes; then :
+!   acx_cv_fftw="no"
+! 
+! else
+!   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+  /* end confdefs.h.  */
+  
+! #include <fftw.h>
+! #include <string.h>
+!       int main(void) {
+!         char *vlib = (char *) fftw_version;
+!         if (strcmp(vlib, "2.1.3") < 0) {
+!           exit(1);
+!         }
+!         exit(0);
+!       }
+! 
+  _ACEOF
+! if ac_fn_c_try_run "$LINENO"; then :
+!   acx_cv_fftw="yes"
+  else
+!   acx_cv_fftw="no"
+  fi
+! rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+!   conftest.$ac_objext conftest.beam conftest.$ac_ext
+  fi
+  
+  
+  
+!     CFLAGS=$save_CFLAGS
+!     CPPFLAGS=$save_CPPFLAGS
+!     LDFLAGS=$save_LDFLAGS
+!     LIBS=$save_LIBS
+! 
+  
+  fi
+- { $as_echo "$as_me:${as_lineno-$LINENO}: result: $acx_cv_fftw" >&5
+- $as_echo "$acx_cv_fftw" >&6; }
+-   if test "$acx_cv_fftw" = "yes"
+-   then
+-     FFTW_LIB="$acx_cv_fftw_library"
+-     $as_echo "#define HAVE_FFTW 1" >>confdefs.h
+  
+!   else
+!     FFTW_LIB=
+!     { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
+  $as_echo "--> using legacy unoptimized FFT code" >&6; }
+!   fi
+  
+  fi
+  
+--- 8243,8311 ----
+  
+  if test $fftw = true
+  then
++   for ac_header in fftw3.h
++ do :
++   ac_fn_c_check_header_mongrel "$LINENO" "fftw3.h" "ac_cv_header_fftw3_h" "$ac_includes_default"
++ if test "x$ac_cv_header_fftw3_h" = xyes; then :
++   cat >>confdefs.h <<_ACEOF
++ #define HAVE_FFTW3_H 1
++ _ACEOF
+  
+! 	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for fftw_execute in -lfftw3" >&5
+! $as_echo_n "checking for fftw_execute in -lfftw3... " >&6; }
+! if ${ac_cv_lib_fftw3_fftw_execute+:} false; then :
+    $as_echo_n "(cached) " >&6
+  else
+!   ac_check_lib_save_LIBS=$LIBS
+! LIBS="-lfftw3  $LIBS"
+! cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+  /* end confdefs.h.  */
+  
+! /* Override any GCC internal prototype to avoid an error.
+!    Use char because int might match the return type of a GCC
+!    builtin and then its argument prototype would still apply.  */
+! #ifdef __cplusplus
+! extern "C"
+! #endif
+! char fftw_execute ();
+! int
+! main ()
+! {
+! return fftw_execute ();
+!   ;
+!   return 0;
+! }
+  _ACEOF
+! if ac_fn_c_try_link "$LINENO"; then :
+!   ac_cv_lib_fftw3_fftw_execute=yes
+  else
+!   ac_cv_lib_fftw3_fftw_execute=no
+  fi
+! rm -f core conftest.err conftest.$ac_objext \
+!     conftest$ac_exeext conftest.$ac_ext
+! LIBS=$ac_check_lib_save_LIBS
+  fi
++ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_fftw3_fftw_execute" >&5
++ $as_echo "$ac_cv_lib_fftw3_fftw_execute" >&6; }
++ if test "x$ac_cv_lib_fftw3_fftw_execute" = xyes; then :
+  
++ 		FFTW_LIB="-lfftw3"
++ 		$as_echo "#define HAVE_FFTW 1" >>confdefs.h
+  
+  
+! else
+!   { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
+! $as_echo "--> using legacy unoptimized FFT code" >&6; }
+  
+  fi
+  
+! 
+! else
+!   { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
+  $as_echo "--> using legacy unoptimized FFT code" >&6; }
+! fi
+! 
+! done
+  
+  fi
+  
+***************
+*** 8654,8659 ****
+--- 8657,8748 ----
+  $as_echo "--> PDF driver is disabled" >&6; }
+  fi
+  
++ if test $gd = true
++ then
++ 
++ 
++ # Check whether --with-gd_library was given.
++ if test "${with_gd_library+set}" = set; then :
++   withval=$with_gd_library; gd_library="$withval"
++ fi
++ 
++   if test "x$gd_library" = "x"
++   then
++     gd_library=-lgd
++   fi
++ 
++   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for GD library >= 2.0.0" >&5
++ $as_echo_n "checking for GD library >= 2.0.0... " >&6; }
++ if ${acx_cv_gd+:} false; then :
++   $as_echo_n "(cached) " >&6
++ else
++   if ${acx_cv_gd_library+:} false; then :
++   $as_echo_n "(cached) " >&6
++ else
++   acx_cv_gd_library=$gd_library
++ fi
++ 
++ 
++     save_CFLAGS=$CFLAGS
++     save_CPPFLAGS=$CPPFLAGS
++     save_LDFLAGS=$LDFLAGS
++     save_LIBS=$LIBS
++ 
++     LIBS="$acx_cv_gd_library $LIBS"
++     if test "$cross_compiling" = yes; then :
++   acx_cv_gd="no"
++ 
++ else
++   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++ /* end confdefs.h.  */
++ 
++ #include "gd.h"
++       int main(void) {
++         gdImagePtr im = gdImageCreate(64,64);
++         if( !im )
++           exit(1);
++         else
++           exit(0);
++       }
++ 
++ _ACEOF
++ if ac_fn_c_try_run "$LINENO"; then :
++   acx_cv_gd="yes"
++ else
++   acx_cv_gd="no"
++ fi
++ rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
++   conftest.$ac_objext conftest.beam conftest.$ac_ext
++ fi
++ 
++ 
++ 
++     CFLAGS=$save_CFLAGS
++     CPPFLAGS=$save_CPPFLAGS
++     LDFLAGS=$save_LDFLAGS
++     LIBS=$save_LIBS
++ 
++ 
++ fi
++ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $acx_cv_gd" >&5
++ $as_echo "$acx_cv_gd" >&6; }
++   if test "$acx_cv_gd" = "yes"
++   then
++     GD_LIB="$acx_cv_gd_library"
++     $as_echo "#define HAVE_GDLIB 1" >>confdefs.h
++ 
++   else
++     GD_LIB=
++     gd=false
++   fi
++ 
++ 
++ fi
++ if test $gd != true; then
++   { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> GDlib is disabled" >&5
++ $as_echo "--> GDlib is disabled" >&6; }
++ fi
++ 
+  
+  NOGUI_LIBS="$LIBS"
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./doc/UsersGuide.html ../grace-5.1.25iu/doc/UsersGuide.html
+*** ./doc/UsersGuide.html	2015-02-14 23:59:48.000000000 +0100
+--- ../grace-5.1.25iu/doc/UsersGuide.html	2018-03-26 21:37:35.789047650 +0200
+***************
+*** 1516,1521 ****
+--- 1516,1618 ----
+  sample range or to produce an evenly spaced set from an irregular
+  one.</P>
+  
++ <P>Under the "Library" menu, several functions are available under the
++ categories: "Gaussian Functions", "Lorentzian Functions", "Peak Functions",
++  "Periodic Peak Functions" and "Baseline Functions".</P>
++ 
++ <P><i>Gaussian</i><br>&nbsp y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2)<br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Full width at half
++ maximum; A3: Peak area.<br> The center and initial amplitude of the peak can be set from
++  user input (via mouse coordinates). </P>
++ 
++ <br>
++ <P><i>Gaussian (Chromatography):</i><br>
++ &nbsp y = A0 + (1/sqrt(2*pi))*(A3/A2)*exp(-(x-A1)^2/2*A2^2)
++  A0: Baseline offset; A1: Center of the peak (retention time); A2:
++  Standard deviation of the peak; A3: Peak area. <br> The center and initial amplitude of the peak can be set from
++  user input (via mouse coordinates). </P>
++ 
++ <br>
++ <P><i>Lorentzian</i><br>&nbsp y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2)<br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Full width at half
++ maximum; A3: Peak area. <br> The center and initial amplitude of the peak can be set from
++  user input (via mouse coordinates).</P>
++ 
++ <br>
++ <P><i>Peak Functions</i><br>
++ <i>Pseudo Voigt 1</i><br>
++ &nbsp y = A0 + A3 * (A4*(2/pi)*A2/(4*(x-A1)^2+A2^2) + <br>(1-A4)*exp(-4*ln(2)*(x-A1)^2/A2^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))<br>
++ &nbsp where: Gaussian and Lorentzian have the same width; A0: Baseline offset;
++  A1: Center of the peak; A2: Full width at half maximum; A3: Amplitude;
++  A4: Profile shape factor.<br>
++ <i>Pseudo Voigt 2</i><br>
++ &nbsp y = A0 + A3 * (A5*(2/pi)*A2/(4*(x-A1)^2+A2^2) + (1-A5)*exp(-4*ln(2)*(x-A1)^2/A4^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))<br>
++ &nbsp where: Gaussian and Lorentzian have different width; A0: Baseline offset;
++  A1: Center of the peak; A2: Full width at half maximum; A3: Amplitude;
++  A4: Profile shape factor.<br>
++ <i>Doniach-Sunjic</i><br>
++ &nbsp y = A0 + A3*cos((pi*A4/2)+(1-A4)*atan((x-A1)/A2))/(A2^2+(x-A1)^2)^((1-A4)/2)<br>
++ &nbsp where:A0: Baseline offset; A1: Center of the peak; A2: Full width at half maximum;<br>
++ &nbspA3: Peak area; A4: Asymmetry parameter.<br>
++ <i>Asymmetric double Sigmoidal</i><br>
++ &nbsp y = A0 + A3*(1/(1+exp(-(x-A1+A2/2)/A4)))*(1-(1/(1+exp(-(x-A1-A2/2)/A5))))<br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Width 1;
++  A3: Amplitude; A4: Width 2; A5: Width 5.<br>
++ <i>Logarithm Normal:</i> <br>
++ &nbsp y = A0 + A3*exp(-((ln(x)-ln(A1))^2)/(2*A2))<br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Width <br>
++ <i>Gram-Charlier A-Series (GCAS)</i><br>
++ &nbsp y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*
++  (((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6*((x-A1)/A2)^3+3))<br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Standard deviation;
++  A3: Peak Area; A4: Skew; A5: Excess. <br>
++ <i>Edgeworth-Cramer Series</i><br>
++ &nbsp y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*
++  (((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6 *((x-A1)/A2)^3+3)
++  +(A5^2/720)*(((x-A1)/A2)^6-15*((x-A1)/A2)^4+45*((x-A1)/A2)^2-15))<br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Standard deviation;
++  A3: Peak Area; A4: Skew; A5: Excess. <br>
++ <i>Inverse Polynomial</i><br>
++ &nbsp y=A0+A3/(1+ A4*(2*(x-A1)/A2)^2 + A5*(2*(x-A1)/A2)^4 + A6*(2*(x-A1)/A2)^6) <br>
++ &nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Standard deviation;
++  A3: Peak Area; A4, A5, A6: Parameters. <br>
++  </P>
++ 
++ <br>
++ <P><i>Periodic Peak Functions</i><br>
++ <i>Sine:</i> <br>
++ &nbspy=A0+A3*sin(pi*(x-A1)/A2)<br>
++ &nbspwhere: A0: Baseline offset; A1: Center; A2: Width; A3: Amplitude.<br>
++ <i>Sine Square: </i><br>
++ &nbspy=A0+A3*sin(pi*(x-A1)/A2)^2<br>
++ &nbspwhere: A0: Baseline offset; A1: Center; A2: Width; A3: Amplitude.<br>
++ <i>Sine damp: </i><br>
++ &nbspy=A0+A3*exp(-x/A4)*sin(pi*(x-A1)/A2)<br>
++ &nbspwhere: A0: Baseline offset; A1: Center; A2: Width; A3: Amplitude; A4: Decay time. <br>
++ </P>
++ 
++ <br>
++ <P><i>Baseline Functions</i><br>
++ <i>Exponential Decay 1:</i><br>
++ &nbsp;y=A0+A3*exp(-(x-A1)/A2)<br>
++ <b>Exponential Decay 2:</b> <br>
++ &nbsp;y=A0+A3*exp(-(x-A1)/A2)+A6*exp(-(x-A4)/A5);<br>
++ <i>Exponential Growth 1:</i> <br>
++ &nbsp;y=A0+A3*exp((x-A1)/A2)<br>
++ <i>Exponential Growth 2: </i><br>
++ &nbsp;y=A0+A3*exp(-(x-A1)/A2)+A6*exp((x-A4)/A5);<br>
++ <i>Hyperbolic:</i><br>
++ &nbsp;y=A0+(A1*x)/(A2+x)<br>
++ <i>Bradley:</i> <br>
++ &nbsp;y=A0*ln(-A1*ln(x))<br>
++ <i>Logarithm 3 Parameters: </i><br>
++ &nbsp;y=A0-A1*ln(x+A2)<br>
++ <i>Weibull Probability Density 2 Parameters: </i><br>
++ &nbsp;y=(A0/A1)*((x/A1)^(A0-1))*exp(-(x/A1)^A0)<br>
++ <i>Weibull Cumulative Distribution 2 Parameters: </i><br>
++ &nbsp;y=1-exp(-(x/A1)^A0)<br>
++ </P>
++ 
+  <H3><A NAME="correlation/covariance"></A> Correlation/covariance          </H3>
+  
+  <P>This popup can be used to compute autocorrelation
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./README.new_features ../grace-5.1.25iu/README.new_features
 *** ./README.new_features	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/README.new_features	2018-01-24 12:34:58.873987839 +0100
+--- ../grace-5.1.25iu/README.new_features	2018-03-26 21:40:55.993045133 +0200
 ***************
 *** 0 ****
---- 1,50 ----
+--- 1,62 ----
 + This patch is for xmgrace 5.1.25.
 + 
 + This patch improves functionality by adding several features:
@@ -24394,13 +25018,25 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./README.new_features ../gra
 + 
 + 9) file with legend captions can now be added on command line
 + 
++ 10) Default print resolution for all printing devices have been bumped to 300 dpi (from 72dpi).
++ 
++ 11) The vertical toolbar has been extended to include buttons for common operations such as: ASCII import and export, Print settings, Objects, and other data manipulation functions.
++ 
++ 12) Pointer coordinates: under the Window menu, the new function allows the user to click over the plot to get the coordinates of the points in the external console.
++ 
++ 13) Resized the default width of the xmgrace window (HighRes: 1200; LowRes: 1000).
++ 
++ 14) New Library of non-linear fitting functions is now included in Debian unstable/testing and in the official version of grace in Maverick.
++ 
++ This patch incorporates those implemented by Nicola Ferralis feranick@hotmail.com
++ 
 + Thanks to Rob Summers for catching some IU bugs.
 + 
 + Bounding boxes of raster formats, please make sure libgd is installed. This is optional.
 Binary files ./src/buildinfo and ../grace-5.1.25iu/src/buildinfo differ
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
 *** ./src/buildinfo.c	2015-02-14 23:17:32.000000000 +0100
---- ../grace-5.1.25iu/src/buildinfo.c	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/buildinfo.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 59,65 ****
       fprintf(outfile, "#define BI_VERSION \"Grace-%d.%d.%d %s\"\n",
@@ -24418,9 +25054,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/buildinfo.c ../grace-5
   	    MAJOR_REV, MINOR_REV, PATCHLEVEL);
   #endif
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/compwin.c ../grace-5.1.25iu/src/compwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/compwin.c ../grace-5.1.25iu/src/compwin.c
 *** ./src/compwin.c	2008-05-19 23:55:45.000000000 +0200
---- ../grace-5.1.25iu/src/compwin.c	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/compwin.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 74,80 ****
   static void do_window_proc(Widget w, XtPointer client_data, XtPointer call_data);
@@ -24769,9 +25405,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/compwin.c ../grace-5.1
       Widget degrees_item;
       Widget rotx_item;
       Widget roty_item;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/defaults.c ../grace-5.1.25iu/src/defaults.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/defaults.c ../grace-5.1.25iu/src/defaults.c
 *** ./src/defaults.c	2006-05-03 23:27:48.000000000 +0200
---- ../grace-5.1.25iu/src/defaults.c	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/defaults.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 321,326 ****
 --- 321,328 ----
@@ -24783,9 +25419,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/defaults.c ../grace-5.
       t->t_op = PLACEMENT_BOTH;
       t->props.size = grdefaults.charsize;
       t->mprops.size = grdefaults.charsize / 2;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/defines.h ../grace-5.1.25iu/src/defines.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/defines.h ../grace-5.1.25iu/src/defines.h
 *** ./src/defines.h	2007-02-15 23:36:54.000000000 +0100
---- ../grace-5.1.25iu/src/defines.h	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/defines.h	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 497,502 ****
 --- 497,504 ----
@@ -24807,9 +25443,41 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/defines.h ../grace-5.1
   } tickprops;
   
   typedef struct {
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/draw.h ../grace-5.1.25iu/src/draw.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/device.h ../grace-5.1.25iu/src/device.h
+*** ./src/device.h	2004-07-03 22:47:45.000000000 +0200
+--- ../grace-5.1.25iu/src/device.h	2018-03-26 21:37:35.789047650 +0200
+***************
+*** 43,48 ****
+--- 43,50 ----
+  #define MM_PER_INCH	25.4
+  #define CM_PER_INCH	(MM_PER_INCH/10)
+  
++ #define DEFAULT_RESOLUTION 300.0
++ 
+  /* hardcopy or terminal device */
+  /* device output can be redirected to file/printer(both) */
+  #define DEVICE_TERM	0
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/draw.c ../grace-5.1.25iu/src/draw.c
+*** ./src/draw.c	2005-11-19 22:53:24.000000000 +0100
+--- ../grace-5.1.25iu/src/draw.c	2018-03-26 21:37:35.789047650 +0200
+***************
+*** 258,263 ****
+--- 258,269 ----
+      return (vp);
+  }
+  
++ WPoint Vpoint2Wpoint(VPoint vp)
++ {
++     WPoint wp;
++     view2world(vp.x, vp.y, &wp.x, &wp.y);
++     return (wp);
++ }
+  
+  void symplus(VPoint vp, double s)
+  {
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/draw.h ../grace-5.1.25iu/src/draw.h
 *** ./src/draw.h	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/draw.h	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/draw.h	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 134,140 ****
   } BBox_type;
@@ -24827,9 +25495,19 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/draw.h ../grace-5.1.25
   
   void setpen(Pen pen);
   Pen getpen(void);
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/drawticks.c ../grace-5.1.25iu/src/drawticks.c
+***************
+*** 236,241 ****
+--- 236,242 ----
+  double xy_xconv(double wx);
+  double xy_yconv(double wy);
+  VPoint Wpoint2Vpoint(WPoint wp);
++ WPoint Vpoint2Wpoint(VPoint vp);
+  int world2view(double x, double y, double *xv, double *yv);
+  void view2world(double xv, double yv, double *xw, double *yw);
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/drawticks.c ../grace-5.1.25iu/src/drawticks.c
 *** ./src/drawticks.c	2007-02-13 22:22:09.000000000 +0100
---- ../grace-5.1.25iu/src/drawticks.c	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/drawticks.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 448,454 ****
   	        }
@@ -24864,9 +25542,177 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/drawticks.c ../grace-5
   	    case TICKS_IN:
   	        vbase_tlabel1 = vbase1 - (1 - tick_dir_sign)/2*tsize - tl_offset;
   	        vbase_tlabel2 = vbase2 + (1 - tick_dir_sign)/2*tsize + tl_offset;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/featext.c ../grace-5.1.25iu/src/featext.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/events.c ../grace-5.1.25iu/src/events.c
+*** ./src/events.c	2008-04-26 21:12:11.000000000 +0200
+--- ../grace-5.1.25iu/src/events.c	2018-03-26 21:37:35.789047650 +0200
+***************
+*** 111,116 ****
+--- 111,117 ----
+      int axisno;
+      Datapoint dpoint;
+      GLocator locator;
++     static char buf[256];
+      
+      cg = get_cg();
+      get_tracking_props(&track_setno, &move_dir, &add_at);
+***************
+*** 487,492 ****
+--- 488,553 ----
+                  }
+                  select_line(anchor_x, anchor_y, x, y, 0);
+  		break;
++ 	    case PEAK_POS:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Initial peak position, intensity: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		nonl_parms[1].value = Vpoint2Wpoint(vp).x;
++ 		nonl_parms[3].value = Vpoint2Wpoint(vp).y;
++ 		set_actioncb(NULL);
++ 		update_nonl_frame();
++ 		break;
++ 	    case PEAK_POS1:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Initial position, intensity peak #1: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		nonl_parms[1].value = Vpoint2Wpoint(vp).x;
++ 		nonl_parms[3].value = Vpoint2Wpoint(vp).y;
++ 		set_actioncb((void*) PEAK_POS2);
++ 		update_nonl_frame();
++ 		break;
++ 	    case PEAK_POS2:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Initial position, intensity peak #2: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		nonl_parms[4].value = Vpoint2Wpoint(vp).x;
++ 		nonl_parms[6].value = Vpoint2Wpoint(vp).y;
++ 		set_actioncb(NULL);
++ 		update_nonl_frame();
++ 		break;
++ 	    case PEAK_POS1B:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Initial position, intensity peak #1: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		nonl_parms[1].value = Vpoint2Wpoint(vp).x;
++ 		nonl_parms[3].value = Vpoint2Wpoint(vp).y;
++ 		set_actioncb((void*) PEAK_POS2B);
++ 		update_nonl_frame();
++ 		break;
++ 	    case PEAK_POS2B:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Initial position, intensity peak #2: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		nonl_parms[4].value = Vpoint2Wpoint(vp).x;
++ 		nonl_parms[6].value = Vpoint2Wpoint(vp).y;
++ 		set_actioncb((void*) PEAK_POS3B);
++ 		update_nonl_frame();
++ 		break;
++ 	    case PEAK_POS3B:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Initial position, intensity peak #3: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		nonl_parms[7].value = Vpoint2Wpoint(vp).x;
++ 		nonl_parms[9].value = Vpoint2Wpoint(vp).y;
++ 		set_actioncb(NULL);
++ 		update_nonl_frame();
++ 		break;
++ 	    case COORD_POS:
++ 		anchor_point(x, y, vp);
++ 		sprintf(buf, "Pointer position: %f, %f, \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++ 		stufftext(buf);
++ 		break;
++ 
+              default:
+                  break;
+              }
+***************
+*** 567,572 ****
+--- 628,634 ----
+  void set_action(CanvasAction act)
+  {
+      int i;
++     static char buf[256];
+  /*
+   * indicate what's happening with a message in the left footer
+   */
+***************
+*** 760,765 ****
+--- 822,867 ----
+  	set_cursor(0);
+  	set_left_footer("Pick ending point");
+  	break;
++     case PEAK_POS:
++ 	set_cursor(0);
++ 	set_left_footer("Click on the approximate position of the maximum of the peak");
++ 	sprintf(buf, "Click on the approximate position of the maximum of the peak.\n");
++ 	stufftext(buf);
++ 	break;
++     case PEAK_POS1:
++ 	set_cursor(0);
++ 	set_left_footer("Click on the approximate position of the maximum of the peak #1");
++ 	sprintf(buf, "Click on the approximate position of the maximum of the peak #1.\n");
++ 	stufftext(buf);
++ 	break;
++     case PEAK_POS2:
++ 	set_cursor(0);
++ 	set_left_footer("Click on the approximate position of the maximum of the peak #2");
++ 	sprintf(buf, "Click on the approximate position of the maximum of the peak #2.\n");
++ 	stufftext(buf);
++ 	break;
++     case PEAK_POS1B:
++ 	set_cursor(0);
++ 	set_left_footer("Click on the approximate position of the maximum of the peak #1");
++ 	sprintf(buf, "Click on the approximate position of the maximum of the peak #1.\n");
++ 	stufftext(buf);
++ 	break;
++     case PEAK_POS2B:
++ 	set_cursor(0);
++ 	set_left_footer("Click on the approximate position of the maximum of the peak #2");
++ 	sprintf(buf, "Click on the approximate position of the maximum of the peak #2.\n");
++ 	stufftext(buf);
++ 	break;
++     case PEAK_POS3B:
++ 	set_cursor(0);
++ 	set_left_footer("Click on the approximate position of the maximum of the peak #3");
++ 	sprintf(buf, "Click on the approximate position of the maximum of the peak #3.\n");
++ 	stufftext(buf);
++ 	break;
++     case COORD_POS:
++ 	set_cursor(0);
++ 	set_left_footer("Click to determine the pointer's coordinates");
++ 	break;
+      }
+  
+      action_flag = act;
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/events.h ../grace-5.1.25iu/src/events.h
+*** ./src/events.h	2004-07-03 22:47:45.000000000 +0200
+--- ../grace-5.1.25iu/src/events.h	2018-03-26 21:37:35.789047650 +0200
+***************
+*** 81,87 ****
+      ZOOMY_1ST,
+      ZOOMY_2ND,
+      DISLINE1ST,
+!     DISLINE2ND
+  } CanvasAction;
+  
+  /* add points at */
+--- 81,94 ----
+      ZOOMY_1ST,
+      ZOOMY_2ND,
+      DISLINE1ST,
+!     DISLINE2ND,
+!     PEAK_POS,
+!     PEAK_POS1,
+!     PEAK_POS2,
+!     PEAK_POS1B,
+!     PEAK_POS2B,
+!     PEAK_POS3B,
+!     COORD_POS
+  } CanvasAction;
+  
+  /* add points at */
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/featext.c ../grace-5.1.25iu/src/featext.c
 *** ./src/featext.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/featext.c	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/featext.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 56,62 ****
       Widget top;
@@ -24901,9 +25747,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/featext.c ../grace-5.1
   			(XtCallbackProc) do_fext_toggle, (XtPointer) i);
   	}
   	
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/files.c ../grace-5.1.25iu/src/files.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/files.c ../grace-5.1.25iu/src/files.c
 *** ./src/files.c	2008-04-26 20:25:57.000000000 +0200
---- ../grace-5.1.25iu/src/files.c	2017-01-05 11:42:20.623263890 +0100
+--- ../grace-5.1.25iu/src/files.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 623,652 ****
       FILE *retval;
@@ -24967,9 +25813,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/files.c ../grace-5.1.2
       }
   }
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/fileswin.c ../grace-5.1.25iu/src/fileswin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/fileswin.c ../grace-5.1.25iu/src/fileswin.c
 *** ./src/fileswin.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/fileswin.c	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/fileswin.c	2018-03-26 21:37:35.789047650 +0200
 ***************
 *** 383,388 ****
 --- 383,432 ----
@@ -25058,9 +25904,132 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/fileswin.c ../grace-5.
       int gno;
       FILE *pp;
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/gd.c ../grace-5.1.25iu/src/gd.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/fourier.c ../grace-5.1.25iu/src/fourier.c
+*** ./src/fourier.c	2004-07-03 22:47:45.000000000 +0200
+--- ../grace-5.1.25iu/src/fourier.c	2018-03-26 21:37:35.789047650 +0200
+***************
+*** 230,236 ****
+  #else
+  /* Start of new FFTW-based transforms by Marcus H. Mendenhall */
+  
+! #include <fftw.h>
+  #include <string.h>
+  
+  static char  *wisdom_file=0;
+--- 230,237 ----
+  #else
+  /* Start of new FFTW-based transforms by Marcus H. Mendenhall */
+  
+! #include <complex.h>
+! #include <fftw3.h>
+  #include <string.h>
+  
+  static char  *wisdom_file=0;
+***************
+*** 258,264 ****
+    fftw_plan plan;
+    int i;
+    double ninv;
+!   FFTW_COMPLEX *cbuf;
+    static int wisdom_inited=0;
+    char *ram_cache_wisdom;
+    int plan_flags;
+--- 259,265 ----
+    fftw_plan plan;
+    int i;
+    double ninv;
+!   fftw_complex *cbuf;
+    static int wisdom_inited=0;
+    char *ram_cache_wisdom;
+    int plan_flags;
+***************
+*** 274,280 ****
+      if(wisdom_file && wisdom_file[0] ) {
+        /* if a file was specified in GRACE_FFTW_WISDOM_FILE, try to read it */
+        FILE *wf;
+!       fftw_status fstat;
+        wf=fopen(wisdom_file,"r");
+        if(wf) {
+  	fstat=fftw_import_wisdom_from_file(wf);
+--- 275,281 ----
+      if(wisdom_file && wisdom_file[0] ) {
+        /* if a file was specified in GRACE_FFTW_WISDOM_FILE, try to read it */
+        FILE *wf;
+!       int fstat;
+        wf=fopen(wisdom_file,"r");
+        if(wf) {
+  	fstat=fftw_import_wisdom_from_file(wf);
+***************
+*** 286,315 ****
+      }
+    }
+  
+!   plan_flags=using_wisdom? (FFTW_USE_WISDOM | FFTW_MEASURE) : FFTW_ESTIMATE;
+! 
+!   plan=fftw_create_plan(n, iflag?FFTW_BACKWARD:FFTW_FORWARD,
+! 		   plan_flags | FFTW_IN_PLACE);
+!   cbuf=xcalloc(n, sizeof(*cbuf));
+    if(!cbuf) return;
+    for(i=0; i<n; i++) {
+!     cbuf[i].re=jr[i]; cbuf[i].im=ji[i];
+    }
+!   fftw(plan, 1, cbuf, 1, 1, 0, 1, 1);
+    fftw_destroy_plan(plan);
+  
+    if(!iflag) {
+      ninv=1.0/n;
+      for(i=0; i<n; i++) {
+!     jr[i]=cbuf[i].re*ninv; ji[i]=cbuf[i].im*ninv;
+      }
+    } else {
+      for(i=0; i<n; i++) {
+!       jr[i]=cbuf[i].re; ji[i]=cbuf[i].im;
+      }
+    }
+  
+!   XCFREE(cbuf);
+    
+  }
+  
+--- 287,321 ----
+      }
+    }
+  
+!   /* fftw_malloc behaves like malloc except that it properly aligns the array
+!    * when SIMD instructions (such as SSE and Altivec) are available.
+!    */
+!   cbuf=(fftw_complex *)fftw_malloc(n*sizeof(fftw_complex));
+    if(!cbuf) return;
++ 
+    for(i=0; i<n; i++) {
+!     cbuf[i] = jr[i] + I * ji[i];
+    }
+! 
+!   plan_flags=using_wisdom? (FFTW_MEASURE) : FFTW_ESTIMATE;
+!   plan=fftw_plan_dft_1d(n, cbuf, cbuf, iflag?FFTW_BACKWARD:FFTW_FORWARD,
+! 		   plan_flags);
+! 
+!   fftw_execute(plan);
+    fftw_destroy_plan(plan);
+  
+    if(!iflag) {
+      ninv=1.0/n;
+      for(i=0; i<n; i++) {
+!     jr[i]=creal(cbuf[i])*ninv; ji[i]=cimag(cbuf[i])*ninv;
+      }
+    } else {
+      for(i=0; i<n; i++) {
+!       jr[i]=creal(cbuf[i]); ji[i]=cimag(cbuf[i]);
+      }
+    }
+  
+!   fftw_free(cbuf);
+    
+  }
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/gd.c ../grace-5.1.25iu/src/gd.c
 *** ./src/gd.c	2001-12-26 21:33:39.000000000 +0100
---- ../grace-5.1.25iu/src/gd.c	2018-01-24 12:26:25.052588191 +0100
+--- ../grace-5.1.25iu/src/gd.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 1,11 ****
   #include <config.h>
@@ -25096,9 +26065,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/gd.c ../grace-5.1.25iu
   }
 + 
 + #endif
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/gd.h ../grace-5.1.25iu/src/gd.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/gd.h ../grace-5.1.25iu/src/gd.h
 *** ./src/gd.h	1999-11-19 00:49:10.000000000 +0100
---- ../grace-5.1.25iu/src/gd.h	2018-01-24 12:28:23.596910509 +0100
+--- ../grace-5.1.25iu/src/gd.h	1970-01-01 01:00:00.000000000 +0100
 ***************
 *** 1,117 ****
 - #ifndef GD_H
@@ -25219,9 +26188,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/gd.h ../grace-5.1.25iu
 - 
 - #endif
 --- 0 ----
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/gd_v1.h ../grace-5.1.25iu/src/gd_v1.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/gd_v1.h ../grace-5.1.25iu/src/gd_v1.h
 *** ./src/gd_v1.h	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/src/gd_v1.h	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/gd_v1.h	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 0 ****
 --- 1,118 ----
@@ -25343,9 +26312,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/gd_v1.h ../grace-5.1.2
 + #define gdImageGetInterlaced(im) ((im)->interlace)
 + 
 + #endif
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/graphappwin.c ../grace-5.1.25iu/src/graphappwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/graphappwin.c ../grace-5.1.25iu/src/graphappwin.c
 *** ./src/graphappwin.c	2007-02-13 23:01:27.000000000 +0100
---- ../grace-5.1.25iu/src/graphappwin.c	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/graphappwin.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 54,60 ****
   static Widget define_view_yv1;
@@ -26058,9 +27027,30 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/graphappwin.c ../grace
   
 + 
 +   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/hotwin.c ../grace-5.1.25iu/src/hotwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/graphutils.h ../grace-5.1.25iu/src/graphutils.h
+*** ./src/graphutils.h	2004-07-03 22:47:45.000000000 +0200
+--- ../grace-5.1.25iu/src/graphutils.h	2018-03-26 21:37:35.793047650 +0200
+***************
+*** 55,61 ****
+  #define GA_ORDER_HV_INV 4
+  
+  /* Default page offsets and gaps for graph arranging */
+! #define GA_OFFSET_DEFAULT    0.15
+  #define GA_GAP_DEFAULT       0.2
+  
+  char *get_format_types(int f);
+--- 55,62 ----
+  #define GA_ORDER_HV_INV 4
+  
+  /* Default page offsets and gaps for graph arranging */
+! #define GA_OFFSET_DEFAULT_1    0.10
+! #define GA_OFFSET_DEFAULT_2    0.05
+  #define GA_GAP_DEFAULT       0.2
+  
+  char *get_format_types(int f);
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/hotwin.c ../grace-5.1.25iu/src/hotwin.c
 *** ./src/hotwin.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/hotwin.c	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/hotwin.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 54,60 ****
   static SetChoiceItem hotlink_set_item;
@@ -26078,9 +27068,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/hotwin.c ../grace-5.1.
   
   void create_hotfiles_popup(Widget w, XtPointer client_data, XtPointer call_data);
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/locatewin.c ../grace-5.1.25iu/src/locatewin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/locatewin.c ../grace-5.1.25iu/src/locatewin.c
 *** ./src/locatewin.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/locatewin.c	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/locatewin.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 39,66 ****
   #include "graphs.h"
@@ -26208,9 +27198,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/locatewin.c ../grace-5
   	rc2 = CreateHContainer(rc);
   	locx_item = CreateTextItem2(rc2, 10, "X:");
   	locy_item = CreateTextItem2(rc2, 10, "Y:");
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/main.c ../grace-5.1.25iu/src/main.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/main.c ../grace-5.1.25iu/src/main.c
 *** ./src/main.c	2015-02-14 23:58:02.000000000 +0100
---- ../grace-5.1.25iu/src/main.c	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/main.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 542,559 ****
   			}
@@ -26265,9 +27255,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/main.c ../grace-5.1.25
       fprintf(stream, "-log       [x|y|xy]                   Set the axis scaling of the current graph\n");
       fprintf(stream, "                                        to logarithmic\n");
       fprintf(stream, "-maxpath   [length]                   Set the maximal drawing path length\n");
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/Make.common ../grace-5.1.25iu/src/Make.common
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Make.common ../grace-5.1.25iu/src/Make.common
 *** ./src/Make.common	2008-05-20 00:35:42.000000000 +0200
---- ../grace-5.1.25iu/src/Make.common	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/Make.common	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 15,21 ****
   	objutils.c computils.c defaults.c params.c \
@@ -26332,9 +27322,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/Make.common ../grace-5
   	setwin$(O) strwin$(O) setappwin$(O) \
 !      gd$(O)   tickwin$(O) worldwin$(O) fontwin$(O) xutil$(O) x11drv$(O) xmgrace$(O)
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/Make.dep ../grace-5.1.25iu/src/Make.dep
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Make.dep ../grace-5.1.25iu/src/Make.dep
 *** ./src/Make.dep	2001-12-29 23:10:49.000000000 +0100
---- ../grace-5.1.25iu/src/Make.dep	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/Make.dep	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 65,74 ****
     motifinc.h
@@ -26357,9 +27347,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/Make.dep ../grace-5.1.
   dummydrv$(O) : dummydrv.c defines.h draw.h device.h t1fonts.h devlist.h \
     dummydrv.h
   mathstuff$(O) : mathstuff.c ../cmath.h protos.h missing.h noxprotos.h \
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/Makefile ../grace-5.1.25iu/src/Makefile
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Makefile ../grace-5.1.25iu/src/Makefile
 *** ./src/Makefile	2015-02-14 22:21:45.000000000 +0100
---- ../grace-5.1.25iu/src/Makefile	2017-01-05 11:42:20.627263910 +0100
+--- ../grace-5.1.25iu/src/Makefile	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 19,25 ****
   CFLAGS=$(CFLAGS0) -I$(TOP) -I. $(T1_INC) $(XBAE_INC) $(CPPFLAGS) $(GUI_FLAGS)
@@ -26377,9 +27367,49 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/Makefile ../grace-5.1.
   	$(NOGUI_LIBS) $(DL_LIB)
   
   PREFS=-DGRACE_HOME=\"$(GRACE_HOME)\" -DGRACE_PRINT_CMD=\"$(PRINT_CMD)\" \
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/miscwin.c ../grace-5.1.25iu/src/miscwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/mfdrv.c ../grace-5.1.25iu/src/mfdrv.c
+*** ./src/mfdrv.c	2004-07-03 22:47:46.000000000 +0200
+--- ../grace-5.1.25iu/src/mfdrv.c	2018-03-26 21:37:35.793047650 +0200
+***************
+*** 53,59 ****
+            "gmf",
+            TRUE,
+            FALSE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+            NULL
+           };
+  
+--- 53,59 ----
+            "gmf",
+            TRUE,
+            FALSE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+            NULL
+           };
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/mifdrv.c ../grace-5.1.25iu/src/mifdrv.c
+*** ./src/mifdrv.c	2004-07-03 22:47:46.000000000 +0200
+--- ../grace-5.1.25iu/src/mifdrv.c	2018-03-26 21:37:35.793047650 +0200
+***************
+*** 56,62 ****
+                                 "mif",
+                                 TRUE,
+                                 FALSE,
+!                                {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+                                 NULL
+                                };
+  
+--- 56,62 ----
+                                 "mif",
+                                 TRUE,
+                                 FALSE,
+!                                {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+                                 NULL
+                                };
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/miscwin.c ../grace-5.1.25iu/src/miscwin.c
 *** ./src/miscwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/miscwin.c	2017-01-05 11:42:20.631263930 +0100
+--- ../grace-5.1.25iu/src/miscwin.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 61,67 ****
   static Widget noask_item;
@@ -26414,9 +27444,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/miscwin.c ../grace-5.1
   static Widget date_item;
   static Widget wrap_year_item;
   static Widget two_digits_years_item;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/motifinc.h ../grace-5.1.25iu/src/motifinc.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/motifinc.h ../grace-5.1.25iu/src/motifinc.h
 *** ./src/motifinc.h	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/motifinc.h	2017-01-05 11:42:20.631263930 +0100
+--- ../grace-5.1.25iu/src/motifinc.h	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 57,62 ****
 --- 57,64 ----
@@ -26545,9 +27575,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/motifinc.h ../grace-5.
   
   TransformStructure *CreateTransformDialogForm(Widget parent,
       char *s, int sel_type);
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/motifutils.c ../grace-5.1.25iu/src/motifutils.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/motifutils.c ../grace-5.1.25iu/src/motifutils.c
 *** ./src/motifutils.c	2015-02-14 22:28:46.000000000 +0100
---- ../grace-5.1.25iu/src/motifutils.c	2017-01-05 11:42:20.631263930 +0100
+--- ../grace-5.1.25iu/src/motifutils.c	2018-03-26 21:37:35.793047650 +0200
 ***************
 *** 427,432 ****
 --- 427,450 ----
@@ -26689,6 +27719,23 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/motifutils.c ../grace-
       }
       if (n == 2) {
           sprintf(buf, "Copy S%d to S%d", values[0], values[1]);
+***************
+*** 2452,2458 ****
+      }
+      
+      sdata->standalone = standalone;
+!     sdata->view_comments = FALSE;
+      sdata->show_hidden = TRUE;
+      sdata->show_nodata = FALSE;
+      sdata->menu = CreateSetPopupEntries(retvalp);
+--- 2535,2541 ----
+      }
+      
+      sdata->standalone = standalone;
+!     sdata->view_comments = TRUE;
+      sdata->show_hidden = TRUE;
+      sdata->show_nodata = FALSE;
+      sdata->menu = CreateSetPopupEntries(retvalp);
 ***************
 *** 2610,2615 ****
 --- 2693,2700 ----
@@ -26923,9 +27970,489 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/motifutils.c ../grace-
 +      AddOptionChoiceCB( opt, cbproc, anydata );
 +   }
 +   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/params.c ../grace-5.1.25iu/src/params.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/nonlwin.c ../grace-5.1.25iu/src/nonlwin.c
+*** ./src/nonlwin.c	2006-05-17 22:53:13.000000000 +0200
+--- ../grace-5.1.25iu/src/nonlwin.c	2018-03-26 21:37:35.797047650 +0200
+***************
+*** 7,12 ****
+--- 7,13 ----
+   * Copyright (c) 1996-2000 Grace Development Team
+   * 
+   * Maintained by Evgeny Stambulchik
++  * Additional non linear fitting functions by Nicola Ferralis
+   * 
+   * 
+   *                           All Rights Reserved
+***************
+*** 47,52 ****
+--- 48,54 ----
+  #include "parser.h"
+  #include "motifinc.h"
+  #include "protos.h"
++ #include "events.h"
+  
+  /* nonlprefs.load possible values */
+  #define LOAD_VALUES         0
+***************
+*** 98,103 ****
+--- 100,133 ----
+  static void nonl_wf_cb(int value, void *data);
+  static void do_constr_toggle(int onoff, void *data);
+  
++ static void nonl_Lorentzian_cb(void *data);
++ static void nonl_doubleLorentzian_cb(void *data);
++ static void nonl_tripleLorentzian_cb(void *data);
++ static void nonl_Gaussian_cb(void *data);
++ static void nonl_doubleGaussian_cb(void *data);
++ static void nonl_tripleGaussian_cb(void *data);
++ static void nonl_Gaussian2_cb(void *data);
++ static void nonl_PsVoight1_cb(void *data);
++ static void nonl_PsVoight2_cb(void *data);
++ static void nonl_DS_cb(void *data);
++ static void nonl_Asym2Sig_cb(void *data);
++ static void nonl_LogNormal_cb(void *data);
++ static void nonl_GCAS_cb(void *data);
++ static void nonl_ECS_cb(void *data);
++ static void nonl_InvPoly_cb(void *data);
++ static void nonl_Sine_cb(void *data);
++ static void nonl_Sinesq_cb(void *data);
++ static void nonl_Sinedamp_cb(void *data);
++ static void nonl_ExpDec1_cb(void *data);
++ static void nonl_ExpDec2_cb(void *data);
++ static void nonl_ExpGrow1_cb(void *data);
++ static void nonl_ExpGrow2_cb(void *data);
++ static void nonl_Hyperbol_cb(void *data);
++ static void nonl_Bradley_cb(void *data);
++ static void nonl_Log3_cb(void *data);
++ static void nonl_WeibullPD_cb(void *data);
++ static void nonl_WeibullCD_cb(void *data);
++ 
+  static void update_nonl_frame_cb(void *data);
+  static void reset_nonl_frame_cb(void *data);
+  
+***************
+*** 118,124 ****
+      if (nonl_frame == NULL) {
+          int i;
+          OptionItem np_option_items[MAXPARM + 1], option_items[5];
+!         Widget menubar, menupane;
+          Widget nonl_tab, nonl_main, nonl_advanced;
+          Widget sw, title_fr, fr3, rc1, rc2, rc3, lab;
+  
+--- 148,154 ----
+      if (nonl_frame == NULL) {
+          int i;
+          OptionItem np_option_items[MAXPARM + 1], option_items[5];
+!         Widget menubar, menupane, submenugauss, submenulorentz, submenupeak, submenubaseline, submenuperiodic;
+          Widget nonl_tab, nonl_main, nonl_advanced;
+          Widget sw, title_fr, fr3, rc1, rc2, rc3, lab;
+  
+***************
+*** 145,150 ****
+--- 175,228 ----
+          CreateMenuSeparator(menupane);
+          CreateMenuButton(menupane, "Update", 'U', update_nonl_frame_cb, NULL);
+  
++ 	menupane = CreateMenu(menubar, "Library", 'L', FALSE);
++ 
++ 	submenugauss = CreateMenu(menupane, "Gaussian Functions", 'G', FALSE);
++ 	CreateMenuButton(submenugauss, "Single", 'g', nonl_Gaussian_cb, NULL);
++ 	CreateMenuButton(submenugauss, "Double", 'D', nonl_doubleGaussian_cb, NULL);
++ 	CreateMenuButton(submenugauss, "Triple", 'T', nonl_tripleGaussian_cb, NULL);
++ 	CreateMenuSeparator(submenugauss);
++ 	CreateMenuButton(submenugauss, "Single (chromatography)", 'c', nonl_Gaussian2_cb, NULL);
++ 	CreateMenuSeparator(menupane);
++ 
++ 	submenulorentz = CreateMenu(menupane, "Lorentzian Functions", 'L', FALSE);
++ 	CreateMenuButton(submenulorentz, "Single", 'S', nonl_Lorentzian_cb, NULL);
++ 	CreateMenuButton(submenulorentz, "Double", 'D', nonl_doubleLorentzian_cb, NULL);
++ 	CreateMenuButton(submenulorentz, "Triple", 'T', nonl_tripleLorentzian_cb, NULL);
++ 	CreateMenuSeparator(menupane);
++ 
++ 	submenupeak = CreateMenu(menupane, "Peak Functions", 'P', FALSE);
++ 	CreateMenuButton(submenupeak, "Pseudo Voigt 1", 'V', nonl_PsVoight1_cb, NULL);
++ 	CreateMenuButton(submenupeak, "Pseudo Voigt 2", 'o', nonl_PsVoight2_cb, NULL);
++ 	CreateMenuButton(submenupeak, "Doniach-Sunjic", 'D', nonl_DS_cb, NULL);
++ 	CreateMenuButton(submenupeak, "Asymmetric Double Sigmoidal", 'S', nonl_Asym2Sig_cb, NULL);
++ 	CreateMenuButton(submenupeak, "LogNormal", 'L', nonl_LogNormal_cb, NULL);
++ 	CreateMenuButton(submenupeak, "Gram-Charlier A-Series", 'C', nonl_GCAS_cb, NULL);
++ 	CreateMenuButton(submenupeak, "Edgeworth-Cramer Series", 'E', nonl_ECS_cb, NULL);
++ 	CreateMenuButton(submenupeak, "Inverse Polynomial", 'I', nonl_InvPoly_cb, NULL);
++ 	CreateMenuSeparator(menupane);
++ 
++ 	submenuperiodic = CreateMenu(menupane, "Periodic Peak Functions", 'e', FALSE);
++ 	CreateMenuButton(submenuperiodic, "Sine", 'S', nonl_Sine_cb, NULL);
++ 	CreateMenuButton(submenuperiodic, "Sine Square", 'q', nonl_Sinesq_cb, NULL);
++ 	CreateMenuButton(submenuperiodic, "Sine Damp", 'D', nonl_Sinedamp_cb, NULL);
++ 	CreateMenuSeparator(menupane);
++ 
++ 	submenubaseline = CreateMenu(menupane, "Baseline Functions", 'B', FALSE);
++ 	CreateMenuButton(submenubaseline, "Exponential Decay 1", 'D', nonl_ExpDec1_cb, NULL);
++ 	CreateMenuButton(submenubaseline, "Exponential Decay 2", 'e', nonl_ExpDec2_cb, NULL);
++ 	CreateMenuButton(submenubaseline, "Exponential Growth 1", 'G', nonl_ExpGrow1_cb, NULL);
++ 	CreateMenuButton(submenubaseline, "Exponential Growth 2", 'r', nonl_ExpGrow2_cb, NULL);
++ 	CreateMenuButton(submenubaseline, "Hyperbolic Function", 'H', nonl_Hyperbol_cb, NULL);
++ 	CreateMenuSeparator(submenubaseline);
++ 	CreateMenuButton(submenubaseline, "Bradley", 'B', nonl_Bradley_cb, NULL);
++ 	CreateMenuButton(submenubaseline, "Logarithm 3", 'L', nonl_Log3_cb, NULL);
++ 	CreateMenuSeparator(submenubaseline);
++ 	CreateMenuButton(submenubaseline, "Weibull Probability Density", 'W', nonl_WeibullPD_cb, NULL);
++ 	CreateMenuButton(submenubaseline, "Weibull Cumulative", 'w', nonl_WeibullCD_cb, NULL);
++ 	CreateMenuSeparator(menupane);
++ 
++ 	CreateMenuButton(menupane, "Reset fit parameters", 'R', reset_nonl_frame_cb, NULL);
+          menupane = CreateMenu(menubar, "Help", 'H', TRUE);
+  
+          CreateMenuHelpButton(menupane, "On fit", 'f',
+***************
+*** 712,714 ****
+--- 790,1132 ----
+      }
+      return TRUE;
+  }
++ 
++ 
++ static void nonl_Lorentzian_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Lorentzian function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2)");
++     nonl_opts.parnum = 4;
++ 
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++ 
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Peak area\n\n");
++     stufftext(buf);
++ 
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_doubleLorentzian_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Double Lorentzian function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2) + (2*A5*A6/pi)/(4*(x-A4)^2 + A5^2)");
++     nonl_opts.parnum = 7;
++ 
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++ 
++     sprintf(buf, "A0: Baseline offset\nA1, A4: Center of peaks 1, 2\nA2, A5: Full width at half maximum of peaks 1, 2\nA3, A6: Area of peaks 1, 2\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS1);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_tripleLorentzian_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Double Lorentzian function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2) + (2*A5*A6/pi)/(4*(x-A4)^2 + A5^2) + (2*A8*A9/pi)/(4*(x-A7)^2 + A8^2)");
++     nonl_opts.parnum = 10;
++ 
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++ 
++     sprintf(buf, "A0: Baseline offset\nA1, A4, A7: Center of peaks 1, 2, 3\nA2, A5, A7: Full width at half maximum of peaks 1, 2, 3\nA3, A6, A9: Area of peaks 1, 2, 3\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS1B);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Gaussian_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Gaussian function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2)");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Peak area\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_doubleGaussian_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Double Gaussian function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2) + (A6*2*sqrt(ln(2)/pi)/A5)*exp(-4*ln(2)*((x-A4)/A5)^2)");
++     nonl_opts.parnum = 7;
++ 
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++ 
++     sprintf(buf, "A0: Baseline offset\nA1, A4: Center of peaks 1, 2\nA2, A5: Full width at half maximum of peaks 1, 2\nA3, A6: Area of peaks 1, 2\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS1);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_tripleGaussian_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Double Gaussian function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2) + (A6*2*sqrt(ln(2)/pi)/A5)*exp(-4*ln(2)*((x-A4)/A5)^2)+ (A9*2*sqrt(ln(2)/pi)/A8)*exp(-4*ln(2)*((x-A7)/A8)^2)");
++     nonl_opts.parnum = 10;
++ 
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++ 
++     sprintf(buf, "A0: Baseline offset\nA1, A4, A7: Center of peaks 1, 2, 3\nA2, A5, A8: Full width at half maximum of peaks 1, 2, 3\nA3, A6, A9: Area of peaks 1, 2, 3\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS1B);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Gaussian2_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Gaussian (chromatography) function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (1/sqrt(2*pi))*(A3/A2)*exp(-(x-A1)^2/2*A2^2)");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak (retention time)\nA2: Standard deviation of the peak\nA3: Peak area\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_PsVoight1_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Pseudo Voigt 1 function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3 * (A4*(2/pi)*A2/(4*(x-A1)^2+A2^2) + (1-A4)*exp(-4*ln(2)*(x-A1)^2/A2^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))");
++     nonl_opts.parnum = 5;
++     for (i=0; i<nonl_opts.parnum-1; i++)
++ 	{nonl_parms[i].value=1;}
++     nonl_parms[4].value=0.5;
++     sprintf(buf, "Gaussian and Lorentzian have the same width\nA0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Amplitude\nA4: Profile shape factor \n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_PsVoight2_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Pseudo Voigt 2 function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3 * (A5*(2/pi)*A2/(4*(x-A1)^2+A2^2) + (1-A5)*exp(-4*ln(2)*(x-A1)^2/A4^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))");
++     nonl_opts.parnum = 6;
++     for (i=0; i<nonl_opts.parnum-1; i++)
++ 	{nonl_parms[i].value=1;}
++     nonl_parms[5].value=0.5;
++     sprintf(buf, "Gaussian and Lorentzian have different width\nA0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum (Lorentzian)\nA3: Amplitude\nA4: Full width at half maximum (Gaussian) \nA5: Profile shape factor \n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_DS_cb(void *data)
++ {   nonl_opts.title   = copy_string(nonl_opts.title, "Doniach-Sunjic function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3*cos((pi*A4/2)+(1-A4)*atan((x-A1)/A2))/(A2^2+(x-A1)^2)^((1-A4)/2)");
++     nonl_opts.parnum = 5;
++ 
++     nonl_parms[0].value=1;
++     nonl_parms[2].value=1;
++     nonl_parms[4].value=0.5;
++ 
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Peak area\nA4: Asymmetry parameter \n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Asym2Sig_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Asymmetric double sigmoidal function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3*(1/(1+exp(-(x-A1+A2/2)/A4)))*(1-(1/(1+exp(-(x-A1-A2/2)/A5))))");
++     nonl_opts.parnum = 6;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Width 1\nA3: Amplitude\nA4: Width 2\nA5: Width 5 \n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_LogNormal_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Log Normal Function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3*exp(-((ln(x)-ln(A1))^2)/(2*A2))");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Width\nA3: Amplitude\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_GCAS_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Gram-Charlier A-Series");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*(((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6*((x-A1)/A2)^3+3))");
++     nonl_opts.parnum = 5;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Standard deviation\nA3: Peak Area\nA4: Skew\nA5: Excess\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_ECS_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Edgeworth-Cramer Series");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*(((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6*((x-A1)/A2)^3+3) + (A5^2/720)*(((x-A1)/A2)^6-15*((x-A1)/A2)^4+45*((x-A1)/A2)^2-15))");
++     nonl_opts.parnum = 5;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Standard deviation\nA3: Peak Area\nA4: Skew\nA5: Excess\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_InvPoly_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Inverse Polynomial Function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3/(1+ A4*(2*(x-A1)/A2)^2 + A5*(2*(x-A1)/A2)^4 + A6*(2*(x-A1)/A2)^6)");
++     nonl_opts.parnum = 7;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Standard deviation\nA3: Peak Area\nA4, A5, A6: Parameters\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Sine_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Sine Function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*sin(pi*(x-A1)/A2)");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center\nA2: Width\nA3: Amplitude\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Sinesq_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Sine Function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*(sin(pi*(x-A1)/A2))^2");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center\nA2: Width\nA3: Amplitude\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Sinedamp_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Sine Function");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp(-x/A4)*sin(pi*(x-A1)/A2)");
++     nonl_opts.parnum = 5;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     sprintf(buf, "A0: Baseline offset\nA1: Center\nA2: Width\nA3: Amplitude\nA4: Decay time\n\n");
++     stufftext(buf);
++     set_actioncb( (void *) PEAK_POS);
++     update_nonl_frame();
++ }
++ 
++ static void nonl_ExpDec1_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Decay 1");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp(-(x-A1)/A2)");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_ExpDec2_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Decay 2");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp(-(x-A1)/A2)+A6*exp(-(x-A4)/A5)");
++     nonl_opts.parnum = 7;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_ExpGrow1_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Growth 1");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp((x-A1)/A2)");
++     nonl_opts.parnum = 4;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_ExpGrow2_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Growth 2");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp((x-A1)/A2)+A6*exp((x-A4)/A5)");
++     nonl_opts.parnum = 7;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Hyperbol_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Hyperbolic");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+(A1*x)/(A2+x)");
++     nonl_opts.parnum = 3;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Bradley_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Bradley");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0*ln(-A1*ln(x))");
++     nonl_opts.parnum = 2;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_Log3_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Logarithm 3");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0-A1*ln(x+A2)");
++     nonl_opts.parnum = 3;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_WeibullPD_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Weibull Probability Density");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=(A0/A1)*((x/A1)^(A0-1))*exp(-(x/A1)^A0)");
++     nonl_opts.parnum = 2;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
++ 
++ static void nonl_WeibullCD_cb(void *data)
++ {   int i;
++     nonl_opts.title   = copy_string(nonl_opts.title, "Weibull Cumulative Distribution");
++     nonl_opts.formula = copy_string(nonl_opts.formula, "y=1-exp(-(x/A1)^A0)");
++     nonl_opts.parnum = 2;
++     for (i=0; i<nonl_opts.parnum; i++)
++ 	{nonl_parms[i].value=1;}
++     update_nonl_frame();
++ }
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/params.c ../grace-5.1.25iu/src/params.c
 *** ./src/params.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/params.c	2017-01-05 11:42:20.631263930 +0100
+--- ../grace-5.1.25iu/src/params.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 218,227 ****
 --- 218,229 ----
@@ -26985,9 +28512,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/params.c ../grace-5.1.
                       break;
                   }
                   fprintf(pp, "%s tick major size %f\n", buf, t->props.size);
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/pars.yacc ../grace-5.1.25iu/src/pars.yacc
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/pars.yacc ../grace-5.1.25iu/src/pars.yacc
 *** ./src/pars.yacc	2015-02-14 22:28:46.000000000 +0100
---- ../grace-5.1.25iu/src/pars.yacc	2017-01-05 11:42:20.635263950 +0100
+--- ../grace-5.1.25iu/src/pars.yacc	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 2764,2769 ****
 --- 2764,2776 ----
@@ -27063,9 +28590,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/pars.yacc ../grace-5.1
   	| MAJOR SIZE expr {
   	    if (!is_valid_axis(whichgraph, naxis)) {
                   yyerror("No valid axis selected");
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/pdfdrv.c ../grace-5.1.25iu/src/pdfdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/pdfdrv.c ../grace-5.1.25iu/src/pdfdrv.c
 *** ./src/pdfdrv.c	2004-08-04 21:37:47.000000000 +0200
---- ../grace-5.1.25iu/src/pdfdrv.c	2017-01-05 11:42:20.635263950 +0100
+--- ../grace-5.1.25iu/src/pdfdrv.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 75,80 ****
 --- 75,81 ----
@@ -27171,9 +28698,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/pdfdrv.c ../grace-5.1.
       pdf_setup_compression = (int) GetSpinChoice(pdf_setup_compression_item);
       
       return RETURN_SUCCESS;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/plotone.c ../grace-5.1.25iu/src/plotone.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/plotone.c ../grace-5.1.25iu/src/plotone.c
 *** ./src/plotone.c	2005-05-19 22:30:25.000000000 +0200
---- ../grace-5.1.25iu/src/plotone.c	2017-01-05 11:42:20.635263950 +0100
+--- ../grace-5.1.25iu/src/plotone.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 121,139 ****
               sprintf(print_file, "%s.%s", get_docbname(), dev.fext);
@@ -27233,9 +28760,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/plotone.c ../grace-5.1
           WriteString(vp2, 0, JUST_CENTER|JUST_BOTTOM, lab.stitle.s);
       }
   }
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/plotwin.c ../grace-5.1.25iu/src/plotwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/plotwin.c ../grace-5.1.25iu/src/plotwin.c
 *** ./src/plotwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/plotwin.c	2017-01-05 11:42:20.635263950 +0100
+--- ../grace-5.1.25iu/src/plotwin.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 57,99 ****
   static OptionStructure *timestamp_color_item;
@@ -27447,9 +28974,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/plotwin.c ../grace-5.1
       return RETURN_SUCCESS;
   }
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
 *** ./src/regionwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/regionwin.c	2017-01-05 11:42:20.635263950 +0100
+--- ../grace-5.1.25iu/src/regionwin.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 60,67 ****
   static void do_clear_region(Widget w, XtPointer client_data, XtPointer call_data);
@@ -27505,9 +29032,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/regionwin.c ../grace-5
   
   static void do_reporton_region(Widget w, XtPointer client_data, XtPointer call_data)
   {
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/rstdrv.c ../grace-5.1.25iu/src/rstdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/rstdrv.c ../grace-5.1.25iu/src/rstdrv.c
 *** ./src/rstdrv.c	2011-01-29 22:37:25.000000000 +0100
---- ../grace-5.1.25iu/src/rstdrv.c	2017-01-05 12:01:20.188914691 +0100
+--- ../grace-5.1.25iu/src/rstdrv.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 45,51 ****
 --- 45,55 ----
@@ -27578,6 +29105,57 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/rstdrv.c ../grace-5.1.
   static int png_setup_compression = 4;
   #endif
   
+***************
+*** 108,114 ****
+            "pnm",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+            NULL
+           };
+  
+--- 115,121 ----
+            "pnm",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+            NULL
+           };
+  
+***************
+*** 121,127 ****
+            "jpg",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+            NULL
+           };
+  #endif
+--- 128,134 ----
+            "jpg",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+            NULL
+           };
+  #endif
+***************
+*** 135,141 ****
+            "png",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+            NULL
+           };
+  #endif
+--- 142,148 ----
+            "png",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+            NULL
+           };
+  #endif
 ***************
 *** 159,164 ****
 --- 166,189 ----
@@ -27819,9 +29397,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/rstdrv.c ../grace-5.1.
       jpg_setup_quality = (int) GetSpinChoice(jpg_setup_quality_item);
       jpg_setup_smoothing = (int) GetSpinChoice(jpg_setup_smoothing_item);
       jpg_setup_dct = GetChoice(jpg_setup_dct_item);
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
 *** ./src/setappwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setappwin.c	2017-01-05 11:42:20.639263969 +0100
+--- ../grace-5.1.25iu/src/setappwin.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 64,70 ****
   static Widget duplegs_item;
@@ -28645,9 +30223,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/setappwin.c ../grace-5
       }
   }
 + 
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
 *** ./src/setutils.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setutils.c	2017-01-05 11:42:20.639263969 +0100
+--- ../grace-5.1.25iu/src/setutils.c	2018-03-26 21:37:35.797047650 +0200
 ***************
 *** 622,628 ****
   
@@ -28665,9 +30243,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/setutils.c ../grace-5.
           return;
       }
       
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/setwin.c ../grace-5.1.25iu/src/setwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setwin.c ../grace-5.1.25iu/src/setwin.c
 *** ./src/setwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setwin.c	2017-01-05 11:42:20.639263969 +0100
+--- ../grace-5.1.25iu/src/setwin.c	2018-03-26 21:37:35.801047650 +0200
 ***************
 *** 129,134 ****
 --- 129,136 ----
@@ -28698,9 +30276,9 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/setwin.c ../grace-5.1.
       Widget length_item;
       Widget start_item;
       Widget stop_item;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/strwin.c ../grace-5.1.25iu/src/strwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/strwin.c ../grace-5.1.25iu/src/strwin.c
 *** ./src/strwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/strwin.c	2017-01-05 11:42:20.639263969 +0100
+--- ../grace-5.1.25iu/src/strwin.c	2018-03-26 21:37:35.801047650 +0200
 ***************
 *** 61,93 ****
   static OptionStructure *strings_font_item;
@@ -29318,9 +30896,29 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/strwin.c ../grace-5.1.
   						    
   	CreateSeparator(panel);
   
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/tickwin.c ../grace-5.1.25iu/src/tickwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/svgdrv.c ../grace-5.1.25iu/src/svgdrv.c
+*** ./src/svgdrv.c	2004-07-03 22:47:46.000000000 +0200
+--- ../grace-5.1.25iu/src/svgdrv.c	2018-03-26 21:37:35.801047650 +0200
+***************
+*** 56,62 ****
+      "svg",
+      TRUE,
+      FALSE,
+!     {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+      NULL
+  };
+  
+--- 56,62 ----
+      "svg",
+      TRUE,
+      FALSE,
+!     {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+      NULL
+  };
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/tickwin.c ../grace-5.1.25iu/src/tickwin.c
 *** ./src/tickwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/tickwin.c	2017-01-05 11:42:20.643263989 +0100
+--- ../grace-5.1.25iu/src/tickwin.c	2018-03-26 21:37:35.801047650 +0200
 ***************
 *** 48,55 ****
 --- 48,57 ----
@@ -30643,9 +32241,32 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/tickwin.c ../grace-5.1
       SetSensitive(rc, value);
   }
 + 
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/worldwin.c ../grace-5.1.25iu/src/worldwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/worldwin.c ../grace-5.1.25iu/src/worldwin.c
 *** ./src/worldwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/worldwin.c	2017-01-05 11:42:20.643263989 +0100
+--- ../grace-5.1.25iu/src/worldwin.c	2018-03-26 21:37:35.801047650 +0200
+***************
+*** 240,249 ****
+          SetSpinChoice(ui->nrows, (double) 1);
+          SetSpinChoice(ui->ncols, (double) 1);
+          
+!         SetSpinChoice(ui->toff, GA_OFFSET_DEFAULT);
+!         SetSpinChoice(ui->loff, GA_OFFSET_DEFAULT);
+!         SetSpinChoice(ui->roff, GA_OFFSET_DEFAULT);
+!         SetSpinChoice(ui->boff, GA_OFFSET_DEFAULT);
+  
+          SetSpinChoice(ui->hgap, GA_GAP_DEFAULT);
+          SetSpinChoice(ui->vgap, GA_GAP_DEFAULT);
+--- 240,249 ----
+          SetSpinChoice(ui->nrows, (double) 1);
+          SetSpinChoice(ui->ncols, (double) 1);
+          
+!         SetSpinChoice(ui->toff, GA_OFFSET_DEFAULT_2);
+!         SetSpinChoice(ui->loff, GA_OFFSET_DEFAULT_1);
+!         SetSpinChoice(ui->roff, GA_OFFSET_DEFAULT_2);
+!         SetSpinChoice(ui->boff, GA_OFFSET_DEFAULT_1);
+  
+          SetSpinChoice(ui->hgap, GA_GAP_DEFAULT);
+          SetSpinChoice(ui->vgap, GA_GAP_DEFAULT);
 ***************
 *** 334,340 ****
       Widget top;
@@ -30663,9 +32284,29 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/worldwin.c ../grace-5.
   } Auto_ui;
   
   static Auto_ui aui;
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/x11drv.c ../grace-5.1.25iu/src/x11drv.c
+*** ./src/x11drv.c	2009-05-03 22:51:57.000000000 +0200
+--- ../grace-5.1.25iu/src/x11drv.c	2018-03-26 21:37:35.801047650 +0200
+***************
+*** 95,101 ****
+            "",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, 72.0},
+            NULL
+           };
+  
+--- 95,101 ----
+            "",
+            FALSE,
+            TRUE,
+!           {DEFAULT_PAGE_WIDTH, DEFAULT_PAGE_HEIGHT, DEFAULT_RESOLUTION},
+            NULL
+           };
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
 *** ./src/xmgrace.c	2014-08-29 18:38:21.000000000 +0200
---- ../grace-5.1.25iu/src/xmgrace.c	2017-01-05 11:56:41.507532785 +0100
+--- ../grace-5.1.25iu/src/xmgrace.c	2018-03-26 21:37:35.801047650 +0200
 ***************
 *** 183,188 ****
 --- 183,189 ----
@@ -30697,6 +32338,59 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1
   
   String fallbackResourcesCommon[] = {
 ***************
+*** 252,259 ****
+      "XMgrace*readHistoryFSB*pattern: *.com",
+      "XMgrace*openProjectFSB*pattern: *.agr",
+      "XMgrace*saveProjectFSB*pattern: *.agr",
+!     "XMgrace*readSetsFSB*pattern: *.dat",
+!     "XMgrace*writeSetsFSB*pattern: *.dat",
+      "XMgrace*readParametersFSB*pattern: *.par",
+      "XMgrace*writeParametersFSB*pattern: *.par",
+      "XMgrace*selectNetcdfFileFSB*pattern: *.nc",
+--- 256,263 ----
+      "XMgrace*readHistoryFSB*pattern: *.com",
+      "XMgrace*openProjectFSB*pattern: *.agr",
+      "XMgrace*saveProjectFSB*pattern: *.agr",
+!     "XMgrace*readSetsFSB*pattern: *.txt",
+!     "XMgrace*writeSetsFSB*pattern: *.txt",
+      "XMgrace*readParametersFSB*pattern: *.par",
+      "XMgrace*writeParametersFSB*pattern: *.par",
+      "XMgrace*selectNetcdfFileFSB*pattern: *.nc",
+***************
+*** 264,270 ****
+  };
+  
+  String fallbackResourcesHighRes[] = {
+!     "XMgrace*mainWin.width: 680",
+      "XMgrace*mainWin.height: 700",
+      "XMgrace*fontList:-*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*",
+      "XMgrace.consoleDialog*text.fontList:-*-courier-medium-r-normal-*-12-*-*-*-*-*-*-*",
+--- 268,274 ----
+  };
+  
+  String fallbackResourcesHighRes[] = {
+!     "XMgrace*mainWin.width: 1200",
+      "XMgrace*mainWin.height: 700",
+      "XMgrace*fontList:-*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*",
+      "XMgrace.consoleDialog*text.fontList:-*-courier-medium-r-normal-*-12-*-*-*-*-*-*-*",
+***************
+*** 274,280 ****
+  };
+  
+  String fallbackResourcesLowRes[] = {
+!     "XMgrace*mainWin.width: 530",
+      "XMgrace*mainWin.height: 545",
+      "XMgrace*fontList:-*-helvetica-medium-r-normal-*-8-*-*-*-*-*-*-*",
+      "XMgrace.consoleDialog*text.fontList:-*-courier-medium-r-normal-*-8-*-*-*-*-*-*-*",
+--- 278,284 ----
+  };
+  
+  String fallbackResourcesLowRes[] = {
+!     "XMgrace*mainWin.width: 1000",
+      "XMgrace*mainWin.height: 545",
+      "XMgrace*fontList:-*-helvetica-medium-r-normal-*-8-*-*-*-*-*-*-*",
+      "XMgrace.consoleDialog*text.fontList:-*-courier-medium-r-normal-*-8-*-*-*-*-*-*-*",
+***************
 *** 470,475 ****
 --- 474,483 ----
       toolbar_visible = rd.toolbar;
@@ -30709,9 +32403,112 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1
   
       return RETURN_SUCCESS;
   }
-diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
+***************
+*** 882,887 ****
+--- 890,899 ----
+  /*
+   *     CreateMenuButton(menupane, "Area/perimeter...", 'A', create_area_frame, NULL);
+   */
++ 
++     submenupane = CreateMenu(menupane, "Coordinate pointer", 'p', FALSE);
++     CreateMenuButton(submenupane, "Click and Show", 'C', set_actioncb, (void *) COORD_POS);
++     CreateMenuButton(submenupane, "Stop", 'S', set_actioncb, NULL); 
+      CreateMenuButton(menupane, "Console", 'l', create_monitor_frame_cb, NULL);
+      
+  
+***************
+*** 970,976 ****
+   */
+  void startup_gui(void)
+  {
+!     Widget bt, rc3, rcleft;
+      Pixmap icon, shape;
+  
+  /* 
+--- 982,988 ----
+   */
+  void startup_gui(void)
+  {
+!     Widget bt, rc2, rc3, rcleft;
+      Pixmap icon, shape;
+  
+  /* 
+***************
+*** 1129,1142 ****
+      bt = CreateBitmapButton(rc3, 16, 16, up_bits);
+      AddButtonCB(bt, graph_scroll_proc, (void *) GSCROLL_UP);
+  
+-     CreateSeparator(rcleft);
+- 
+      bt = CreateButton(rcleft, "AutoT");
+      AddButtonCB(bt, autoticks_proc, NULL);
+  
+      bt = CreateButton(rcleft, "AutoO");
+      AddButtonCB(bt, autoon_proc, NULL);
+  
+      rc3 = XtVaCreateManagedWidget("rc", xmRowColumnWidgetClass, rcleft,
+  				  XmNorientation, XmHORIZONTAL,
+  				  XmNpacking, XmPACK_COLUMN,
+--- 1141,1184 ----
+      bt = CreateBitmapButton(rc3, 16, 16, up_bits);
+      AddButtonCB(bt, graph_scroll_proc, (void *) GSCROLL_UP);
+  
+      bt = CreateButton(rcleft, "AutoT");
+      AddButtonCB(bt, autoticks_proc, NULL);
+  
+      bt = CreateButton(rcleft, "AutoO");
+      AddButtonCB(bt, autoon_proc, NULL);
+  
++     CreateSeparator(rcleft);
++ 
++     bt = CreateButton(rcleft, "Imp ASCII");
++     AddButtonCB(bt, create_file_popup, NULL);
++ 
++     bt = CreateButton(rcleft, "Exp ASCII");
++     AddButtonCB(bt, create_write_popup, NULL);
++ 
++     bt = CreateButton(rcleft, "Print set");
++     AddButtonCB(bt, create_printer_setup, NULL);
++ 
++     CreateSeparator(rcleft);
++ 
++     rc2 = XtVaCreateManagedWidget("rc", xmRowColumnWidgetClass, rcleft,
++ 				  XmNorientation, XmHORIZONTAL,
++ 				  XmNpacking, XmPACK_COLUMN,
++ 				  XmNnumColumns, 2,
++ 				  XmNspacing, 0,
++ 				  XmNentryBorder, 0,
++ 				  NULL);
++     bt = CreateButton(rc2, "Ev");
++     AddButtonCB(bt, create_eval_frame, NULL);
++     bt = CreateButton(rc2, "Re");
++     AddButtonCB(bt, create_define_frame, NULL);
++ 
++     bt = CreateButton(rc2, "Rg");
++     AddButtonCB(bt, create_reg_frame, NULL);
++     bt = CreateButton(rc2, "NL");
++     AddButtonCB(bt, create_nonl_frame, NULL);
++     
++     CreateSeparator(rcleft);
++ 
+      rc3 = XtVaCreateManagedWidget("rc", xmRowColumnWidgetClass, rcleft,
+  				  XmNorientation, XmHORIZONTAL,
+  				  XmNpacking, XmPACK_COLUMN,
+***************
+*** 1167,1172 ****
+--- 1209,1217 ----
+      stack_depth_item = CreateLabel(rcleft, "");
+      curw_item = CreateLabel(rcleft, "");
+  
++     bt = CreateButton(rcleft, "Objects");
++     AddButtonCB(bt, define_objects_popup, NULL);
++ 
+      bt = CreateButton(rcleft, "Exit");
+      AddButtonCB(bt, MenuCB, (void *) MENU_EXIT);
+  
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
 *** ./src/xprotos.h	2005-11-12 21:09:51.000000000 +0100
---- ../grace-5.1.25iu/src/xprotos.h	2017-01-05 11:42:20.643263989 +0100
+--- ../grace-5.1.25iu/src/xprotos.h	2018-03-26 21:37:35.801047650 +0200
 ***************
 *** 101,106 ****
 --- 101,108 ----
@@ -30735,3 +32532,23 @@ diff -C 3 -P '--exclude-from=../exclude-iu-file' -r ./src/xprotos.h ../grace-5.1
 + void axeswin_iu(int, void *);
 + 
   #endif /* __XPROTOS_H_ */
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./templates/Default.agr ../grace-5.1.25iu/templates/Default.agr
+*** ./templates/Default.agr	2007-02-16 23:43:31.000000000 +0100
+--- ../grace-5.1.25iu/templates/Default.agr	2018-03-26 21:37:35.801047650 +0200
+***************
+*** 104,110 ****
+  @    world 0, 0, 1, 1
+  @    stack world 0, 0, 0, 0
+  @    znorm 1
+! @    view 0.150000, 0.150000, 1.150000, 0.850000
+  @    title ""
+  @    title font 0
+  @    title size 1.500000
+--- 104,110 ----
+  @    world 0, 0, 1, 1
+  @    stack world 0, 0, 0, 0
+  @    znorm 1
+! @    view 0.100000, 0.100000, 1.244747, 0.950000
+  @    title ""
+  @    title font 0
+  @    title size 1.500000
