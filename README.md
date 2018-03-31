@@ -1,9 +1,12 @@
 # xmgrace-patch
 patch to improve usability of the 2D plotting program [xmgrace](http://plasma-gate.weizmann.ac.il/Grace/)
+incorporating the [patch](https://github.com/feranick/grace-extended) of N Ferralis.
 
 ## Additional software
 
-* [libGD](https://libgd.github.io) is required for bounding boxes of raster image formats. It will be automatically detected.
+* [xmgrace](http://plasma-gate.weizmann.ac.il/Grace/) of course
+* [libGD](https://libgd.github.io) is required for computing bounding boxes of raster image formats. It is optional and will be automatically detected.
+* [pdflib](https://www.pdflib.com/) is required for PDF output.
 
 ## How to apply
 
