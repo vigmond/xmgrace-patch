@@ -6,7 +6,7 @@ incorporating the [patch](https://github.com/feranick/grace-extended) of N Ferra
 
 * [xmgrace](http://plasma-gate.weizmann.ac.il/Grace/) of course
 * [libGD](https://libgd.github.io) is required for computing bounding boxes of raster image formats. It is optional and will be automatically detected.
-* [pdflib](https://www.pdflib.com/) is required for PDF output.
+* [pdflib-lite](https://www.pdflib.com/) is required for PDF output. You can find the [source code](https://fossies.org/linux/misc/old/PDFlib-Lite-7.0.5p3.tar.gz) or a Homebrew [formula](https://formulae.brew.sh/formula/pdflib-lite).
 
 ## How to apply
 
@@ -73,6 +73,8 @@ bbox:page
 13. Resized the default width of the xmgrace window (HighRes: 1200; LowRes: 1000).
 
 14. New Library of non-linear fitting functions is now included in Debian unstable/testing and in the official version of grace in Maverick.
+
+15. Autoticking is no longer error so the console window need not popup when you change scale.
 
 ## Developers
 
