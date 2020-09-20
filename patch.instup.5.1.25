@@ -1,6 +1,6 @@
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/aclocal.m4 ../grace-5.1.25iu/ac-tools/aclocal.m4
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/aclocal.m4 ../grace-5.1.25iu/ac-tools/aclocal.m4
 *** ./ac-tools/aclocal.m4	2014-08-16 23:54:51.000000000 +0200
---- ../grace-5.1.25iu/ac-tools/aclocal.m4	2018-01-31 10:04:23.583135116 +0100
+--- ../grace-5.1.25iu/ac-tools/aclocal.m4	2018-04-23 21:47:01.718634885 +0200
 ***************
 *** 684,689 ****
 --- 684,735 ----
@@ -56,9 +56,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/
   dnl ACX_CHECK_XMHTML
   dnl --------------
   AC_DEFUN(ACX_CHECK_XMHTML,
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/autom4te.cache/output.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/autom4te.cache/output.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t
 *** ./ac-tools/autom4te.cache/output.0t	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t	2018-01-24 12:29:18.089058794 +0100
+--- ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t	2018-04-23 21:47:01.734634884 +0200
 ***************
 *** 0 ****
 --- 1,11233 ----
@@ -11295,9 +11295,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/autom4te.cache/traces.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/autom4te.cache/traces.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t
 *** ./ac-tools/autom4te.cache/traces.0t	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t	2018-01-24 12:29:18.089058794 +0100
+--- ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t	2018-04-23 21:47:01.734634884 +0200
 ***************
 *** 0 ****
 --- 1,865 ----
@@ -12166,9 +12166,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([abs_builddir])
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([abs_top_builddir])
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([INSTALL])
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/config.h.in ../grace-5.1.25iu/ac-tools/config.h.in
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/config.h.in ../grace-5.1.25iu/ac-tools/config.h.in
 *** ./ac-tools/config.h.in	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/ac-tools/config.h.in	2018-01-31 10:04:23.583135116 +0100
+--- ../grace-5.1.25iu/ac-tools/config.h.in	2018-04-23 21:47:01.738634884 +0200
 ***************
 *** 332,337 ****
 --- 332,340 ----
@@ -12181,9 +12181,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/
   /* Define if you want to compile a Fortran wrapper for grace_np lib.  */
   #undef WITH_F77_WRAPPER
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/configure.in ../grace-5.1.25iu/ac-tools/configure.in
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/configure.in ../grace-5.1.25iu/ac-tools/configure.in
 *** ./ac-tools/configure.in	2014-08-16 23:56:08.000000000 +0200
---- ../grace-5.1.25iu/ac-tools/configure.in	2018-02-02 09:32:49.687399211 +0100
+--- ../grace-5.1.25iu/ac-tools/configure.in	2018-04-23 21:47:01.738634884 +0200
 ***************
 *** 33,38 ****
 --- 33,39 ----
@@ -12258,9 +12258,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/
   dnl **** TODO: undefine unneeded libraries
   
   NOGUI_LIBS="$LIBS"
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/Make.conf.in ../grace-5.1.25iu/ac-tools/Make.conf.in
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./ac-tools/Make.conf.in ../grace-5.1.25iu/ac-tools/Make.conf.in
 *** ./ac-tools/Make.conf.in	2005-11-20 21:58:42.000000000 +0100
---- ../grace-5.1.25iu/ac-tools/Make.conf.in	2018-01-31 10:04:23.583135116 +0100
+--- ../grace-5.1.25iu/ac-tools/Make.conf.in	2018-04-23 21:47:01.738634884 +0200
 ***************
 *** 60,65 ****
 --- 60,68 ----
@@ -12273,9 +12273,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./ac-tools/
   # Xbae include path
   XBAE_INC=@XBAE_INC@
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/output.0 ../grace-5.1.25iu/autom4te.cache/output.0
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./autom4te.cache/output.0 ../grace-5.1.25iu/autom4te.cache/output.0
 *** ./autom4te.cache/output.0	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/autom4te.cache/output.0	2018-02-02 09:34:30.979713207 +0100
+--- ../grace-5.1.25iu/autom4te.cache/output.0	2018-04-23 21:47:01.746634884 +0200
 ***************
 *** 0 ****
 --- 1,11253 ----
@@ -23532,9 +23532,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./autom4te.
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/requests ../grace-5.1.25iu/autom4te.cache/requests
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./autom4te.cache/requests ../grace-5.1.25iu/autom4te.cache/requests
 *** ./autom4te.cache/requests	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/autom4te.cache/requests	2018-02-02 09:34:31.079713515 +0100
+--- ../grace-5.1.25iu/autom4te.cache/requests	2018-04-23 21:47:01.746634884 +0200
 ***************
 *** 0 ****
 --- 1,77 ----
@@ -23615,9 +23615,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./autom4te.
 +                     ], 'Autom4te::Request' )
 +            );
 + 
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./autom4te.cache/traces.0 ../grace-5.1.25iu/autom4te.cache/traces.0
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./autom4te.cache/traces.0 ../grace-5.1.25iu/autom4te.cache/traces.0
 *** ./autom4te.cache/traces.0	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/autom4te.cache/traces.0	2018-02-02 09:34:30.979713207 +0100
+--- ../grace-5.1.25iu/autom4te.cache/traces.0	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 0 ****
 --- 1,868 ----
@@ -24489,9 +24489,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./autom4te.
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_builddir])
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_top_builddir])
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([INSTALL])
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./configure ../grace-5.1.25iu/configure
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./configure ../grace-5.1.25iu/configure
 *** ./configure	2015-02-14 23:59:46.000000000 +0100
---- ../grace-5.1.25iu/configure	2018-02-02 09:34:31.083713527 +0100
+--- ../grace-5.1.25iu/configure	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 664,669 ****
 --- 664,670 ----
@@ -24856,9 +24856,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./configure
   
   NOGUI_LIBS="$LIBS"
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./doc/UsersGuide.html ../grace-5.1.25iu/doc/UsersGuide.html
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./doc/UsersGuide.html ../grace-5.1.25iu/doc/UsersGuide.html
 *** ./doc/UsersGuide.html	2015-02-14 23:59:48.000000000 +0100
---- ../grace-5.1.25iu/doc/UsersGuide.html	2018-02-02 09:32:49.691399223 +0100
+--- ../grace-5.1.25iu/doc/UsersGuide.html	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 1516,1521 ****
 --- 1516,1618 ----
@@ -24965,12 +24965,12 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./doc/Users
   <H3><A NAME="correlation/covariance"></A> Correlation/covariance          </H3>
   
   <P>This popup can be used to compute autocorrelation
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./README.new_features ../grace-5.1.25iu/README.new_features
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./README.new_features ../grace-5.1.25iu/README.new_features
 *** ./README.new_features	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/README.new_features	2018-01-31 10:04:23.587135120 +0100
+--- ../grace-5.1.25iu/README.new_features	2020-09-20 09:31:11.913734649 +0200
 ***************
 *** 0 ****
---- 1,50 ----
+--- 1,52 ----
 + This patch is for xmgrace 5.1.25.
 + 
 + This patch improves functionality by adding several features:
@@ -25016,15 +25016,17 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./README.ne
 + 
 + 8) autoscale added to the set menu
 + 
-+ 9) file with legend captions can now be added on command line
++ 9) file with legend captions can now be added on command line (-legend)
++ 
++ 10) forced autoticking is no longer an error so the console window can be prevented from popping up
 + 
 + Thanks to Rob Summers for catching some IU bugs.
 + 
 + Bounding boxes of raster formats, please make sure libgd is installed. This is optional.
 Binary files ./src/buildinfo and ../grace-5.1.25iu/src/buildinfo differ
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
 *** ./src/buildinfo.c	2015-02-14 23:17:32.000000000 +0100
---- ../grace-5.1.25iu/src/buildinfo.c	2018-01-31 10:04:23.591135124 +0100
+--- ../grace-5.1.25iu/src/buildinfo.c	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 59,65 ****
       fprintf(outfile, "#define BI_VERSION \"Grace-%d.%d.%d %s\"\n",
@@ -25042,9 +25044,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/build
   	    MAJOR_REV, MINOR_REV, PATCHLEVEL);
   #endif
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/compwin.c ../grace-5.1.25iu/src/compwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/compwin.c ../grace-5.1.25iu/src/compwin.c
 *** ./src/compwin.c	2008-05-19 23:55:45.000000000 +0200
---- ../grace-5.1.25iu/src/compwin.c	2018-01-31 10:04:23.591135124 +0100
+--- ../grace-5.1.25iu/src/compwin.c	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 74,80 ****
   static void do_window_proc(Widget w, XtPointer client_data, XtPointer call_data);
@@ -25393,9 +25395,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/compw
       Widget degrees_item;
       Widget rotx_item;
       Widget roty_item;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/defaults.c ../grace-5.1.25iu/src/defaults.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/defaults.c ../grace-5.1.25iu/src/defaults.c
 *** ./src/defaults.c	2006-05-03 23:27:48.000000000 +0200
---- ../grace-5.1.25iu/src/defaults.c	2018-01-31 10:04:23.591135124 +0100
+--- ../grace-5.1.25iu/src/defaults.c	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 321,326 ****
 --- 321,328 ----
@@ -25407,9 +25409,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/defau
       t->t_op = PLACEMENT_BOTH;
       t->props.size = grdefaults.charsize;
       t->mprops.size = grdefaults.charsize / 2;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/defines.h ../grace-5.1.25iu/src/defines.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/defines.h ../grace-5.1.25iu/src/defines.h
 *** ./src/defines.h	2007-02-15 23:36:54.000000000 +0100
---- ../grace-5.1.25iu/src/defines.h	2018-01-31 10:04:23.591135124 +0100
+--- ../grace-5.1.25iu/src/defines.h	2018-04-23 21:47:01.750634884 +0200
 ***************
 *** 497,502 ****
 --- 497,504 ----
@@ -25431,9 +25433,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/defin
   } tickprops;
   
   typedef struct {
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/device.h ../grace-5.1.25iu/src/device.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/device.h ../grace-5.1.25iu/src/device.h
 *** ./src/device.h	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/device.h	2018-02-02 09:32:49.691399223 +0100
+--- ../grace-5.1.25iu/src/device.h	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 43,48 ****
 --- 43,50 ----
@@ -25445,9 +25447,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/devic
   /* hardcopy or terminal device */
   /* device output can be redirected to file/printer(both) */
   #define DEVICE_TERM	0
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/draw.c ../grace-5.1.25iu/src/draw.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/draw.c ../grace-5.1.25iu/src/draw.c
 *** ./src/draw.c	2005-11-19 22:53:24.000000000 +0100
---- ../grace-5.1.25iu/src/draw.c	2018-02-02 09:32:49.691399223 +0100
+--- ../grace-5.1.25iu/src/draw.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 258,263 ****
 --- 258,269 ----
@@ -25463,9 +25465,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/draw.
   
   void symplus(VPoint vp, double s)
   {
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/draw.h ../grace-5.1.25iu/src/draw.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/draw.h ../grace-5.1.25iu/src/draw.h
 *** ./src/draw.h	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/draw.h	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/draw.h	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 134,140 ****
   } BBox_type;
@@ -25493,9 +25495,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/draw.
   int world2view(double x, double y, double *xv, double *yv);
   void view2world(double xv, double yv, double *xw, double *yw);
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/drawticks.c ../grace-5.1.25iu/src/drawticks.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/drawticks.c ../grace-5.1.25iu/src/drawticks.c
 *** ./src/drawticks.c	2007-02-13 22:22:09.000000000 +0100
---- ../grace-5.1.25iu/src/drawticks.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/drawticks.c	2020-09-20 09:28:23.452489360 +0200
 ***************
 *** 448,454 ****
   	        }
@@ -25530,9 +25532,55 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/drawt
   	    case TICKS_IN:
   	        vbase_tlabel1 = vbase1 - (1 - tick_dir_sign)/2*tsize - tl_offset;
   	        vbase_tlabel2 = vbase2 + (1 - tick_dir_sign)/2*tsize + tl_offset;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/editpwin.c ../grace-5.1.25iu/src/editpwin.c
+***************
+*** 754,763 ****
+              }
+  
+              if (stmajor <= 0.0) {
+! 	        errmsg("Invalid major tick spacing, autoticking");
+! 	        autotick_axis(gno, caxis);
+                  goto reenter;
+! 	    }
+  
+              if (t->t_round == TRUE) {
+                  swc_start = floor(swc_start/stmajor)*stmajor;
+--- 754,763 ----
+              }
+  
+              if (stmajor <= 0.0) {
+! 	            errmsg("Invalid major tick spacing, autoticking");
+! 	            autotick_axis(gno, caxis);
+                  goto reenter;
+! 	        }
+  
+              if (t->t_round == TRUE) {
+                  swc_start = floor(swc_start/stmajor)*stmajor;
+***************
+*** 767,776 ****
+              t->nticks = (nmajor - 1)*(t->nminor + 1) + 1;
+  
+              if (t->nticks > MAX_TICKS) {
+! 	        errmsg("Too many ticks ( > MAX_TICKS ), autoticking");
+! 	        autotick_axis(gno, caxis);
+                  goto reenter;
+! 	    }
+  
+      /*
+       *         if (t->nticks > MAX_TICKS) {
+--- 767,776 ----
+              t->nticks = (nmajor - 1)*(t->nminor + 1) + 1;
+  
+              if (t->nticks > MAX_TICKS) {
+! 	            stufftext("Too many ticks ( > MAX_TICKS ), autoticking");
+! 	            autotick_axis(gno, caxis);
+                  goto reenter;
+! 	        }
+  
+      /*
+       *         if (t->nticks > MAX_TICKS) {
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/editpwin.c ../grace-5.1.25iu/src/editpwin.c
 *** ./src/editpwin.c	2014-08-17 00:33:17.000000000 +0200
---- ../grace-5.1.25iu/src/editpwin.c	2018-04-04 08:49:26.728772874 +0200
+--- ../grace-5.1.25iu/src/editpwin.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 32,37 ****
 --- 32,38 ----
@@ -25584,10 +25632,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/editp
       autoscale_onread = AUTOSCALE_NONE;
       if (is_set_active(gno, setno)) {
           curtype = dataset_type(gno, setno);
-Binary files ./src/.editpwin.c.swp and ../grace-5.1.25iu/src/.editpwin.c.swp differ
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/events.c ../grace-5.1.25iu/src/events.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/events.c ../grace-5.1.25iu/src/events.c
 *** ./src/events.c	2008-04-26 21:12:11.000000000 +0200
---- ../grace-5.1.25iu/src/events.c	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/events.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 111,116 ****
 --- 111,117 ----
@@ -25726,9 +25773,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/event
       }
   
       action_flag = act;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/events.h ../grace-5.1.25iu/src/events.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/events.h ../grace-5.1.25iu/src/events.h
 *** ./src/events.h	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/events.h	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/events.h	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 81,87 ****
       ZOOMY_1ST,
@@ -25753,9 +25800,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/event
   } CanvasAction;
   
   /* add points at */
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/featext.c ../grace-5.1.25iu/src/featext.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/featext.c ../grace-5.1.25iu/src/featext.c
 *** ./src/featext.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/featext.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/featext.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 56,62 ****
       Widget top;
@@ -25790,9 +25837,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/feate
   			(XtCallbackProc) do_fext_toggle, (XtPointer) i);
   	}
   	
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/files.c ../grace-5.1.25iu/src/files.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/files.c ../grace-5.1.25iu/src/files.c
 *** ./src/files.c	2008-04-26 20:25:57.000000000 +0200
---- ../grace-5.1.25iu/src/files.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/files.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 623,652 ****
       FILE *retval;
@@ -25856,9 +25903,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/files
       }
   }
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/fileswin.c ../grace-5.1.25iu/src/fileswin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/fileswin.c ../grace-5.1.25iu/src/fileswin.c
 *** ./src/fileswin.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/fileswin.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/fileswin.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 383,388 ****
 --- 383,432 ----
@@ -25947,9 +25994,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/files
       int gno;
       FILE *pp;
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/fourier.c ../grace-5.1.25iu/src/fourier.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/fourier.c ../grace-5.1.25iu/src/fourier.c
 *** ./src/fourier.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/fourier.c	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/fourier.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 230,236 ****
   #else
@@ -26070,9 +26117,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/fouri
     
   }
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/gd.c ../grace-5.1.25iu/src/gd.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/gd.c ../grace-5.1.25iu/src/gd.c
 *** ./src/gd.c	2001-12-26 21:33:39.000000000 +0100
---- ../grace-5.1.25iu/src/gd.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/gd.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 1,11 ****
   #include <config.h>
@@ -26108,7 +26155,7 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/gd.c 
   }
 + 
 + #endif
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/gd.h ../grace-5.1.25iu/src/gd.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/gd.h ../grace-5.1.25iu/src/gd.h
 *** ./src/gd.h	1999-11-19 00:49:10.000000000 +0100
 --- ../grace-5.1.25iu/src/gd.h	1970-01-01 01:00:00.000000000 +0100
 ***************
@@ -26231,9 +26278,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/gd.h 
 - 
 - #endif
 --- 0 ----
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/gd_v1.h ../grace-5.1.25iu/src/gd_v1.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/gd_v1.h ../grace-5.1.25iu/src/gd_v1.h
 *** ./src/gd_v1.h	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/src/gd_v1.h	2018-01-24 12:29:18.129058903 +0100
+--- ../grace-5.1.25iu/src/gd_v1.h	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 0 ****
 --- 1,118 ----
@@ -26355,9 +26402,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/gd_v1
 + #define gdImageGetInterlaced(im) ((im)->interlace)
 + 
 + #endif
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/graphappwin.c ../grace-5.1.25iu/src/graphappwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/graphappwin.c ../grace-5.1.25iu/src/graphappwin.c
 *** ./src/graphappwin.c	2007-02-13 23:01:27.000000000 +0100
---- ../grace-5.1.25iu/src/graphappwin.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/graphappwin.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 54,60 ****
   static Widget define_view_yv1;
@@ -27070,9 +27117,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/graph
   
 + 
 +   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/graphutils.h ../grace-5.1.25iu/src/graphutils.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/graphutils.h ../grace-5.1.25iu/src/graphutils.h
 *** ./src/graphutils.h	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/graphutils.h	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/graphutils.h	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 55,61 ****
   #define GA_ORDER_HV_INV 4
@@ -27091,9 +27138,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/graph
   #define GA_GAP_DEFAULT       0.2
   
   char *get_format_types(int f);
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/hotwin.c ../grace-5.1.25iu/src/hotwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/hotwin.c ../grace-5.1.25iu/src/hotwin.c
 *** ./src/hotwin.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/hotwin.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/hotwin.c	2018-04-23 21:47:01.754634884 +0200
 ***************
 *** 54,60 ****
   static SetChoiceItem hotlink_set_item;
@@ -27111,9 +27158,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/hotwi
   
   void create_hotfiles_popup(Widget w, XtPointer client_data, XtPointer call_data);
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/locatewin.c ../grace-5.1.25iu/src/locatewin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/locatewin.c ../grace-5.1.25iu/src/locatewin.c
 *** ./src/locatewin.c	2004-07-03 22:47:45.000000000 +0200
---- ../grace-5.1.25iu/src/locatewin.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/locatewin.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 39,66 ****
   #include "graphs.h"
@@ -27241,9 +27288,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/locat
   	rc2 = CreateHContainer(rc);
   	locx_item = CreateTextItem2(rc2, 10, "X:");
   	locy_item = CreateTextItem2(rc2, 10, "Y:");
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/main.c ../grace-5.1.25iu/src/main.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/main.c ../grace-5.1.25iu/src/main.c
 *** ./src/main.c	2015-02-14 23:58:02.000000000 +0100
---- ../grace-5.1.25iu/src/main.c	2018-01-31 10:04:23.595135128 +0100
+--- ../grace-5.1.25iu/src/main.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 542,559 ****
   			}
@@ -27298,9 +27345,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/main.
       fprintf(stream, "-log       [x|y|xy]                   Set the axis scaling of the current graph\n");
       fprintf(stream, "                                        to logarithmic\n");
       fprintf(stream, "-maxpath   [length]                   Set the maximal drawing path length\n");
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/Make.common ../grace-5.1.25iu/src/Make.common
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Make.common ../grace-5.1.25iu/src/Make.common
 *** ./src/Make.common	2008-05-20 00:35:42.000000000 +0200
---- ../grace-5.1.25iu/src/Make.common	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/Make.common	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 15,21 ****
   	objutils.c computils.c defaults.c params.c \
@@ -27365,9 +27412,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/Make.
   	setwin$(O) strwin$(O) setappwin$(O) \
 !      gd$(O)   tickwin$(O) worldwin$(O) fontwin$(O) xutil$(O) x11drv$(O) xmgrace$(O)
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/Make.dep ../grace-5.1.25iu/src/Make.dep
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Make.dep ../grace-5.1.25iu/src/Make.dep
 *** ./src/Make.dep	2001-12-29 23:10:49.000000000 +0100
---- ../grace-5.1.25iu/src/Make.dep	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/Make.dep	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 65,74 ****
     motifinc.h
@@ -27390,9 +27437,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/Make.
   dummydrv$(O) : dummydrv.c defines.h draw.h device.h t1fonts.h devlist.h \
     dummydrv.h
   mathstuff$(O) : mathstuff.c ../cmath.h protos.h missing.h noxprotos.h \
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/Makefile ../grace-5.1.25iu/src/Makefile
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Makefile ../grace-5.1.25iu/src/Makefile
 *** ./src/Makefile	2015-02-14 22:21:45.000000000 +0100
---- ../grace-5.1.25iu/src/Makefile	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/Makefile	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 19,25 ****
   CFLAGS=$(CFLAGS0) -I$(TOP) -I. $(T1_INC) $(XBAE_INC) $(CPPFLAGS) $(GUI_FLAGS)
@@ -27410,9 +27457,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/Makef
   	$(NOGUI_LIBS) $(DL_LIB)
   
   PREFS=-DGRACE_HOME=\"$(GRACE_HOME)\" -DGRACE_PRINT_CMD=\"$(PRINT_CMD)\" \
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/mfdrv.c ../grace-5.1.25iu/src/mfdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/mfdrv.c ../grace-5.1.25iu/src/mfdrv.c
 *** ./src/mfdrv.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/mfdrv.c	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/mfdrv.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 53,59 ****
             "gmf",
@@ -27430,9 +27477,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/mfdrv
             NULL
            };
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/mifdrv.c ../grace-5.1.25iu/src/mifdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/mifdrv.c ../grace-5.1.25iu/src/mifdrv.c
 *** ./src/mifdrv.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/mifdrv.c	2018-02-02 09:32:49.695399236 +0100
+--- ../grace-5.1.25iu/src/mifdrv.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 56,62 ****
                                  "mif",
@@ -27450,9 +27497,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/mifdr
                                  NULL
                                 };
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/miscwin.c ../grace-5.1.25iu/src/miscwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/miscwin.c ../grace-5.1.25iu/src/miscwin.c
 *** ./src/miscwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/miscwin.c	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/miscwin.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 61,67 ****
   static Widget noask_item;
@@ -27487,9 +27534,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/miscw
   static Widget date_item;
   static Widget wrap_year_item;
   static Widget two_digits_years_item;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/motifinc.h ../grace-5.1.25iu/src/motifinc.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/motifinc.h ../grace-5.1.25iu/src/motifinc.h
 *** ./src/motifinc.h	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/motifinc.h	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/motifinc.h	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 57,62 ****
 --- 57,64 ----
@@ -27618,9 +27665,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/motif
   
   TransformStructure *CreateTransformDialogForm(Widget parent,
       char *s, int sel_type);
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/motifutils.c ../grace-5.1.25iu/src/motifutils.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/motifutils.c ../grace-5.1.25iu/src/motifutils.c
 *** ./src/motifutils.c	2015-02-14 22:28:46.000000000 +0100
---- ../grace-5.1.25iu/src/motifutils.c	2018-02-02 09:32:49.699399248 +0100
+--- ../grace-5.1.25iu/src/motifutils.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 427,432 ****
 --- 427,450 ----
@@ -28013,9 +28060,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/motif
 +      AddOptionChoiceCB( opt, cbproc, anydata );
 +   }
 +   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/nonlwin.c ../grace-5.1.25iu/src/nonlwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/nonlwin.c ../grace-5.1.25iu/src/nonlwin.c
 *** ./src/nonlwin.c	2006-05-17 22:53:13.000000000 +0200
---- ../grace-5.1.25iu/src/nonlwin.c	2018-02-02 09:32:49.699399248 +0100
+--- ../grace-5.1.25iu/src/nonlwin.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 7,12 ****
 --- 7,13 ----
@@ -28493,9 +28540,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/nonlw
 + 	{nonl_parms[i].value=1;}
 +     update_nonl_frame();
 + }
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/params.c ../grace-5.1.25iu/src/params.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/params.c ../grace-5.1.25iu/src/params.c
 *** ./src/params.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/params.c	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/params.c	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 218,227 ****
 --- 218,229 ----
@@ -28555,9 +28602,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/param
                       break;
                   }
                   fprintf(pp, "%s tick major size %f\n", buf, t->props.size);
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/pars.yacc ../grace-5.1.25iu/src/pars.yacc
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/pars.yacc ../grace-5.1.25iu/src/pars.yacc
 *** ./src/pars.yacc	2015-02-14 22:28:46.000000000 +0100
---- ../grace-5.1.25iu/src/pars.yacc	2018-01-31 10:04:23.599135132 +0100
+--- ../grace-5.1.25iu/src/pars.yacc	2018-04-23 21:47:01.758634884 +0200
 ***************
 *** 2764,2769 ****
 --- 2764,2776 ----
@@ -28633,9 +28680,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/pars.
   	| MAJOR SIZE expr {
   	    if (!is_valid_axis(whichgraph, naxis)) {
                   yyerror("No valid axis selected");
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/pdfdrv.c ../grace-5.1.25iu/src/pdfdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/pdfdrv.c ../grace-5.1.25iu/src/pdfdrv.c
 *** ./src/pdfdrv.c	2004-08-04 21:37:47.000000000 +0200
---- ../grace-5.1.25iu/src/pdfdrv.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/pdfdrv.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 75,80 ****
 --- 75,81 ----
@@ -28741,9 +28788,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/pdfdr
       pdf_setup_compression = (int) GetSpinChoice(pdf_setup_compression_item);
       
       return RETURN_SUCCESS;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/plotone.c ../grace-5.1.25iu/src/plotone.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/plotone.c ../grace-5.1.25iu/src/plotone.c
 *** ./src/plotone.c	2005-05-19 22:30:25.000000000 +0200
---- ../grace-5.1.25iu/src/plotone.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/plotone.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 121,139 ****
               sprintf(print_file, "%s.%s", get_docbname(), dev.fext);
@@ -28803,9 +28850,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/ploto
           WriteString(vp2, 0, JUST_CENTER|JUST_BOTTOM, lab.stitle.s);
       }
   }
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/plotwin.c ../grace-5.1.25iu/src/plotwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/plotwin.c ../grace-5.1.25iu/src/plotwin.c
 *** ./src/plotwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/plotwin.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/plotwin.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 57,99 ****
   static OptionStructure *timestamp_color_item;
@@ -29017,9 +29064,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/plotw
       return RETURN_SUCCESS;
   }
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
 *** ./src/regionwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/regionwin.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/regionwin.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 60,67 ****
   static void do_clear_region(Widget w, XtPointer client_data, XtPointer call_data);
@@ -29075,9 +29122,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/regio
   
   static void do_reporton_region(Widget w, XtPointer client_data, XtPointer call_data)
   {
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/rstdrv.c ../grace-5.1.25iu/src/rstdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/rstdrv.c ../grace-5.1.25iu/src/rstdrv.c
 *** ./src/rstdrv.c	2011-01-29 22:37:25.000000000 +0100
---- ../grace-5.1.25iu/src/rstdrv.c	2018-04-04 08:25:14.472219768 +0200
+--- ../grace-5.1.25iu/src/rstdrv.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 45,51 ****
 --- 45,55 ----
@@ -29440,9 +29487,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/rstdr
       jpg_setup_quality = (int) GetSpinChoice(jpg_setup_quality_item);
       jpg_setup_smoothing = (int) GetSpinChoice(jpg_setup_smoothing_item);
       jpg_setup_dct = GetChoice(jpg_setup_dct_item);
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
 *** ./src/setappwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setappwin.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/setappwin.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 64,70 ****
   static Widget duplegs_item;
@@ -30266,9 +30313,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/setap
       }
   }
 + 
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
 *** ./src/setutils.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setutils.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/setutils.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 622,628 ****
   
@@ -30286,9 +30333,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/setut
           return;
       }
       
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/setwin.c ../grace-5.1.25iu/src/setwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setwin.c ../grace-5.1.25iu/src/setwin.c
 *** ./src/setwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setwin.c	2018-01-31 10:04:23.603135136 +0100
+--- ../grace-5.1.25iu/src/setwin.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 129,134 ****
 --- 129,136 ----
@@ -30319,9 +30366,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/setwi
       Widget length_item;
       Widget start_item;
       Widget stop_item;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/strwin.c ../grace-5.1.25iu/src/strwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/strwin.c ../grace-5.1.25iu/src/strwin.c
 *** ./src/strwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/strwin.c	2018-01-31 10:04:23.607135140 +0100
+--- ../grace-5.1.25iu/src/strwin.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 61,93 ****
   static OptionStructure *strings_font_item;
@@ -30939,9 +30986,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/strwi
   						    
   	CreateSeparator(panel);
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/svgdrv.c ../grace-5.1.25iu/src/svgdrv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/svgdrv.c ../grace-5.1.25iu/src/svgdrv.c
 *** ./src/svgdrv.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/svgdrv.c	2018-02-02 09:32:49.699399248 +0100
+--- ../grace-5.1.25iu/src/svgdrv.c	2018-04-23 21:47:01.762634884 +0200
 ***************
 *** 56,62 ****
       "svg",
@@ -30959,9 +31006,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/svgdr
       NULL
   };
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/tickwin.c ../grace-5.1.25iu/src/tickwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/tickwin.c ../grace-5.1.25iu/src/tickwin.c
 *** ./src/tickwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/tickwin.c	2018-01-31 10:04:23.607135140 +0100
+--- ../grace-5.1.25iu/src/tickwin.c	2018-04-23 21:47:01.766634884 +0200
 ***************
 *** 48,55 ****
 --- 48,57 ----
@@ -32284,10 +32331,29 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/tickw
       SetSensitive(rc, value);
   }
 + 
-Binary files ./src/Untitled.jpg and ../grace-5.1.25iu/src/Untitled.jpg differ
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/worldwin.c ../grace-5.1.25iu/src/worldwin.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/utils.c ../grace-5.1.25iu/src/utils.c
+*** ./src/utils.c	2007-02-15 23:36:54.000000000 +0100
+--- ../grace-5.1.25iu/src/utils.c	2020-09-20 09:21:33.467193614 +0200
+***************
+*** 1389,1395 ****
+      update_app_title();
+  }
+  
+! void lock_dirtystate(flag)
+  {
+      dirtystate_lock = flag;
+  }
+--- 1389,1395 ----
+      update_app_title();
+  }
+  
+! void lock_dirtystate(int flag)
+  {
+      dirtystate_lock = flag;
+  }
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/worldwin.c ../grace-5.1.25iu/src/worldwin.c
 *** ./src/worldwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/worldwin.c	2018-02-02 09:32:49.699399248 +0100
+--- ../grace-5.1.25iu/src/worldwin.c	2018-04-23 21:47:01.766634884 +0200
 ***************
 *** 240,249 ****
           SetSpinChoice(ui->nrows, (double) 1);
@@ -32328,9 +32394,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/world
   } Auto_ui;
   
   static Auto_ui aui;
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/x11drv.c ../grace-5.1.25iu/src/x11drv.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/x11drv.c ../grace-5.1.25iu/src/x11drv.c
 *** ./src/x11drv.c	2009-05-03 22:51:57.000000000 +0200
---- ../grace-5.1.25iu/src/x11drv.c	2018-02-02 09:32:49.699399248 +0100
+--- ../grace-5.1.25iu/src/x11drv.c	2018-04-23 21:47:01.766634884 +0200
 ***************
 *** 95,101 ****
             "",
@@ -32348,9 +32414,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/x11dr
             NULL
            };
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
 *** ./src/xmgrace.c	2014-08-29 18:38:21.000000000 +0200
---- ../grace-5.1.25iu/src/xmgrace.c	2018-02-02 09:32:49.699399248 +0100
+--- ../grace-5.1.25iu/src/xmgrace.c	2018-04-23 21:47:01.766634884 +0200
 ***************
 *** 183,188 ****
 --- 183,189 ----
@@ -32550,9 +32616,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/xmgra
       bt = CreateButton(rcleft, "Exit");
       AddButtonCB(bt, MenuCB, (void *) MENU_EXIT);
   
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
 *** ./src/xprotos.h	2005-11-12 21:09:51.000000000 +0100
---- ../grace-5.1.25iu/src/xprotos.h	2018-01-31 10:04:23.607135140 +0100
+--- ../grace-5.1.25iu/src/xprotos.h	2018-04-23 21:47:01.766634884 +0200
 ***************
 *** 101,106 ****
 --- 101,108 ----
@@ -32576,9 +32642,9 @@ diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./src/xprot
 + void axeswin_iu(int, void *);
 + 
   #endif /* __XPROTOS_H_ */
-diff '--context=3' --new-file '--exclude-from=../exclude-iu-file' -r ./templates/Default.agr ../grace-5.1.25iu/templates/Default.agr
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./templates/Default.agr ../grace-5.1.25iu/templates/Default.agr
 *** ./templates/Default.agr	2007-02-16 23:43:31.000000000 +0100
---- ../grace-5.1.25iu/templates/Default.agr	2018-02-02 09:32:49.703399261 +0100
+--- ../grace-5.1.25iu/templates/Default.agr	2018-04-23 21:47:01.766634884 +0200
 ***************
 *** 104,110 ****
   @    world 0, 0, 1, 1
