@@ -24967,10 +24967,10 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
   <P>This popup can be used to compute autocorrelation
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./README.new_features ../grace-5.1.25iu/README.new_features
 *** ./README.new_features	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/README.new_features	2020-09-20 09:31:11.913734649 +0200
+--- ../grace-5.1.25iu/README.new_features	2020-10-07 09:28:24.103774642 +0200
 ***************
 *** 0 ****
---- 1,52 ----
+--- 1,54 ----
 + This patch is for xmgrace 5.1.25.
 + 
 + This patch improves functionality by adding several features:
@@ -25019,6 +25019,8 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
 + 9) file with legend captions can now be added on command line (-legend)
 + 
 + 10) forced autoticking is no longer an error so the console window can be prevented from popping up
++ 
++ 11) the x-axis and y-axis range can be copied from the current graph to all other graphs with a button press
 + 
 + Thanks to Rob Summers for catching some IU bugs.
 + 
@@ -32331,6 +32333,737 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       SetSensitive(rc, value);
   }
 + 
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/Untitled$ ../grace-5.1.25iu/src/Untitled$
+*** ./src/Untitled$	1970-01-01 01:00:00.000000000 +0100
+--- ../grace-5.1.25iu/src/Untitled$	2020-10-07 09:15:43.917526175 +0200
+***************
+*** 0 ****
+--- 1,725 ----
++ # Grace project file
++ #
++ @version 50125
++ @page size 792, 612
++ @page scroll 5%
++ @page inout 5%
++ @link page off
++ @map font 0 to "Times-Roman", "Times-Roman"
++ @map font 1 to "Times-Italic", "Times-Italic"
++ @map font 2 to "Times-Bold", "Times-Bold"
++ @map font 3 to "Times-BoldItalic", "Times-BoldItalic"
++ @map font 4 to "Helvetica", "Helvetica"
++ @map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
++ @map font 6 to "Helvetica-Bold", "Helvetica-Bold"
++ @map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
++ @map font 8 to "Courier", "Courier"
++ @map font 9 to "Courier-Oblique", "Courier-Oblique"
++ @map font 10 to "Courier-Bold", "Courier-Bold"
++ @map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
++ @map font 12 to "Symbol", "Symbol"
++ @map font 13 to "ZapfDingbats", "ZapfDingbats"
++ @map color 0 to (255, 255, 255), "white"
++ @map color 1 to (0, 0, 0), "black"
++ @map color 2 to (255, 0, 0), "red"
++ @map color 3 to (0, 255, 0), "green"
++ @map color 4 to (0, 0, 255), "blue"
++ @map color 5 to (255, 255, 0), "yellow"
++ @map color 6 to (188, 143, 143), "brown"
++ @map color 7 to (220, 220, 220), "grey"
++ @map color 8 to (148, 0, 211), "violet"
++ @map color 9 to (0, 255, 255), "cyan"
++ @map color 10 to (255, 0, 255), "magenta"
++ @map color 11 to (255, 165, 0), "orange"
++ @map color 12 to (114, 33, 188), "indigo"
++ @map color 13 to (103, 7, 72), "maroon"
++ @map color 14 to (64, 224, 208), "turquoise"
++ @map color 15 to (0, 139, 0), "green4"
++ @reference date 0
++ @date wrap off
++ @date wrap year 1950
++ @default linewidth 1.0
++ @default linestyle 1
++ @default color 1
++ @default pattern 1
++ @default font 0
++ @default char size 1.000000
++ @default symbol size 1.000000
++ @default sformat "%.8g"
++ @background color 0
++ @page background fill on
++ @timestamp off
++ @timestamp 0.03, 0.03
++ @timestamp color 1
++ @timestamp rot 0
++ @timestamp font 0
++ @timestamp char size 1.000000
++ @timestamp def "Wed Oct  7 09:15:39 2020"
++ @r0 off
++ @link r0 to g0
++ @r0 type above
++ @r0 linestyle 1
++ @r0 linewidth 1.0
++ @r0 color 1
++ @r0 line 0, 0, 0, 0
++ @r1 off
++ @link r1 to g0
++ @r1 type above
++ @r1 linestyle 1
++ @r1 linewidth 1.0
++ @r1 color 1
++ @r1 line 0, 0, 0, 0
++ @r2 off
++ @link r2 to g0
++ @r2 type above
++ @r2 linestyle 1
++ @r2 linewidth 1.0
++ @r2 color 1
++ @r2 line 0, 0, 0, 0
++ @r3 off
++ @link r3 to g0
++ @r3 type above
++ @r3 linestyle 1
++ @r3 linewidth 1.0
++ @r3 color 1
++ @r3 line 0, 0, 0, 0
++ @r4 off
++ @link r4 to g0
++ @r4 type above
++ @r4 linestyle 1
++ @r4 linewidth 1.0
++ @r4 color 1
++ @r4 line 0, 0, 0, 0
++ @g0 on
++ @g0 hidden false
++ @g0 type XY
++ @g0 stacked false
++ @g0 bar hgap 0.000000
++ @g0 fixedpoint off
++ @g0 fixedpoint type 0
++ @g0 fixedpoint xy 0.000000, 0.000000
++ @g0 fixedpoint format general general
++ @g0 fixedpoint prec 6, 6
++ @with g0
++ @    world 0.170736932305, -0.00276816608997, 0.58204798629, 0.786447520185
++ @    stack world 0, 1, 0, 1
++ @    stack world 0, 1, 0, 1
++ @    znorm 1
++ @    view 0.100000, 0.765217, 1.244118, 0.950000
++ @    title ""
++ @    title font 0
++ @    title size 1.500000
++ @    title color 1
++ @    title offsety 0.000000
++ @    subtitle ""
++ @    subtitle font 0
++ @    subtitle size 1.000000
++ @    subtitle color 1
++ @    subtitle offsety 0.000000
++ @    xaxes scale Normal
++ @    yaxes scale Normal
++ @    xaxes invert off
++ @    yaxes invert off
++ @    xaxis  on
++ @    xaxis  type zero false
++ @    xaxis  offset 0.000000 , 0.000000
++ @    xaxis  bar on
++ @    xaxis  bar color 1
++ @    xaxis  bar linestyle 1
++ @    xaxis  bar linewidth 1.0
++ @    xaxis  label ""
++ @    xaxis  label layout para
++ @    xaxis  label place auto
++ @    xaxis  label char size 1.000000
++ @    xaxis  label font 0
++ @    xaxis  label color 1
++ @    xaxis  label place normal
++ @    xaxis  tick on
++ @    xaxis  tick major 0.1
++ @    xaxis  tick minor ticks 1
++ @    xaxis  tick default 6
++ @    xaxis  tick place rounded true
++ @    xaxis  tick major in
++ @    xaxis  tick minor in
++ @    xaxis  tick major size 1.000000
++ @    xaxis  tick major color 1
++ @    xaxis  tick major linewidth 1.0
++ @    xaxis  tick major linestyle 1
++ @    xaxis  tick major grid off
++ @    xaxis  tick minor color 1
++ @    xaxis  tick minor linewidth 1.0
++ @    xaxis  tick minor linestyle 1
++ @    xaxis  tick minor grid off
++ @    xaxis  tick minor size 0.500000
++ @    xaxis  ticklabel on
++ @    xaxis  ticklabel format general
++ @    xaxis  ticklabel prec 5
++ @    xaxis  ticklabel formula ""
++ @    xaxis  ticklabel append ""
++ @    xaxis  ticklabel prepend ""
++ @    xaxis  ticklabel angle 0
++ @    xaxis  ticklabel skip 0
++ @    xaxis  ticklabel stagger 0
++ @    xaxis  ticklabel place normal
++ @    xaxis  ticklabel offset auto
++ @    xaxis  ticklabel offset 0.000000 , 0.010000
++ @    xaxis  ticklabel start type auto
++ @    xaxis  ticklabel start 0.000000
++ @    xaxis  ticklabel stop type auto
++ @    xaxis  ticklabel stop 0.000000
++ @    xaxis  ticklabel char size 1.000000
++ @    xaxis  ticklabel font 0
++ @    xaxis  ticklabel color 1
++ @    xaxis  tick place both
++ @    xaxis  tick spec type none
++ @    yaxis  on
++ @    yaxis  type zero false
++ @    yaxis  offset 0.000000 , 0.000000
++ @    yaxis  bar on
++ @    yaxis  bar color 1
++ @    yaxis  bar linestyle 1
++ @    yaxis  bar linewidth 1.0
++ @    yaxis  label ""
++ @    yaxis  label layout para
++ @    yaxis  label place auto
++ @    yaxis  label char size 1.000000
++ @    yaxis  label font 0
++ @    yaxis  label color 1
++ @    yaxis  label place normal
++ @    yaxis  tick on
++ @    yaxis  tick major 0.2
++ @    yaxis  tick minor ticks 1
++ @    yaxis  tick default 6
++ @    yaxis  tick place rounded true
++ @    yaxis  tick major in
++ @    yaxis  tick minor in
++ @    yaxis  tick major size 1.000000
++ @    yaxis  tick major color 1
++ @    yaxis  tick major linewidth 1.0
++ @    yaxis  tick major linestyle 1
++ @    yaxis  tick major grid off
++ @    yaxis  tick minor color 1
++ @    yaxis  tick minor linewidth 1.0
++ @    yaxis  tick minor linestyle 1
++ @    yaxis  tick minor grid off
++ @    yaxis  tick minor size 0.500000
++ @    yaxis  ticklabel on
++ @    yaxis  ticklabel format general
++ @    yaxis  ticklabel prec 5
++ @    yaxis  ticklabel formula ""
++ @    yaxis  ticklabel append ""
++ @    yaxis  ticklabel prepend ""
++ @    yaxis  ticklabel angle 0
++ @    yaxis  ticklabel skip 0
++ @    yaxis  ticklabel stagger 0
++ @    yaxis  ticklabel place normal
++ @    yaxis  ticklabel offset auto
++ @    yaxis  ticklabel offset 0.000000 , 0.010000
++ @    yaxis  ticklabel start type auto
++ @    yaxis  ticklabel start 0.000000
++ @    yaxis  ticklabel stop type auto
++ @    yaxis  ticklabel stop 0.000000
++ @    yaxis  ticklabel char size 1.000000
++ @    yaxis  ticklabel font 0
++ @    yaxis  ticklabel color 1
++ @    yaxis  tick place both
++ @    yaxis  tick spec type none
++ @    altxaxis  off
++ @    altyaxis  off
++ @    legend on
++ @    legend loctype view
++ @    legend 0.85, 0.8
++ @    legend box color 1
++ @    legend box pattern 1
++ @    legend box linewidth 1.0
++ @    legend box linestyle 1
++ @    legend box fill color 0
++ @    legend box fill pattern 1
++ @    legend font 0
++ @    legend char size 1.000000
++ @    legend color 1
++ @    legend length 4
++ @    legend vgap 1
++ @    legend hgap 1
++ @    legend invert false
++ @    frame type 0
++ @    frame linestyle 1
++ @    frame linewidth 1.0
++ @    frame color 1
++ @    frame pattern 1
++ @    frame background color 0
++ @    frame background pattern 0
++ @g1 on
++ @g1 hidden false
++ @g1 type XY
++ @g1 stacked false
++ @g1 bar hgap 0.000000
++ @g1 fixedpoint off
++ @g1 fixedpoint type 0
++ @g1 fixedpoint xy 0.000000, 0.000000
++ @g1 fixedpoint format general general
++ @g1 fixedpoint prec 6, 6
++ @with g1
++ @    world 0, 0, 1, 1
++ @    stack world 0, 0, 0, 0
++ @    znorm 1
++ @    view 0.100000, 0.543478, 1.244118, 0.728261
++ @    title ""
++ @    title font 0
++ @    title size 1.500000
++ @    title color 1
++ @    title offsety 0.000000
++ @    subtitle ""
++ @    subtitle font 0
++ @    subtitle size 1.000000
++ @    subtitle color 1
++ @    subtitle offsety 0.000000
++ @    xaxes scale Normal
++ @    yaxes scale Normal
++ @    xaxes invert off
++ @    yaxes invert off
++ @    xaxis  on
++ @    xaxis  type zero false
++ @    xaxis  offset 0.000000 , 0.000000
++ @    xaxis  bar on
++ @    xaxis  bar color 1
++ @    xaxis  bar linestyle 1
++ @    xaxis  bar linewidth 1.0
++ @    xaxis  label ""
++ @    xaxis  label layout para
++ @    xaxis  label place auto
++ @    xaxis  label char size 1.000000
++ @    xaxis  label font 0
++ @    xaxis  label color 1
++ @    xaxis  label place normal
++ @    xaxis  tick on
++ @    xaxis  tick major 0.2
++ @    xaxis  tick minor ticks 1
++ @    xaxis  tick default 6
++ @    xaxis  tick place rounded true
++ @    xaxis  tick major in
++ @    xaxis  tick minor in
++ @    xaxis  tick major size 1.000000
++ @    xaxis  tick major color 1
++ @    xaxis  tick major linewidth 1.0
++ @    xaxis  tick major linestyle 1
++ @    xaxis  tick major grid off
++ @    xaxis  tick minor color 1
++ @    xaxis  tick minor linewidth 1.0
++ @    xaxis  tick minor linestyle 1
++ @    xaxis  tick minor grid off
++ @    xaxis  tick minor size 0.500000
++ @    xaxis  ticklabel on
++ @    xaxis  ticklabel format general
++ @    xaxis  ticklabel prec 5
++ @    xaxis  ticklabel formula ""
++ @    xaxis  ticklabel append ""
++ @    xaxis  ticklabel prepend ""
++ @    xaxis  ticklabel angle 0
++ @    xaxis  ticklabel skip 0
++ @    xaxis  ticklabel stagger 0
++ @    xaxis  ticklabel place normal
++ @    xaxis  ticklabel offset auto
++ @    xaxis  ticklabel offset 0.000000 , 0.010000
++ @    xaxis  ticklabel start type auto
++ @    xaxis  ticklabel start 0.000000
++ @    xaxis  ticklabel stop type auto
++ @    xaxis  ticklabel stop 0.000000
++ @    xaxis  ticklabel char size 1.000000
++ @    xaxis  ticklabel font 0
++ @    xaxis  ticklabel color 1
++ @    xaxis  tick place both
++ @    xaxis  tick spec type none
++ @    yaxis  on
++ @    yaxis  type zero false
++ @    yaxis  offset 0.000000 , 0.000000
++ @    yaxis  bar on
++ @    yaxis  bar color 1
++ @    yaxis  bar linestyle 1
++ @    yaxis  bar linewidth 1.0
++ @    yaxis  label ""
++ @    yaxis  label layout para
++ @    yaxis  label place auto
++ @    yaxis  label char size 1.000000
++ @    yaxis  label font 0
++ @    yaxis  label color 1
++ @    yaxis  label place normal
++ @    yaxis  tick on
++ @    yaxis  tick major 0.2
++ @    yaxis  tick minor ticks 1
++ @    yaxis  tick default 6
++ @    yaxis  tick place rounded true
++ @    yaxis  tick major in
++ @    yaxis  tick minor in
++ @    yaxis  tick major size 1.000000
++ @    yaxis  tick major color 1
++ @    yaxis  tick major linewidth 1.0
++ @    yaxis  tick major linestyle 1
++ @    yaxis  tick major grid off
++ @    yaxis  tick minor color 1
++ @    yaxis  tick minor linewidth 1.0
++ @    yaxis  tick minor linestyle 1
++ @    yaxis  tick minor grid off
++ @    yaxis  tick minor size 0.500000
++ @    yaxis  ticklabel on
++ @    yaxis  ticklabel format general
++ @    yaxis  ticklabel prec 5
++ @    yaxis  ticklabel formula ""
++ @    yaxis  ticklabel append ""
++ @    yaxis  ticklabel prepend ""
++ @    yaxis  ticklabel angle 0
++ @    yaxis  ticklabel skip 0
++ @    yaxis  ticklabel stagger 0
++ @    yaxis  ticklabel place normal
++ @    yaxis  ticklabel offset auto
++ @    yaxis  ticklabel offset 0.000000 , 0.010000
++ @    yaxis  ticklabel start type auto
++ @    yaxis  ticklabel start 0.000000
++ @    yaxis  ticklabel stop type auto
++ @    yaxis  ticklabel stop 0.000000
++ @    yaxis  ticklabel char size 1.000000
++ @    yaxis  ticklabel font 0
++ @    yaxis  ticklabel color 1
++ @    yaxis  tick place both
++ @    yaxis  tick spec type none
++ @    altxaxis  off
++ @    altyaxis  off
++ @    legend on
++ @    legend loctype view
++ @    legend 0.5, 0.8
++ @    legend box color 1
++ @    legend box pattern 1
++ @    legend box linewidth 1.0
++ @    legend box linestyle 1
++ @    legend box fill color 0
++ @    legend box fill pattern 1
++ @    legend font 0
++ @    legend char size 1.000000
++ @    legend color 1
++ @    legend length 4
++ @    legend vgap 1
++ @    legend hgap 1
++ @    legend invert false
++ @    frame type 0
++ @    frame linestyle 1
++ @    frame linewidth 1.0
++ @    frame color 1
++ @    frame pattern 1
++ @    frame background color 0
++ @    frame background pattern 0
++ @g2 on
++ @g2 hidden false
++ @g2 type XY
++ @g2 stacked false
++ @g2 bar hgap 0.000000
++ @g2 fixedpoint off
++ @g2 fixedpoint type 0
++ @g2 fixedpoint xy 0.000000, 0.000000
++ @g2 fixedpoint format general general
++ @g2 fixedpoint prec 6, 6
++ @with g2
++ @    world 0, 0, 1, 1
++ @    stack world 0, 0, 0, 0
++ @    znorm 1
++ @    view 0.100000, 0.321739, 1.244118, 0.506522
++ @    title ""
++ @    title font 0
++ @    title size 1.500000
++ @    title color 1
++ @    title offsety 0.000000
++ @    subtitle ""
++ @    subtitle font 0
++ @    subtitle size 1.000000
++ @    subtitle color 1
++ @    subtitle offsety 0.000000
++ @    xaxes scale Normal
++ @    yaxes scale Normal
++ @    xaxes invert off
++ @    yaxes invert off
++ @    xaxis  on
++ @    xaxis  type zero false
++ @    xaxis  offset 0.000000 , 0.000000
++ @    xaxis  bar on
++ @    xaxis  bar color 1
++ @    xaxis  bar linestyle 1
++ @    xaxis  bar linewidth 1.0
++ @    xaxis  label ""
++ @    xaxis  label layout para
++ @    xaxis  label place auto
++ @    xaxis  label char size 1.000000
++ @    xaxis  label font 0
++ @    xaxis  label color 1
++ @    xaxis  label place normal
++ @    xaxis  tick on
++ @    xaxis  tick major 0.2
++ @    xaxis  tick minor ticks 1
++ @    xaxis  tick default 6
++ @    xaxis  tick place rounded true
++ @    xaxis  tick major in
++ @    xaxis  tick minor in
++ @    xaxis  tick major size 1.000000
++ @    xaxis  tick major color 1
++ @    xaxis  tick major linewidth 1.0
++ @    xaxis  tick major linestyle 1
++ @    xaxis  tick major grid off
++ @    xaxis  tick minor color 1
++ @    xaxis  tick minor linewidth 1.0
++ @    xaxis  tick minor linestyle 1
++ @    xaxis  tick minor grid off
++ @    xaxis  tick minor size 0.500000
++ @    xaxis  ticklabel on
++ @    xaxis  ticklabel format general
++ @    xaxis  ticklabel prec 5
++ @    xaxis  ticklabel formula ""
++ @    xaxis  ticklabel append ""
++ @    xaxis  ticklabel prepend ""
++ @    xaxis  ticklabel angle 0
++ @    xaxis  ticklabel skip 0
++ @    xaxis  ticklabel stagger 0
++ @    xaxis  ticklabel place normal
++ @    xaxis  ticklabel offset auto
++ @    xaxis  ticklabel offset 0.000000 , 0.010000
++ @    xaxis  ticklabel start type auto
++ @    xaxis  ticklabel start 0.000000
++ @    xaxis  ticklabel stop type auto
++ @    xaxis  ticklabel stop 0.000000
++ @    xaxis  ticklabel char size 1.000000
++ @    xaxis  ticklabel font 0
++ @    xaxis  ticklabel color 1
++ @    xaxis  tick place both
++ @    xaxis  tick spec type none
++ @    yaxis  on
++ @    yaxis  type zero false
++ @    yaxis  offset 0.000000 , 0.000000
++ @    yaxis  bar on
++ @    yaxis  bar color 1
++ @    yaxis  bar linestyle 1
++ @    yaxis  bar linewidth 1.0
++ @    yaxis  label ""
++ @    yaxis  label layout para
++ @    yaxis  label place auto
++ @    yaxis  label char size 1.000000
++ @    yaxis  label font 0
++ @    yaxis  label color 1
++ @    yaxis  label place normal
++ @    yaxis  tick on
++ @    yaxis  tick major 0.2
++ @    yaxis  tick minor ticks 1
++ @    yaxis  tick default 6
++ @    yaxis  tick place rounded true
++ @    yaxis  tick major in
++ @    yaxis  tick minor in
++ @    yaxis  tick major size 1.000000
++ @    yaxis  tick major color 1
++ @    yaxis  tick major linewidth 1.0
++ @    yaxis  tick major linestyle 1
++ @    yaxis  tick major grid off
++ @    yaxis  tick minor color 1
++ @    yaxis  tick minor linewidth 1.0
++ @    yaxis  tick minor linestyle 1
++ @    yaxis  tick minor grid off
++ @    yaxis  tick minor size 0.500000
++ @    yaxis  ticklabel on
++ @    yaxis  ticklabel format general
++ @    yaxis  ticklabel prec 5
++ @    yaxis  ticklabel formula ""
++ @    yaxis  ticklabel append ""
++ @    yaxis  ticklabel prepend ""
++ @    yaxis  ticklabel angle 0
++ @    yaxis  ticklabel skip 0
++ @    yaxis  ticklabel stagger 0
++ @    yaxis  ticklabel place normal
++ @    yaxis  ticklabel offset auto
++ @    yaxis  ticklabel offset 0.000000 , 0.010000
++ @    yaxis  ticklabel start type auto
++ @    yaxis  ticklabel start 0.000000
++ @    yaxis  ticklabel stop type auto
++ @    yaxis  ticklabel stop 0.000000
++ @    yaxis  ticklabel char size 1.000000
++ @    yaxis  ticklabel font 0
++ @    yaxis  ticklabel color 1
++ @    yaxis  tick place both
++ @    yaxis  tick spec type none
++ @    altxaxis  off
++ @    altyaxis  off
++ @    legend on
++ @    legend loctype view
++ @    legend 0.5, 0.8
++ @    legend box color 1
++ @    legend box pattern 1
++ @    legend box linewidth 1.0
++ @    legend box linestyle 1
++ @    legend box fill color 0
++ @    legend box fill pattern 1
++ @    legend font 0
++ @    legend char size 1.000000
++ @    legend color 1
++ @    legend length 4
++ @    legend vgap 1
++ @    legend hgap 1
++ @    legend invert false
++ @    frame type 0
++ @    frame linestyle 1
++ @    frame linewidth 1.0
++ @    frame color 1
++ @    frame pattern 1
++ @    frame background color 0
++ @    frame background pattern 0
++ @g3 on
++ @g3 hidden false
++ @g3 type XY
++ @g3 stacked false
++ @g3 bar hgap 0.000000
++ @g3 fixedpoint off
++ @g3 fixedpoint type 0
++ @g3 fixedpoint xy 0.000000, 0.000000
++ @g3 fixedpoint format general general
++ @g3 fixedpoint prec 6, 6
++ @with g3
++ @    world 0, 0, 1, 1
++ @    stack world 0, 0, 0, 0
++ @    znorm 1
++ @    view 0.100000, 0.100000, 1.244118, 0.284783
++ @    title ""
++ @    title font 0
++ @    title size 1.500000
++ @    title color 1
++ @    title offsety 0.000000
++ @    subtitle ""
++ @    subtitle font 0
++ @    subtitle size 1.000000
++ @    subtitle color 1
++ @    subtitle offsety 0.000000
++ @    xaxes scale Normal
++ @    yaxes scale Normal
++ @    xaxes invert off
++ @    yaxes invert off
++ @    xaxis  on
++ @    xaxis  type zero false
++ @    xaxis  offset 0.000000 , 0.000000
++ @    xaxis  bar on
++ @    xaxis  bar color 1
++ @    xaxis  bar linestyle 1
++ @    xaxis  bar linewidth 1.0
++ @    xaxis  label ""
++ @    xaxis  label layout para
++ @    xaxis  label place auto
++ @    xaxis  label char size 1.000000
++ @    xaxis  label font 0
++ @    xaxis  label color 1
++ @    xaxis  label place normal
++ @    xaxis  tick on
++ @    xaxis  tick major 0.2
++ @    xaxis  tick minor ticks 1
++ @    xaxis  tick default 6
++ @    xaxis  tick place rounded true
++ @    xaxis  tick major in
++ @    xaxis  tick minor in
++ @    xaxis  tick major size 1.000000
++ @    xaxis  tick major color 1
++ @    xaxis  tick major linewidth 1.0
++ @    xaxis  tick major linestyle 1
++ @    xaxis  tick major grid off
++ @    xaxis  tick minor color 1
++ @    xaxis  tick minor linewidth 1.0
++ @    xaxis  tick minor linestyle 1
++ @    xaxis  tick minor grid off
++ @    xaxis  tick minor size 0.500000
++ @    xaxis  ticklabel on
++ @    xaxis  ticklabel format general
++ @    xaxis  ticklabel prec 5
++ @    xaxis  ticklabel formula ""
++ @    xaxis  ticklabel append ""
++ @    xaxis  ticklabel prepend ""
++ @    xaxis  ticklabel angle 0
++ @    xaxis  ticklabel skip 0
++ @    xaxis  ticklabel stagger 0
++ @    xaxis  ticklabel place normal
++ @    xaxis  ticklabel offset auto
++ @    xaxis  ticklabel offset 0.000000 , 0.010000
++ @    xaxis  ticklabel start type auto
++ @    xaxis  ticklabel start 0.000000
++ @    xaxis  ticklabel stop type auto
++ @    xaxis  ticklabel stop 0.000000
++ @    xaxis  ticklabel char size 1.000000
++ @    xaxis  ticklabel font 0
++ @    xaxis  ticklabel color 1
++ @    xaxis  tick place both
++ @    xaxis  tick spec type none
++ @    yaxis  on
++ @    yaxis  type zero false
++ @    yaxis  offset 0.000000 , 0.000000
++ @    yaxis  bar on
++ @    yaxis  bar color 1
++ @    yaxis  bar linestyle 1
++ @    yaxis  bar linewidth 1.0
++ @    yaxis  label ""
++ @    yaxis  label layout para
++ @    yaxis  label place auto
++ @    yaxis  label char size 1.000000
++ @    yaxis  label font 0
++ @    yaxis  label color 1
++ @    yaxis  label place normal
++ @    yaxis  tick on
++ @    yaxis  tick major 0.2
++ @    yaxis  tick minor ticks 1
++ @    yaxis  tick default 6
++ @    yaxis  tick place rounded true
++ @    yaxis  tick major in
++ @    yaxis  tick minor in
++ @    yaxis  tick major size 1.000000
++ @    yaxis  tick major color 1
++ @    yaxis  tick major linewidth 1.0
++ @    yaxis  tick major linestyle 1
++ @    yaxis  tick major grid off
++ @    yaxis  tick minor color 1
++ @    yaxis  tick minor linewidth 1.0
++ @    yaxis  tick minor linestyle 1
++ @    yaxis  tick minor grid off
++ @    yaxis  tick minor size 0.500000
++ @    yaxis  ticklabel on
++ @    yaxis  ticklabel format general
++ @    yaxis  ticklabel prec 5
++ @    yaxis  ticklabel formula ""
++ @    yaxis  ticklabel append ""
++ @    yaxis  ticklabel prepend ""
++ @    yaxis  ticklabel angle 0
++ @    yaxis  ticklabel skip 0
++ @    yaxis  ticklabel stagger 0
++ @    yaxis  ticklabel place normal
++ @    yaxis  ticklabel offset auto
++ @    yaxis  ticklabel offset 0.000000 , 0.010000
++ @    yaxis  ticklabel start type auto
++ @    yaxis  ticklabel start 0.000000
++ @    yaxis  ticklabel stop type auto
++ @    yaxis  ticklabel stop 0.000000
++ @    yaxis  ticklabel char size 1.000000
++ @    yaxis  ticklabel font 0
++ @    yaxis  ticklabel color 1
++ @    yaxis  tick place both
++ @    yaxis  tick spec type none
++ @    altxaxis  off
++ @    altyaxis  off
++ @    legend on
++ @    legend loctype view
++ @    legend 0.5, 0.8
++ @    legend box color 1
++ @    legend box pattern 1
++ @    legend box linewidth 1.0
++ @    legend box linestyle 1
++ @    legend box fill color 0
++ @    legend box fill pattern 1
++ @    legend font 0
++ @    legend char size 1.000000
++ @    legend color 1
++ @    legend length 4
++ @    legend vgap 1
++ @    legend hgap 1
++ @    legend invert false
++ @    frame type 0
++ @    frame linestyle 1
++ @    frame linewidth 1.0
++ @    frame color 1
++ @    frame pattern 1
++ @    frame background color 0
++ @    frame background pattern 0
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/utils.c ../grace-5.1.25iu/src/utils.c
 *** ./src/utils.c	2007-02-15 23:36:54.000000000 +0100
 --- ../grace-5.1.25iu/src/utils.c	2020-09-20 09:21:33.467193614 +0200
@@ -32416,7 +33149,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
   
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
 *** ./src/xmgrace.c	2014-08-29 18:38:21.000000000 +0200
---- ../grace-5.1.25iu/src/xmgrace.c	2018-04-23 21:47:01.766634884 +0200
+--- ../grace-5.1.25iu/src/xmgrace.c	2020-10-07 09:23:55.196650061 +0200
 ***************
 *** 183,188 ****
 --- 183,189 ----
@@ -32514,8 +33247,50 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       return RETURN_SUCCESS;
   }
 ***************
+*** 553,558 ****
+--- 561,599 ----
+      set_action(AUTO_NEAREST);
+  }
+  
++ 
++ /* data: 0=x, 1=y */
++ void common_axis( void *data )
++ {
++     int        axis = data;
++     int        g0   = get_cg();
++     world      w0;
++     tickmarks *tm   = get_graph_tickmarks( g0, axis );
++ 
++     get_graph_world( g0, &w0);
++ 
++     for (int gno=0; gno<number_of_graphs(); gno++) {
++         
++         if( gno == g0 ) continue;
++       
++         world wg;
++         get_graph_world( gno, &wg);
++         
++         if( axis == 0 ) {
++           wg.xg1 = w0.xg1;
++           wg.xg2 = w0.xg2;
++         } else {
++           wg.yg1 = w0.yg1;
++           wg.yg2 = w0.yg2;
++         }
++         set_graph_world(gno, wg);        
++ 
++         set_graph_tickmarks(gno, axis, tm );
++     }
++     xdrawgraph();
++ }
++ 
++ 
+  /*
+   * service the autoticks button on the main panel
+   */
+***************
 *** 882,887 ****
---- 890,899 ----
+--- 923,932 ----
   /*
    *     CreateMenuButton(menupane, "Area/perimeter...", 'A', create_area_frame, NULL);
    */
@@ -32535,7 +33310,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       Pixmap icon, shape;
   
   /* 
---- 982,988 ----
+--- 1015,1021 ----
    */
   void startup_gui(void)
   {
@@ -32559,7 +33334,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       rc3 = XtVaCreateManagedWidget("rc", xmRowColumnWidgetClass, rcleft,
   				  XmNorientation, XmHORIZONTAL,
   				  XmNpacking, XmPACK_COLUMN,
---- 1141,1184 ----
+--- 1174,1223 ----
       bt = CreateBitmapButton(rc3, 16, 16, up_bits);
       AddButtonCB(bt, graph_scroll_proc, (void *) GSCROLL_UP);
   
@@ -32601,12 +33376,18 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
 +     
 +     CreateSeparator(rcleft);
 + 
++     bt = CreateButton(rcleft, "Common X");
++     AddButtonCB(bt, common_axis, NULL);
++ 
++     bt = CreateButton(rcleft, "Common Y");
++     AddButtonCB(bt, common_axis, (void *)1 );
++ 
       rc3 = XtVaCreateManagedWidget("rc", xmRowColumnWidgetClass, rcleft,
   				  XmNorientation, XmHORIZONTAL,
   				  XmNpacking, XmPACK_COLUMN,
 ***************
 *** 1167,1172 ****
---- 1209,1217 ----
+--- 1248,1256 ----
       stack_depth_item = CreateLabel(rcleft, "");
       curw_item = CreateLabel(rcleft, "");
   
@@ -32616,6 +33397,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       bt = CreateButton(rcleft, "Exit");
       AddButtonCB(bt, MenuCB, (void *) MENU_EXIT);
   
+Binary files ./src/.xmgrace.c.swp and ../grace-5.1.25iu/src/.xmgrace.c.swp differ
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
 *** ./src/xprotos.h	2005-11-12 21:09:51.000000000 +0100
 --- ../grace-5.1.25iu/src/xprotos.h	2018-04-23 21:47:01.766634884 +0200
@@ -32642,6 +33424,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
 + void axeswin_iu(int, void *);
 + 
   #endif /* __XPROTOS_H_ */
+Binary files ./src/.xutil.c.swp and ../grace-5.1.25iu/src/.xutil.c.swp differ
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./templates/Default.agr ../grace-5.1.25iu/templates/Default.agr
 *** ./templates/Default.agr	2007-02-16 23:43:31.000000000 +0100
 --- ../grace-5.1.25iu/templates/Default.agr	2018-04-23 21:47:01.766634884 +0200
