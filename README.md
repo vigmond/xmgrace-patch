@@ -76,6 +76,8 @@ bbox:page
 
 15. Autoticking is no longer error so the console window need not popup when you change scale.
 
+16. The x-axis or y-axis of the current graph can be copied to all other graphs with one button click
+
 ## Developers
 
 A shell script is provided to create the patch file. It is called `make_iu_patch`. Instructions are commented inside the script.
