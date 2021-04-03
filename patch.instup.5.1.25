@@ -24967,10 +24967,10 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
   <P>This popup can be used to compute autocorrelation
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./README.new_features ../grace-5.1.25iu/README.new_features
 *** ./README.new_features	1970-01-01 01:00:00.000000000 +0100
---- ../grace-5.1.25iu/README.new_features	2020-10-29 10:34:45.437555144 +0100
+--- ../grace-5.1.25iu/README.new_features	2021-04-02 14:30:18.071451521 +0200
 ***************
 *** 0 ****
---- 1,54 ----
+--- 1,57 ----
 + This patch is for xmgrace 5.1.25.
 + 
 + This patch improves functionality by adding several features:
@@ -25021,10 +25021,13 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
 + 10) forced autoticking is no longer an error so the console window can be prevented from popping up
 + 
 + 11) the x-axis and y-axis range can be copied from the current graph to all other graphs with a button press
++     "Common X" and "Common Y" buttons.
++ 
++ 12) Reporting on region sets will also highlight those sets if the Set Appearance widget is shown
 + 
 + Thanks to Rob Summers for catching some IU bugs.
 + 
-+ Bounding boxes of raster formats, please make sure libgd is installed. This is optional.
++ For bounding boxes of raster formats, please make sure libgd is installed. This is optional.
 Binary files ./src/buildinfo and ../grace-5.1.25iu/src/buildinfo differ
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
 *** ./src/buildinfo.c	2015-02-14 23:17:32.000000000 +0100
@@ -29091,6 +29094,40 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       return RETURN_SUCCESS;
   }
   
+diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/regionutils.c ../grace-5.1.25iu/src/regionutils.c
+*** ./src/regionutils.c	2004-07-03 22:47:46.000000000 +0200
+--- ../grace-5.1.25iu/src/regionutils.c	2021-04-02 14:23:29.536838012 +0200
+***************
+*** 152,157 ****
+--- 152,159 ----
+      double *x, *y;
+      sprintf(buf, "\nRegion R%1d contains:\n", rno);
+      stufftext(buf);
++     int inreg[number_of_sets(gno)];
++     int n_inreg=0;
+      for (j = 0; j < number_of_sets(gno); j++) {
+  	if (is_set_active(gno, j)) {
+  	    x = getx(gno, j);
+***************
+*** 167,172 ****
+--- 169,175 ----
+  			    first = 0;
+  			    sprintf(buf, "  Set S%1d\n", j);
+  			    stufftext(buf);
++                 inreg[n_inreg++] = j;
+  			}
+  			break;
+  		    case 1:	/* points */
+***************
+*** 186,191 ****
+--- 189,195 ----
+  	}
+      }
+      stufftext("\n");
++     updatesymbols(gno, n_inreg, inreg);
+  }
+  
+  void load_poly_region(int r, int gno, int n, WPoint *wps)
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
 *** ./src/regionwin.c	2004-07-03 22:47:46.000000000 +0200
 --- ../grace-5.1.25iu/src/regionwin.c	2020-10-29 10:34:45.445554989 +0100
@@ -29516,7 +29553,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       jpg_setup_dct = GetChoice(jpg_setup_dct_item);
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
 *** ./src/setappwin.c	2004-07-03 22:47:46.000000000 +0200
---- ../grace-5.1.25iu/src/setappwin.c	2020-10-29 10:34:45.445554989 +0100
+--- ../grace-5.1.25iu/src/setappwin.c	2021-04-02 12:34:32.091328986 +0200
 ***************
 *** 64,70 ****
   static Widget duplegs_item;
@@ -29980,7 +30017,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
           /* ------------ Errbar tab -------------- */
           
 ***************
-*** 372,399 ****
+*** 372,406 ****
                                                "Opposite",
                                                "Both",
                                                NULL);
@@ -30009,7 +30046,14 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
           
           SelectTabPage(setapp_tab, setapp_main);
   
---- 473,519 ----
+  
+          CreateAACDialog(setapp_dialog, setapp_tab, setapp_aac_cb, NULL);
+      }
+!     updatesymbols(cg, cset);
+      
+      RaiseWindow(GetParent(setapp_dialog));
+      unset_wait_cursor();
+--- 473,526 ----
                                                "Opposite",
                                                "Both",
                                                NULL);
@@ -30057,6 +30101,13 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
           
           SelectTabPage(setapp_tab, setapp_main);
   
+  
+          CreateAACDialog(setapp_dialog, setapp_tab, setapp_aac_cb, NULL);
+      }
+!     updatesymbols(cg, 1, &cset);
+      
+      RaiseWindow(GetParent(setapp_dialog));
+      unset_wait_cursor();
 ***************
 *** 430,435 ****
 --- 550,558 ----
@@ -30295,6 +30346,41 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
           }
           SetChoice(errbar_ptype_item, p.errbar.ptype);
 ***************
+*** 643,658 ****
+      }
+  }
+  
+! void updatesymbols(int gno, int setno)
+  {    
+      if (gno != cg) {
+          return;
+      }
+      
+      if (setapp_dialog != NULL) { 
+!         if (SelectListChoice(toggle_symset_item, setno) == RETURN_SUCCESS) {
+!             cset = setno;
+!         }
+      }
+  }
+  
+--- 875,890 ----
+      }
+  }
+  
+! 
+! void updatesymbols(int gno, int nsets, int *sets )
+  {    
+      if (gno != cg) {
+          return;
+      }
+      
+      if (setapp_dialog != NULL) { 
+!         SelectListChoices(toggle_symset_item, nsets, sets);
+!         if( nsets>0 ) cset = sets[0];
+      }
+  }
+  
+***************
 *** 665,671 ****
       plotarr p;
       int c = 0, bg = getbgcolor();
@@ -30340,6 +30426,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
       }
   }
 + 
+Binary files ./src/.setappwin.c.swp and ../grace-5.1.25iu/src/.setappwin.c.swp differ
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
 *** ./src/setutils.c	2004-07-03 22:47:46.000000000 +0200
 --- ../grace-5.1.25iu/src/setutils.c	2020-10-29 10:34:45.445554989 +0100
@@ -33533,7 +33620,7 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
           break;
 diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
 *** ./src/xprotos.h	2005-11-12 21:09:51.000000000 +0100
---- ../grace-5.1.25iu/src/xprotos.h	2020-10-29 10:34:45.449554912 +0100
+--- ../grace-5.1.25iu/src/xprotos.h	2021-04-02 12:32:51.020669776 +0200
 ***************
 *** 101,106 ****
 --- 101,108 ----
@@ -33545,6 +33632,23 @@ diff -C 3 -P --new-file '--exclude-from=/home/vigmond/Software/exclude-iu-file' 
   void create_points_frame(void *data);
   
   void create_region_frame(void *data);
+***************
+*** 116,122 ****
+  
+  void update_set_lists(int gno);
+  
+! void updatesymbols(int gno, int value);
+  void updatelegends(int gno);
+  void update_view(int gno);
+  
+--- 118,124 ----
+  
+  void update_set_lists(int gno);
+  
+! void updatesymbols(int gno, int no, int *sets);
+  void updatelegends(int gno);
+  void update_view(int gno);
+  
 ***************
 *** 197,200 ****
 --- 199,207 ----
