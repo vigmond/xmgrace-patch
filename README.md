@@ -17,6 +17,21 @@ cd grace-<version>
 
 patch -E -p1 < patch.instup.<version>
 ```
+### Compiling on Mac
+
+1. Make sure you have all the prerequisites
+
+    In addition to the previously mentioned libraries, make sure the following libraries are available: 
+    - libpng
+    - libjpeg
+   - motif
+2. Run configure with the following options:
+
+    ```
+    ./configure --with-extra-ldpath=/usr/local/lib --with-extra-incpath=/usr/local/include
+    ```
+3. Edit `Make.conf` with a text editor. Replace `-O2` with `-O0`
+4. Compile: `make -j`
 
 ## Improved functionality
 
@@ -77,6 +92,8 @@ bbox:page
 15. Autoticking is no longer error so the console window need not popup when you change scale.
 
 16. The x-axis or y-axis of the current graph can be copied to all other graphs with one button click
+
+17. When reporting on sets within a region, the sets in the region will become selected in the set appearance dialog.
 
 ## Developers
 
