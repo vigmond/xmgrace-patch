@@ -52,6 +52,8 @@ bbox:page
 
 12) Reporting on region sets will also highlight those sets if the Set Appearance widget is shown
 
+13) More shortcut buttons added to main window.
+
 Thanks to Rob Summers for catching some IU bugs.
 
 For bounding boxes of raster formats, please make sure libgd is installed. This is optional.
