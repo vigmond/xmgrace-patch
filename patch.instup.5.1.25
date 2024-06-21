@@ -1,6 +1,6 @@
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./README.new_features ../grace-5.1.25iu/README.new_features
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./README.new_features ../grace-5.1.25iu/README.new_features
 *** ./README.new_features	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/README.new_features	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/README.new_features	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,57 ----
@@ -61,265 +61,135 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + Thanks to Rob Summers for catching some IU bugs.
 + 
 + For bounding boxes of raster formats, please make sure libgd is installed. This is optional.
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./a ../grace-5.1.25iu/a
-*** ./a	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/a	Thu Apr  8 09:46:40 2021
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./Xbae/Xbae/Draw.c ../grace-5.1.25iu/Xbae/Xbae/Draw.c
+*** ./Xbae/Xbae/Draw.c	Sat Sep 11 03:25:37 1999
+--- ../grace-5.1.25iu/Xbae/Xbae/Draw.c	Fri Jun 21 09:55:24 2024
 ***************
-*** 0 ****
---- 1,250 ----
-+ # Grace project file
-+ #
-+ @version 50125
-+ @page size 792, 612
-+ @page scroll 5%
-+ @page inout 5%
-+ @link page off
-+ @map font 0 to "Times-Roman", "Times-Roman"
-+ @map font 1 to "Times-Italic", "Times-Italic"
-+ @map font 2 to "Times-Bold", "Times-Bold"
-+ @map font 3 to "Times-BoldItalic", "Times-BoldItalic"
-+ @map font 4 to "Helvetica", "Helvetica"
-+ @map font 5 to "Helvetica-Oblique", "Helvetica-Oblique"
-+ @map font 6 to "Helvetica-Bold", "Helvetica-Bold"
-+ @map font 7 to "Helvetica-BoldOblique", "Helvetica-BoldOblique"
-+ @map font 8 to "Courier", "Courier"
-+ @map font 9 to "Courier-Oblique", "Courier-Oblique"
-+ @map font 10 to "Courier-Bold", "Courier-Bold"
-+ @map font 11 to "Courier-BoldOblique", "Courier-BoldOblique"
-+ @map font 12 to "Symbol", "Symbol"
-+ @map font 13 to "ZapfDingbats", "ZapfDingbats"
-+ @map color 0 to (255, 255, 255), "white"
-+ @map color 1 to (0, 0, 0), "black"
-+ @map color 2 to (255, 0, 0), "red"
-+ @map color 3 to (0, 255, 0), "green"
-+ @map color 4 to (0, 0, 255), "blue"
-+ @map color 5 to (255, 255, 0), "yellow"
-+ @map color 6 to (188, 143, 143), "brown"
-+ @map color 7 to (220, 220, 220), "grey"
-+ @map color 8 to (148, 0, 211), "violet"
-+ @map color 9 to (0, 255, 255), "cyan"
-+ @map color 10 to (255, 0, 255), "magenta"
-+ @map color 11 to (255, 165, 0), "orange"
-+ @map color 12 to (114, 33, 188), "indigo"
-+ @map color 13 to (103, 7, 72), "maroon"
-+ @map color 14 to (64, 224, 208), "turquoise"
-+ @map color 15 to (0, 139, 0), "green4"
-+ @reference date 0
-+ @date wrap off
-+ @date wrap year 1950
-+ @default linewidth 1.0
-+ @default linestyle 1
-+ @default color 1
-+ @default pattern 1
-+ @default font 0
-+ @default char size 1.000000
-+ @default symbol size 1.000000
-+ @default sformat "%.8g"
-+ @background color 0
-+ @page background fill on
-+ @timestamp off
-+ @timestamp 0.03, 0.03
-+ @timestamp color 1
-+ @timestamp rot 0
-+ @timestamp font 0
-+ @timestamp char size 1.000000
-+ @timestamp def "Thu Apr  8 09:46:35 2021"
-+ @r0 off
-+ @link r0 to g0
-+ @r0 type above
-+ @r0 linestyle 1
-+ @r0 linewidth 1.0
-+ @r0 color 1
-+ @r0 line 0, 0, 0, 0
-+ @r1 off
-+ @link r1 to g0
-+ @r1 type above
-+ @r1 linestyle 1
-+ @r1 linewidth 1.0
-+ @r1 color 1
-+ @r1 line 0, 0, 0, 0
-+ @r2 off
-+ @link r2 to g0
-+ @r2 type above
-+ @r2 linestyle 1
-+ @r2 linewidth 1.0
-+ @r2 color 1
-+ @r2 line 0, 0, 0, 0
-+ @r3 off
-+ @link r3 to g0
-+ @r3 type above
-+ @r3 linestyle 1
-+ @r3 linewidth 1.0
-+ @r3 color 1
-+ @r3 line 0, 0, 0, 0
-+ @r4 off
-+ @link r4 to g0
-+ @r4 type above
-+ @r4 linestyle 1
-+ @r4 linewidth 1.0
-+ @r4 color 1
-+ @r4 line 0, 0, 0, 0
-+ @g0 on
-+ @g0 hidden false
-+ @g0 type XY
-+ @g0 stacked false
-+ @g0 bar hgap 0.000000
-+ @g0 fixedpoint off
-+ @g0 fixedpoint type 0
-+ @g0 fixedpoint xy 0.000000, 0.000000
-+ @g0 fixedpoint format general general
-+ @g0 fixedpoint prec 6, 6
-+ @with g0
-+ @    world 0, 0, 1, 1
-+ @    stack world 0, 0, 0, 0
-+ @    znorm 1
-+ @    view 0.100000, 0.100000, 1.244747, 0.950000
-+ @    title ""
-+ @    title font 0
-+ @    title size 1.500000
-+ @    title color 1
-+ @    title offsety 0.000000
-+ @    subtitle ""
-+ @    subtitle font 0
-+ @    subtitle size 1.000000
-+ @    subtitle color 1
-+ @    subtitle offsety 0.000000
-+ @    xaxes scale Normal
-+ @    yaxes scale Normal
-+ @    xaxes invert off
-+ @    yaxes invert off
-+ @    xaxis  on
-+ @    xaxis  type zero false
-+ @    xaxis  offset 0.000000 , 0.000000
-+ @    xaxis  bar on
-+ @    xaxis  bar color 1
-+ @    xaxis  bar linestyle 1
-+ @    xaxis  bar linewidth 1.0
-+ @    xaxis  label ""
-+ @    xaxis  label layout para
-+ @    xaxis  label place auto
-+ @    xaxis  label char size 1.000000
-+ @    xaxis  label font 0
-+ @    xaxis  label color 1
-+ @    xaxis  label place normal
-+ @    xaxis  tick on
-+ @    xaxis  tick major 0.2
-+ @    xaxis  tick minor ticks 1
-+ @    xaxis  tick default 6
-+ @    xaxis  tick place rounded true
-+ @    xaxis  tick major in
-+ @    xaxis  tick minor in
-+ @    xaxis  tick major size 1.000000
-+ @    xaxis  tick major color 1
-+ @    xaxis  tick major linewidth 1.0
-+ @    xaxis  tick major linestyle 1
-+ @    xaxis  tick major grid off
-+ @    xaxis  tick minor color 1
-+ @    xaxis  tick minor linewidth 1.0
-+ @    xaxis  tick minor linestyle 1
-+ @    xaxis  tick minor grid off
-+ @    xaxis  tick minor size 0.500000
-+ @    xaxis  ticklabel on
-+ @    xaxis  ticklabel format general
-+ @    xaxis  ticklabel prec 5
-+ @    xaxis  ticklabel formula ""
-+ @    xaxis  ticklabel append ""
-+ @    xaxis  ticklabel prepend ""
-+ @    xaxis  ticklabel angle 0
-+ @    xaxis  ticklabel skip 0
-+ @    xaxis  ticklabel stagger 0
-+ @    xaxis  ticklabel place normal
-+ @    xaxis  ticklabel offset auto
-+ @    xaxis  ticklabel offset 0.000000 , 0.010000
-+ @    xaxis  ticklabel start type auto
-+ @    xaxis  ticklabel start 0.000000
-+ @    xaxis  ticklabel stop type auto
-+ @    xaxis  ticklabel stop 0.000000
-+ @    xaxis  ticklabel char size 1.000000
-+ @    xaxis  ticklabel font 0
-+ @    xaxis  ticklabel color 1
-+ @    xaxis  tick place both
-+ @    xaxis  tick spec type none
-+ @    yaxis  on
-+ @    yaxis  type zero false
-+ @    yaxis  offset 0.000000 , 0.000000
-+ @    yaxis  bar on
-+ @    yaxis  bar color 1
-+ @    yaxis  bar linestyle 1
-+ @    yaxis  bar linewidth 1.0
-+ @    yaxis  label ""
-+ @    yaxis  label layout para
-+ @    yaxis  label place auto
-+ @    yaxis  label char size 1.000000
-+ @    yaxis  label font 0
-+ @    yaxis  label color 1
-+ @    yaxis  label place normal
-+ @    yaxis  tick on
-+ @    yaxis  tick major 0.2
-+ @    yaxis  tick minor ticks 1
-+ @    yaxis  tick default 6
-+ @    yaxis  tick place rounded true
-+ @    yaxis  tick major in
-+ @    yaxis  tick minor in
-+ @    yaxis  tick major size 1.000000
-+ @    yaxis  tick major color 1
-+ @    yaxis  tick major linewidth 1.0
-+ @    yaxis  tick major linestyle 1
-+ @    yaxis  tick major grid off
-+ @    yaxis  tick minor color 1
-+ @    yaxis  tick minor linewidth 1.0
-+ @    yaxis  tick minor linestyle 1
-+ @    yaxis  tick minor grid off
-+ @    yaxis  tick minor size 0.500000
-+ @    yaxis  ticklabel on
-+ @    yaxis  ticklabel format general
-+ @    yaxis  ticklabel prec 5
-+ @    yaxis  ticklabel formula ""
-+ @    yaxis  ticklabel append ""
-+ @    yaxis  ticklabel prepend ""
-+ @    yaxis  ticklabel angle 0
-+ @    yaxis  ticklabel skip 0
-+ @    yaxis  ticklabel stagger 0
-+ @    yaxis  ticklabel place normal
-+ @    yaxis  ticklabel offset auto
-+ @    yaxis  ticklabel offset 0.000000 , 0.010000
-+ @    yaxis  ticklabel start type auto
-+ @    yaxis  ticklabel start 0.000000
-+ @    yaxis  ticklabel stop type auto
-+ @    yaxis  ticklabel stop 0.000000
-+ @    yaxis  ticklabel char size 1.000000
-+ @    yaxis  ticklabel font 0
-+ @    yaxis  ticklabel color 1
-+ @    yaxis  tick place both
-+ @    yaxis  tick spec type none
-+ @    altxaxis  off
-+ @    altyaxis  off
-+ @    legend on
-+ @    legend loctype view
-+ @    legend 0.85, 0.8
-+ @    legend box color 1
-+ @    legend box pattern 1
-+ @    legend box linewidth 1.0
-+ @    legend box linestyle 1
-+ @    legend box fill color 0
-+ @    legend box fill pattern 1
-+ @    legend font 0
-+ @    legend char size 1.000000
-+ @    legend color 1
-+ @    legend length 4
-+ @    legend vgap 1
-+ @    legend hgap 1
-+ @    legend invert false
-+ @    frame type 0
-+ @    frame linestyle 1
-+ @    frame linewidth 1.0
-+ @    frame color 1
-+ @    frame pattern 1
-+ @    frame background color 0
-+ @    frame background pattern 0
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./ac-tools/Make.conf.in ../grace-5.1.25iu/ac-tools/Make.conf.in
+*** 53,72 ****
+   * to the correct window and pixmap is copied to that window.
+   */
+  static void
+! xbaeDrawCellPixmap(mw, row, column, x, y, pixmap, mask, width, height, bg,
+! 		   fg, depth)
+! XbaeMatrixWidget mw;
+! int row;
+! int column;
+! int x;
+! int y;
+! Pixmap pixmap;
+! Pixmap mask;
+! int width;
+! int height;
+! Pixel bg;
+! Pixel fg;
+! int depth;
+  {
+      int src_x = 0, src_y, dest_x, dest_y;
+      int copy_width, copy_height;
+--- 53,62 ----
+   * to the correct window and pixmap is copied to that window.
+   */
+  static void
+! xbaeDrawCellPixmap(XbaeMatrixWidget mw, int row, int column, 
+!                    int x, int y, Pixmap pixmap, Pixmap mask, 
+!                    int width, int height, Pixel bg,
+! 				  Pixel fg, int depth)
+  {
+      int src_x = 0, src_y, dest_x, dest_y;
+      int copy_width, copy_height;
+***************
+*** 234,244 ****
+   * to the correct window and the cell is drawn in that window.
+   */
+  static void
+! xbaeDrawCellString(mw, row, column, x, y, string, bg, fg)
+! XbaeMatrixWidget mw;
+! int row, column;
+! String string;
+! Pixel bg, fg;
+  {
+      GC gc;
+      Widget w;
+--- 224,231 ----
+   * to the correct window and the cell is drawn in that window.
+   */
+  static void
+! xbaeDrawCellString(XbaeMatrixWidget mw, int row, int column, int x, int y,
+!         String string, Pixel bg, Pixel fg)
+  {
+      GC gc;
+      Widget w;
+***************
+*** 896,905 ****
+  }
+  
+  void
+! xbaeComputeCellColors(mw, row, column, fg, bg)
+! XbaeMatrixWidget mw;
+! int row, column;
+! Pixel *fg, *bg;
+  {
+      Boolean alt = mw->matrix.alt_row_count ?
+  	(row / mw->matrix.alt_row_count) % 2 : False;
+--- 883,889 ----
+  }
+  
+  void
+! xbaeComputeCellColors(XbaeMatrixWidget mw, int row, int column, Pixel *fg, Pixel* bg)
+  {
+      Boolean alt = mw->matrix.alt_row_count ?
+  	(row / mw->matrix.alt_row_count) % 2 : False;
+***************
+*** 942,950 ****
+  }
+  
+  void
+! xbaeDrawCell(mw, row, column)
+! XbaeMatrixWidget mw;
+! int row, column;
+  {
+      Pixel bg, fg;
+      String string;
+--- 926,932 ----
+  }
+  
+  void
+! xbaeDrawCell(XbaeMatrixWidget mw, int row, int column)
+  {
+      Pixel bg, fg;
+      String string;
+***************
+*** 1001,1017 ****
+  }
+  
+  XbaeCellType
+! xbaeGetDrawCellValue(mw, row, column, string, pixmap, mask, width,
+! 		     height, bg, fg, depth)
+! XbaeMatrixWidget mw;
+! int row;
+! int column;
+! String *string;
+! Pixmap *pixmap;
+! Pixmap *mask;
+! int *width, *height;
+! Pixel *bg, *fg;
+! int *depth;
+  {
+      XbaeMatrixDrawCellCallbackStruct call_data;
+  
+--- 983,991 ----
+  }
+  
+  XbaeCellType
+! xbaeGetDrawCellValue(XbaeMatrixWidget mw, int row, int column, String *string,
+!         Pixmap *pixmap, Pixmap *mask, int *width,
+! 		     int *height, Pixel *bg, Pixel *fg, int *depth)
+  {
+      XbaeMatrixDrawCellCallbackStruct call_data;
+  
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./ac-tools/Make.conf.in ../grace-5.1.25iu/ac-tools/Make.conf.in
 *** ./ac-tools/Make.conf.in	Sun Nov 20 21:58:42 2005
---- ../grace-5.1.25iu/ac-tools/Make.conf.in	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/ac-tools/Make.conf.in	Fri Jun 21 09:52:57 2024
 ***************
 *** 60,65 ****
 --- 60,68 ----
@@ -332,9 +202,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   # Xbae include path
   XBAE_INC=@XBAE_INC@
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./ac-tools/aclocal.m4 ../grace-5.1.25iu/ac-tools/aclocal.m4
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./ac-tools/aclocal.m4 ../grace-5.1.25iu/ac-tools/aclocal.m4
 *** ./ac-tools/aclocal.m4	Sat Aug 16 23:54:51 2014
---- ../grace-5.1.25iu/ac-tools/aclocal.m4	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/ac-tools/aclocal.m4	Fri Jun 21 09:52:57 2024
 ***************
 *** 684,689 ****
 --- 684,735 ----
@@ -390,9 +260,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   dnl ACX_CHECK_XMHTML
   dnl --------------
   AC_DEFUN(ACX_CHECK_XMHTML,
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./ac-tools/autom4te.cache/output.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./ac-tools/autom4te.cache/output.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t
 *** ./ac-tools/autom4te.cache/output.0t	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/ac-tools/autom4te.cache/output.0t	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,11233 ----
@@ -11629,9 +11499,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./ac-tools/autom4te.cache/traces.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./ac-tools/autom4te.cache/traces.0t ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t
 *** ./ac-tools/autom4te.cache/traces.0t	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/ac-tools/autom4te.cache/traces.0t	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,865 ----
@@ -12500,9 +12370,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([abs_builddir])
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([abs_top_builddir])
 + m4trace:configure.in:712: -1- AC_SUBST_TRACE([INSTALL])
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./ac-tools/config.h.in ../grace-5.1.25iu/ac-tools/config.h.in
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./ac-tools/config.h.in ../grace-5.1.25iu/ac-tools/config.h.in
 *** ./ac-tools/config.h.in	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/ac-tools/config.h.in	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/ac-tools/config.h.in	Fri Jun 21 09:52:57 2024
 ***************
 *** 332,337 ****
 --- 332,340 ----
@@ -12515,9 +12385,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   /* Define if you want to compile a Fortran wrapper for grace_np lib.  */
   #undef WITH_F77_WRAPPER
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./ac-tools/configure.in ../grace-5.1.25iu/ac-tools/configure.in
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./ac-tools/configure.in ../grace-5.1.25iu/ac-tools/configure.in
 *** ./ac-tools/configure.in	Sat Aug 16 23:56:08 2014
---- ../grace-5.1.25iu/ac-tools/configure.in	Thu Apr  8 09:06:41 2021
+--- ../grace-5.1.25iu/ac-tools/configure.in	Fri Jun 21 09:52:57 2024
 ***************
 *** 33,38 ****
 --- 33,39 ----
@@ -12575,11 +12445,13 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   dnl **** check for libz - needed for PDF and PNG drivers and XmHTML
 ***************
-*** 587,592 ****
---- 606,620 ----
-    AC_MSG_RESULT(--> PDF driver is disabled)
+*** 585,590 ****
+--- 604,618 ----
   fi
-  
+  if test $pdfdrv != true; then
+    AC_MSG_RESULT(--> PDF driver is disabled)
++ fi
++ 
 + dnl **** check for GDlib
 + if test $gd = true
 + then
@@ -12587,14 +12459,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + fi
 + if test $gd != true; then
 +   AC_MSG_RESULT(--> GDlib is disabled)
-+ fi
-+ 
-  dnl **** TODO: undefine unneeded libraries
+  fi
   
-  NOGUI_LIBS="$LIBS"
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./autom4te.cache/output.0 ../grace-5.1.25iu/autom4te.cache/output.0
+  dnl **** TODO: undefine unneeded libraries
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./autom4te.cache/output.0 ../grace-5.1.25iu/autom4te.cache/output.0
 *** ./autom4te.cache/output.0	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/autom4te.cache/output.0	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/autom4te.cache/output.0	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,11253 ----
@@ -23851,9 +23721,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./autom4te.cache/output.1 ../grace-5.1.25iu/autom4te.cache/output.1
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./autom4te.cache/output.1 ../grace-5.1.25iu/autom4te.cache/output.1
 *** ./autom4te.cache/output.1	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/autom4te.cache/output.1	Thu Apr  8 09:06:43 2021
+--- ../grace-5.1.25iu/autom4te.cache/output.1	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,11253 ----
@@ -35110,9 +34980,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 + fi
 + 
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./autom4te.cache/requests ../grace-5.1.25iu/autom4te.cache/requests
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./autom4te.cache/requests ../grace-5.1.25iu/autom4te.cache/requests
 *** ./autom4te.cache/requests	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/autom4te.cache/requests	Thu Apr  8 09:06:43 2021
+--- ../grace-5.1.25iu/autom4te.cache/requests	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,147 ----
@@ -35263,9 +35133,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +                     ], 'Autom4te::Request' )
 +            );
 + 
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./autom4te.cache/traces.0 ../grace-5.1.25iu/autom4te.cache/traces.0
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./autom4te.cache/traces.0 ../grace-5.1.25iu/autom4te.cache/traces.0
 *** ./autom4te.cache/traces.0	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/autom4te.cache/traces.0	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/autom4te.cache/traces.0	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,868 ----
@@ -36137,9 +36007,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_builddir])
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_top_builddir])
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([INSTALL])
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./autom4te.cache/traces.1 ../grace-5.1.25iu/autom4te.cache/traces.1
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./autom4te.cache/traces.1 ../grace-5.1.25iu/autom4te.cache/traces.1
 *** ./autom4te.cache/traces.1	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/autom4te.cache/traces.1	Thu Apr  8 09:06:43 2021
+--- ../grace-5.1.25iu/autom4te.cache/traces.1	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,868 ----
@@ -37011,9 +36881,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_builddir])
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([abs_top_builddir])
 + m4trace:ac-tools/configure.in:722: -1- AC_SUBST_TRACE([INSTALL])
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./configure ../grace-5.1.25iu/configure
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./configure ../grace-5.1.25iu/configure
 *** ./configure	Sat Feb 14 23:59:46 2015
---- ../grace-5.1.25iu/configure	Thu Apr  8 09:33:08 2021
+--- ../grace-5.1.25iu/configure	Fri Jun 21 09:52:57 2024
 ***************
 *** 664,669 ****
 --- 664,670 ----
@@ -37128,7 +36998,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   if test "${enable_f77_wrapper+set}" = set; then :
     enableval=$enable_f77_wrapper; case "${enableval}" in
 ***************
-*** 8225,8308 ****
+*** 8225,8309 ****
   
   if test $fftw = true
   then
@@ -37195,8 +37065,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !     CPPFLAGS=$save_CPPFLAGS
 !     LDFLAGS=$save_LDFLAGS
 !     LIBS=$save_LIBS
-! 
   
+- 
   fi
 - { $as_echo "$as_me:${as_lineno-$LINENO}: result: $acx_cv_fftw" >&5
 - $as_echo "$acx_cv_fftw" >&6; }
@@ -37213,7 +37083,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   fi
   
---- 8243,8311 ----
+  if test $pngdrv = true || test $pdfdrv = true || test $xmhtml = true
+--- 8243,8312 ----
   
   if test $fftw = true
   then
@@ -37278,11 +37149,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !   { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> using legacy unoptimized FFT code" >&5
   $as_echo "--> using legacy unoptimized FFT code" >&6; }
 ! fi
-! 
-! done
   
++ done
++ 
   fi
   
+  if test $pngdrv = true || test $pdfdrv = true || test $xmhtml = true
 ***************
 *** 8431,8436 ****
 --- 8434,8440 ----
@@ -37314,14 +37186,14 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
         int main(void) {
           char *vinc;
 ***************
-*** 8654,8659 ****
---- 8660,8751 ----
+*** 8654,8660 ****
+--- 8660,8752 ----
   $as_echo "--> PDF driver is disabled" >&6; }
   fi
   
 + if test $gd = true
 + then
-+ 
+  
 + 
 + # Check whether --with-gd_library was given.
 + if test "${with_gd_library+set}" = set; then :
@@ -37405,8 +37277,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + $as_echo "--> GDlib is disabled" >&6; }
 + fi
 + 
-  
++ 
   NOGUI_LIBS="$LIBS"
+  
   
 ***************
 *** 9552,9562 ****
@@ -37434,9 +37307,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           vlibn = xmUseVersion;
           if (vincn < 1002) {
             exit(1);
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./doc/UsersGuide.html ../grace-5.1.25iu/doc/UsersGuide.html
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./doc/UsersGuide.html ../grace-5.1.25iu/doc/UsersGuide.html
 *** ./doc/UsersGuide.html	Sat Feb 14 23:59:48 2015
---- ../grace-5.1.25iu/doc/UsersGuide.html	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/doc/UsersGuide.html	Fri Jun 21 09:52:57 2024
 ***************
 *** 1516,1521 ****
 --- 1516,1618 ----
@@ -37543,10 +37416,10 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   <H3><A NAME="correlation/covariance"></A> Correlation/covariance          </H3>
   
   <P>This popup can be used to compute autocorrelation
-Binary files ./src/.files.c.swp and ../grace-5.1.25iu/src/.files.c.swp differ
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/Make.common ../grace-5.1.25iu/src/Make.common
+Binary files ./src/.rstdrv.c.swp and ../grace-5.1.25iu/src/.rstdrv.c.swp differ
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/Make.common ../grace-5.1.25iu/src/Make.common
 *** ./src/Make.common	Tue May 20 00:35:42 2008
---- ../grace-5.1.25iu/src/Make.common	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/Make.common	Fri Jun 21 09:52:57 2024
 ***************
 *** 15,21 ****
   	objutils.c computils.c defaults.c params.c \
@@ -37611,9 +37484,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   	setwin$(O) strwin$(O) setappwin$(O) \
 !      gd$(O)   tickwin$(O) worldwin$(O) fontwin$(O) xutil$(O) x11drv$(O) xmgrace$(O)
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/Make.dep ../grace-5.1.25iu/src/Make.dep
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/Make.dep ../grace-5.1.25iu/src/Make.dep
 *** ./src/Make.dep	Sat Dec 29 23:10:49 2001
---- ../grace-5.1.25iu/src/Make.dep	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/Make.dep	Fri Jun 21 09:52:57 2024
 ***************
 *** 65,74 ****
     motifinc.h
@@ -37636,9 +37509,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   dummydrv$(O) : dummydrv.c defines.h draw.h device.h t1fonts.h devlist.h \
     dummydrv.h
   mathstuff$(O) : mathstuff.c ../cmath.h protos.h missing.h noxprotos.h \
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/Makefile ../grace-5.1.25iu/src/Makefile
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/Makefile ../grace-5.1.25iu/src/Makefile
 *** ./src/Makefile	Sat Feb 14 22:21:45 2015
---- ../grace-5.1.25iu/src/Makefile	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/Makefile	Fri Jun 21 09:52:57 2024
 ***************
 *** 19,25 ****
   CFLAGS=$(CFLAGS0) -I$(TOP) -I. $(T1_INC) $(XBAE_INC) $(CPPFLAGS) $(GUI_FLAGS)
@@ -37656,9 +37529,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   	$(NOGUI_LIBS) $(DL_LIB)
   
   PREFS=-DGRACE_HOME=\"$(GRACE_HOME)\" -DGRACE_PRINT_CMD=\"$(PRINT_CMD)\" \
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/Untitled$ ../grace-5.1.25iu/src/Untitled$
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/Untitled$ ../grace-5.1.25iu/src/Untitled$
 *** ./src/Untitled$	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/src/Untitled$	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/Untitled$	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,725 ----
@@ -38388,9 +38261,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + @    frame background color 0
 + @    frame background pattern 0
 Binary files ./src/buildinfo and ../grace-5.1.25iu/src/buildinfo differ
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/buildinfo.c ../grace-5.1.25iu/src/buildinfo.c
 *** ./src/buildinfo.c	Sat Feb 14 23:17:32 2015
---- ../grace-5.1.25iu/src/buildinfo.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/buildinfo.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 59,65 ****
       fprintf(outfile, "#define BI_VERSION \"Grace-%d.%d.%d %s\"\n",
@@ -38408,9 +38281,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   	    MAJOR_REV, MINOR_REV, PATCHLEVEL);
   #endif
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/compwin.c ../grace-5.1.25iu/src/compwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/compwin.c ../grace-5.1.25iu/src/compwin.c
 *** ./src/compwin.c	Mon May 19 23:55:45 2008
---- ../grace-5.1.25iu/src/compwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/compwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 74,80 ****
   static void do_window_proc(Widget w, XtPointer client_data, XtPointer call_data);
@@ -38496,18 +38369,19 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       Widget start_item;
       Widget stop_item;
 ***************
-*** 999,1008 ****
+*** 999,1009 ****
   					     "Function",
   					     NULL);
           ManageChild(rc2);
   	for( i=2; i<5; i++ )
   		XtAddCallback( regui.resid_item[i], XmNactivateCallback, 
   					set_regr_sensitivity, (XtPointer)(i-2) );
-! 
   
+- 
   	
   	rc2 = XtVaCreateWidget("rc2", xmRowColumnWidgetClass, rc,
---- 999,1012 ----
+  			      XmNorientation, XmHORIZONTAL,
+--- 999,1013 ----
   					     "Function",
   					     NULL);
           ManageChild(rc2);
@@ -38515,13 +38389,14 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   	for( i=2; i<5; i++ )
   		XtAddCallback( regui.resid_item[i], XmNactivateCallback, 
   					set_regr_sensitivity, (XtPointer)(i-2) );
-! 		*/
-! 	for( i=0; i<3; i++ )
-! 		XtAddCallback( regui.resid_item->options[i].widget, XmNactivateCallback, 
-! 					set_regr_sensitivity, (XtPointer)(i) );
++ 		*/
++ 	for( i=0; i<3; i++ )
++ 		XtAddCallback( regui.resid_item->options[i].widget, XmNactivateCallback, 
++ 					set_regr_sensitivity, (XtPointer)(i) );
   
   	
   	rc2 = XtVaCreateWidget("rc2", xmRowColumnWidgetClass, rc,
+  			      XmNorientation, XmHORIZONTAL,
 ***************
 *** 1129,1135 ****
   typedef struct _Diff_ui {
@@ -38607,7 +38482,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       set_wait_cursor();
 --- 1572,1577 ----
 ***************
-*** 1616,1630 ****
+*** 1616,1631 ****
   
           update_prune_frame();
   
@@ -38623,7 +38498,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   	CreateSeparator(dialog);
   
---- 1619,1630 ----
+  	CreateCommandButtons(dialog, 2, but2, label2);
+--- 1619,1631 ----
   
           update_prune_frame();
   
@@ -38631,11 +38507,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 ! 										(XtPointer)&pruneui);
 ! 		AddOptionChoiceCB(pruneui.deltatype_item, 
 ! 				do_prune_toggle, (XtPointer)&pruneui);
-! 
-!         do_prune_toggle( 0, (XtPointer) &pruneui );
   
++         do_prune_toggle( 0, (XtPointer) &pruneui );
++ 
   	CreateSeparator(dialog);
   
+  	CreateCommandButtons(dialog, 2, but2, label2);
 ***************
 *** 1651,1659 ****
   /*
@@ -38759,9 +38636,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       Widget degrees_item;
       Widget rotx_item;
       Widget roty_item;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/defaults.c ../grace-5.1.25iu/src/defaults.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/defaults.c ../grace-5.1.25iu/src/defaults.c
 *** ./src/defaults.c	Wed May  3 23:27:48 2006
---- ../grace-5.1.25iu/src/defaults.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/defaults.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 321,326 ****
 --- 321,328 ----
@@ -38773,9 +38650,26 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       t->t_op = PLACEMENT_BOTH;
       t->props.size = grdefaults.charsize;
       t->mprops.size = grdefaults.charsize / 2;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/defines.h ../grace-5.1.25iu/src/defines.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/defines.h ../grace-5.1.25iu/src/defines.h
 *** ./src/defines.h	Thu Feb 15 23:36:54 2007
---- ../grace-5.1.25iu/src/defines.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/defines.h	Fri Jun 21 10:00:05 2024
+***************
+*** 34,40 ****
+  #ifndef __DEFINES_H_
+  #define __DEFINES_H_
+  
+! #include <config.h>
+  
+  /*
+   * some constants
+--- 34,40 ----
+  #ifndef __DEFINES_H_
+  #define __DEFINES_H_
+  
+! #include "config.h"
+  
+  /*
+   * some constants
 ***************
 *** 497,502 ****
 --- 497,504 ----
@@ -38797,9 +38691,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   } tickprops;
   
   typedef struct {
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/device.h ../grace-5.1.25iu/src/device.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/device.h ../grace-5.1.25iu/src/device.h
 *** ./src/device.h	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/device.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/device.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 43,48 ****
 --- 43,50 ----
@@ -38811,9 +38705,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   /* hardcopy or terminal device */
   /* device output can be redirected to file/printer(both) */
   #define DEVICE_TERM	0
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/draw.c ../grace-5.1.25iu/src/draw.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/draw.c ../grace-5.1.25iu/src/draw.c
 *** ./src/draw.c	Sat Nov 19 22:53:24 2005
---- ../grace-5.1.25iu/src/draw.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/draw.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 258,263 ****
 --- 258,269 ----
@@ -38829,9 +38723,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   void symplus(VPoint vp, double s)
   {
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/draw.h ../grace-5.1.25iu/src/draw.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/draw.h ../grace-5.1.25iu/src/draw.h
 *** ./src/draw.h	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/draw.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/draw.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 134,140 ****
   } BBox_type;
@@ -38859,9 +38753,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   int world2view(double x, double y, double *xv, double *yv);
   void view2world(double xv, double yv, double *xw, double *yw);
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/drawticks.c ../grace-5.1.25iu/src/drawticks.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/drawticks.c ../grace-5.1.25iu/src/drawticks.c
 *** ./src/drawticks.c	Tue Feb 13 22:22:09 2007
---- ../grace-5.1.25iu/src/drawticks.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/drawticks.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 448,454 ****
   	        }
@@ -38942,9 +38836,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
       /*
        *         if (t->nticks > MAX_TICKS) {
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/editpwin.c ../grace-5.1.25iu/src/editpwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/editpwin.c ../grace-5.1.25iu/src/editpwin.c
 *** ./src/editpwin.c	Sun Aug 17 00:33:17 2014
---- ../grace-5.1.25iu/src/editpwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/editpwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 32,37 ****
 --- 32,38 ----
@@ -38996,9 +38890,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       autoscale_onread = AUTOSCALE_NONE;
       if (is_set_active(gno, setno)) {
           curtype = dataset_type(gno, setno);
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/events.c ../grace-5.1.25iu/src/events.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/events.c ../grace-5.1.25iu/src/events.c
 *** ./src/events.c	Sat Apr 26 21:12:11 2008
---- ../grace-5.1.25iu/src/events.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/events.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 111,116 ****
 --- 111,117 ----
@@ -39089,11 +38983,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
    * indicate what's happening with a message in the left footer
    */
 ***************
-*** 760,765 ****
---- 822,867 ----
+*** 759,764 ****
+--- 821,866 ----
+      case DISLINE2ND:
   	set_cursor(0);
   	set_left_footer("Pick ending point");
-  	break;
++ 	break;
 +     case PEAK_POS:
 + 	set_cursor(0);
 + 	set_left_footer("Click on the approximate position of the maximum of the peak");
@@ -39133,13 +39028,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +     case COORD_POS:
 + 	set_cursor(0);
 + 	set_left_footer("Click to determine the pointer's coordinates");
-+ 	break;
+  	break;
       }
   
-      action_flag = act;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/events.h ../grace-5.1.25iu/src/events.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/events.h ../grace-5.1.25iu/src/events.h
 *** ./src/events.h	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/events.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/events.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 81,87 ****
       ZOOMY_1ST,
@@ -39164,9 +39058,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   } CanvasAction;
   
   /* add points at */
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/featext.c ../grace-5.1.25iu/src/featext.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/featext.c ../grace-5.1.25iu/src/featext.c
 *** ./src/featext.c	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/featext.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/featext.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 56,62 ****
       Widget top;
@@ -39201,9 +39095,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   			(XtCallbackProc) do_fext_toggle, (XtPointer) i);
   	}
   	
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/files.c ../grace-5.1.25iu/src/files.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/files.c ../grace-5.1.25iu/src/files.c
 *** ./src/files.c	Sat Apr 26 20:25:57 2008
---- ../grace-5.1.25iu/src/files.c	Thu Apr  8 09:46:23 2021
+--- ../grace-5.1.25iu/src/files.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 623,652 ****
       FILE *retval;
@@ -39226,7 +39120,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !                 errmsg(buf);
 ! 	        return NULL;
 !             }
-!         }
+          }
 !         retval = filter_write(fn);
 !         if (!retval) {
 ! 	    sprintf(buf, "Can't write to file %s, check permissions!", fn);
@@ -39256,7 +39150,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !           sprintf(buf, "%s is not a regular file!", fn);
 !           errmsg(buf);
 !           return NULL;
-!         }
+          }
 !       }
 !       retval = filter_write(fn);
 !       if (!retval) {
@@ -39287,9 +39181,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       clear_dirtystate();
       
       noask = noask_save;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/fileswin.c ../grace-5.1.25iu/src/fileswin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/fileswin.c ../grace-5.1.25iu/src/fileswin.c
 *** ./src/fileswin.c	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/fileswin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/fileswin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 383,388 ****
 --- 383,432 ----
@@ -39378,9 +39272,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       int gno;
       FILE *pp;
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/fourier.c ../grace-5.1.25iu/src/fourier.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/fourier.c ../grace-5.1.25iu/src/fourier.c
 *** ./src/fourier.c	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/fourier.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/fourier.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 230,236 ****
   #else
@@ -39501,9 +39395,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
     
   }
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/gd.c ../grace-5.1.25iu/src/gd.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/gd.c ../grace-5.1.25iu/src/gd.c
 *** ./src/gd.c	Wed Dec 26 21:33:39 2001
---- ../grace-5.1.25iu/src/gd.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/gd.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 1,11 ****
   #include <config.h>
@@ -39539,7 +39433,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   }
 + 
 + #endif
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/gd.h ../grace-5.1.25iu/src/gd.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/gd.h ../grace-5.1.25iu/src/gd.h
 *** ./src/gd.h	Fri Nov 19 00:49:10 1999
 --- ../grace-5.1.25iu/src/gd.h	Thu Jan  1 01:00:00 1970
 ***************
@@ -39662,9 +39556,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 - 
 - #endif
 --- 0 ----
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/gd_v1.h ../grace-5.1.25iu/src/gd_v1.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/gd_v1.h ../grace-5.1.25iu/src/gd_v1.h
 *** ./src/gd_v1.h	Thu Jan  1 01:00:00 1970
---- ../grace-5.1.25iu/src/gd_v1.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/gd_v1.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 0 ****
 --- 1,118 ----
@@ -39786,9 +39680,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + #define gdImageGetInterlaced(im) ((im)->interlace)
 + 
 + #endif
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/graphappwin.c ../grace-5.1.25iu/src/graphappwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/graphappwin.c ../grace-5.1.25iu/src/graphappwin.c
 *** ./src/graphappwin.c	Tue Feb 13 23:01:27 2007
---- ../grace-5.1.25iu/src/graphappwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/graphappwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 54,60 ****
   static Widget define_view_yv1;
@@ -39976,7 +39870,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           AddToggleButtonCB(graph_flipxy_item, flipxy_cb, NULL);
   
 ***************
-*** 228,242 ****
+*** 228,243 ****
   	fr = CreateFrame(graphapp_titles, "Title");
   	rc2 = CreateVContainer(fr);
   	title_font_item = CreateFontChoice(rc2, "Font:");
@@ -39988,11 +39882,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   	stitle_font_item = CreateFontChoice(rc2, "Font:");
   	stitle_size_item = CreateCharSizeChoice(rc2, "Character size");
 ! 	stitle_color_item = CreateColorChoice(rc2, "Color:");
-! 
   
+- 
           /* ------------ Frame tab -------------- */
           
---- 271,303 ----
+          graphapp_frame = CreateTabPage(graphapp_tab, "Frame");
+--- 271,304 ----
   	fr = CreateFrame(graphapp_titles, "Title");
   	rc2 = CreateVContainer(fr);
   	title_font_item = CreateFontChoice(rc2, "Font:");
@@ -40026,6 +39921,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
           /* ------------ Frame tab -------------- */
           
+          graphapp_frame = CreateTabPage(graphapp_tab, "Frame");
 ***************
 *** 253,271 ****
 --- 314,346 ----
@@ -40323,23 +40219,23 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !     if(data==znorm_item || data==NULL){
 !         xv_evalexpr(znorm_item, &znorm);
 !     }
-!     
-! /*
-!  *     flipxy = GetToggleButtonState(graph_flipxy_item);
-!  */
-! 
-!     n = GetListChoices(graph_selector, &values);
-!     for (j = 0; j < n; j++) {
-!         gno = values[j];
-!             if (is_valid_gno(gno)) {
-! 
-!                 get_graph_viewport(gno, &v);
-!                 get_graph_labels(gno, &labs);
-!                 labs.title.s = copy_string(NULL,labs.title.s);  
-!                 labs.stitle.s = copy_string(NULL,labs.stitle.s);  
-!                 get_graph_framep(gno, &f);
-!                 get_graph_legend(gno, &l);
       
++ /*
++  *     flipxy = GetToggleButtonState(graph_flipxy_item);
++  */
++ 
++     n = GetListChoices(graph_selector, &values);
++     for (j = 0; j < n; j++) {
++         gno = values[j];
++             if (is_valid_gno(gno)) {
++ 
++                 get_graph_viewport(gno, &v);
++                 get_graph_labels(gno, &labs);
++                 labs.title.s = copy_string(NULL,labs.title.s);  
++                 labs.stitle.s = copy_string(NULL,labs.stitle.s);  
++                 get_graph_framep(gno, &f);
++                 get_graph_legend(gno, &l);
++     
 +                 if(data==define_view_xv1 || data==NULL) {
       xv_evalexpr(define_view_xv1, &v.xv1);  
 +                 }
@@ -40501,9 +40397,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
 + 
 +   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/graphutils.h ../grace-5.1.25iu/src/graphutils.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/graphutils.h ../grace-5.1.25iu/src/graphutils.h
 *** ./src/graphutils.h	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/graphutils.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/graphutils.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 55,61 ****
   #define GA_ORDER_HV_INV 4
@@ -40522,9 +40418,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   #define GA_GAP_DEFAULT       0.2
   
   char *get_format_types(int f);
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/hotwin.c ../grace-5.1.25iu/src/hotwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/hotwin.c ../grace-5.1.25iu/src/hotwin.c
 *** ./src/hotwin.c	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/hotwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/hotwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 54,60 ****
   static SetChoiceItem hotlink_set_item;
@@ -40542,9 +40438,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   void create_hotfiles_popup(Widget w, XtPointer client_data, XtPointer call_data);
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/locatewin.c ../grace-5.1.25iu/src/locatewin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/locatewin.c ../grace-5.1.25iu/src/locatewin.c
 *** ./src/locatewin.c	Sat Jul  3 22:47:45 2004
---- ../grace-5.1.25iu/src/locatewin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/locatewin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 39,66 ****
   #include "graphs.h"
@@ -40672,9 +40568,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   	rc2 = CreateHContainer(rc);
   	locx_item = CreateTextItem2(rc2, 10, "X:");
   	locy_item = CreateTextItem2(rc2, 10, "Y:");
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/main.c ../grace-5.1.25iu/src/main.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/main.c ../grace-5.1.25iu/src/main.c
 *** ./src/main.c	Sat Feb 14 23:58:02 2015
---- ../grace-5.1.25iu/src/main.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/main.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 542,559 ****
   			}
@@ -40729,9 +40625,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       fprintf(stream, "-log       [x|y|xy]                   Set the axis scaling of the current graph\n");
       fprintf(stream, "                                        to logarithmic\n");
       fprintf(stream, "-maxpath   [length]                   Set the maximal drawing path length\n");
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/mfdrv.c ../grace-5.1.25iu/src/mfdrv.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/mfdrv.c ../grace-5.1.25iu/src/mfdrv.c
 *** ./src/mfdrv.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/mfdrv.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/mfdrv.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 53,59 ****
             "gmf",
@@ -40749,9 +40645,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
             NULL
            };
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/mifdrv.c ../grace-5.1.25iu/src/mifdrv.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/mifdrv.c ../grace-5.1.25iu/src/mifdrv.c
 *** ./src/mifdrv.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/mifdrv.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/mifdrv.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 56,62 ****
                                  "mif",
@@ -40769,9 +40665,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
                                  NULL
                                 };
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/miscwin.c ../grace-5.1.25iu/src/miscwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/miscwin.c ../grace-5.1.25iu/src/miscwin.c
 *** ./src/miscwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/miscwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/miscwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 61,67 ****
   static Widget noask_item;
@@ -40806,9 +40702,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   static Widget date_item;
   static Widget wrap_year_item;
   static Widget two_digits_years_item;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/motifinc.h ../grace-5.1.25iu/src/motifinc.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/motifinc.h ../grace-5.1.25iu/src/motifinc.h
 *** ./src/motifinc.h	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/motifinc.h	Thu Apr  8 09:42:33 2021
+--- ../grace-5.1.25iu/src/motifinc.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 37,42 ****
 --- 37,43 ----
@@ -40948,17 +40844,18 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   TransformStructure *CreateTransformDialogForm(Widget parent,
       char *s, int sel_type);
 ***************
-*** 450,453 ****
---- 474,479 ----
+*** 449,453 ****
+--- 473,479 ----
+  void destroy_dialog_cb(void *data);
   void savewidget(Widget w);
   void deletewidget(Widget w);
-  
-+ void ColorButton( Widget button, unsigned int color );
 + 
++ void ColorButton( Widget button, unsigned int color );
+  
   #endif /* __MOTIFINC_H_ */
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/motifutils.c ../grace-5.1.25iu/src/motifutils.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/motifutils.c ../grace-5.1.25iu/src/motifutils.c
 *** ./src/motifutils.c	Sat Feb 14 22:28:46 2015
---- ../grace-5.1.25iu/src/motifutils.c	Thu Apr  8 09:35:48 2021
+--- ../grace-5.1.25iu/src/motifutils.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 81,86 ****
 --- 81,87 ----
@@ -41377,9 +41274,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +      AddOptionChoiceCB( opt, cbproc, anydata );
 +   }
 +   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/nonlwin.c ../grace-5.1.25iu/src/nonlwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/nonlwin.c ../grace-5.1.25iu/src/nonlwin.c
 *** ./src/nonlwin.c	Wed May 17 22:53:13 2006
---- ../grace-5.1.25iu/src/nonlwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/nonlwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 7,12 ****
 --- 7,13 ----
@@ -41512,11 +41409,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
           CreateMenuHelpButton(menupane, "On fit", 'f',
 ***************
-*** 712,714 ****
---- 790,1132 ----
+*** 711,714 ****
+--- 789,1132 ----
+          grace_close(pp);
       }
       return TRUE;
-  }
++ }
 + 
 + 
 + static void nonl_Lorentzian_cb(void *data)
@@ -41856,10 +41754,10 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +     for (i=0; i<nonl_opts.parnum; i++)
 + 	{nonl_parms[i].value=1;}
 +     update_nonl_frame();
-+ }
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/params.c ../grace-5.1.25iu/src/params.c
+  }
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/params.c ../grace-5.1.25iu/src/params.c
 *** ./src/params.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/params.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/params.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 218,227 ****
 --- 218,229 ----
@@ -41919,9 +41817,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
                       break;
                   }
                   fprintf(pp, "%s tick major size %f\n", buf, t->props.size);
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/pars.yacc ../grace-5.1.25iu/src/pars.yacc
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/pars.yacc ../grace-5.1.25iu/src/pars.yacc
 *** ./src/pars.yacc	Sat Feb 14 22:28:46 2015
---- ../grace-5.1.25iu/src/pars.yacc	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/pars.yacc	Fri Jun 21 09:52:57 2024
 ***************
 *** 2764,2769 ****
 --- 2764,2776 ----
@@ -41972,7 +41870,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +             /*
 +             printf("tick %i\n",$1);
 +             */
-+ 	}
+  	}
 + 	| MAJOR inoutchoice {
 + 	    if (!is_valid_axis(whichgraph, naxis)) {
 +                 yyerror("No valid axis selected");
@@ -41992,14 +41890,14 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +             /*
 +             printf("tick minor %i\n",$2);
 +             */
-  	}
++ 	}
 + /* modified by robert */
   	| MAJOR SIZE expr {
   	    if (!is_valid_axis(whichgraph, naxis)) {
                   yyerror("No valid axis selected");
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/pdfdrv.c ../grace-5.1.25iu/src/pdfdrv.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/pdfdrv.c ../grace-5.1.25iu/src/pdfdrv.c
 *** ./src/pdfdrv.c	Wed Aug  4 21:37:47 2004
---- ../grace-5.1.25iu/src/pdfdrv.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/pdfdrv.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 75,80 ****
 --- 75,81 ----
@@ -42011,7 +41909,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   extern FILE *prstream;
 ***************
-*** 189,195 ****
+*** 189,196 ****
       
       pdfinitpatterns();
   
@@ -42019,26 +41917,28 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
       if ((s = get_project_description())) {
           PDF_set_border_style(phandle, "dashed", 3.0);
---- 190,208 ----
+          PDF_set_border_dash(phandle, 5.0, 1.0);
+--- 190,209 ----
       
       pdfinitpatterns();
   
 !     float xorg;
 !     float yorg;
-! 
-!     if( pdf_setup_tightbb ) {
-!       view v = get_bbox(BBOX_TYPE_GLOB);
-!       float bbwidth  = (v.xv2-v.xv1)*page_scalef;
-!       float bbheight = (v.yv2-v.yv1)*page_scalef;
-!       xorg     = (v.xv1)*page_scalef;
-!       yorg     = (v.yv1)*page_scalef;
-!       PDF_begin_page(phandle, bbwidth, bbheight );
-!     } else {
-!       PDF_begin_page(phandle, pg.width*72.0/pg.dpi, pg.height*72.0/pg.dpi);
-!     }
   
++     if( pdf_setup_tightbb ) {
++       view v = get_bbox(BBOX_TYPE_GLOB);
++       float bbwidth  = (v.xv2-v.xv1)*page_scalef;
++       float bbheight = (v.yv2-v.yv1)*page_scalef;
++       xorg     = (v.xv1)*page_scalef;
++       yorg     = (v.yv1)*page_scalef;
++       PDF_begin_page(phandle, bbwidth, bbheight );
++     } else {
++       PDF_begin_page(phandle, pg.width*72.0/pg.dpi, pg.height*72.0/pg.dpi);
++     }
++ 
       if ((s = get_project_description())) {
           PDF_set_border_style(phandle, "dashed", 3.0);
+          PDF_set_border_dash(phandle, 5.0, 1.0);
 ***************
 *** 200,205 ****
 --- 213,220 ----
@@ -42105,9 +42005,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       pdf_setup_compression = (int) GetSpinChoice(pdf_setup_compression_item);
       
       return RETURN_SUCCESS;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/plotone.c ../grace-5.1.25iu/src/plotone.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/plotone.c ../grace-5.1.25iu/src/plotone.c
 *** ./src/plotone.c	Thu May 19 22:30:25 2005
---- ../grace-5.1.25iu/src/plotone.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/plotone.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 121,139 ****
               sprintf(print_file, "%s.%s", get_docbname(), dev.fext);
@@ -42167,9 +42067,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           WriteString(vp2, 0, JUST_CENTER|JUST_BOTTOM, lab.stitle.s);
       }
   }
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/plotwin.c ../grace-5.1.25iu/src/plotwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/plotwin.c ../grace-5.1.25iu/src/plotwin.c
 *** ./src/plotwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/plotwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/plotwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 57,99 ****
   static OptionStructure *timestamp_color_item;
@@ -42199,10 +42099,10 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !         rc = CreateHContainer(fr);
 !         bg_color_item = CreateColorChoice(rc, "Color:");
 ! 	bg_fill_item = CreateToggleButton(rc, "Fill");
-! 
+  
 ! 	fr = CreateFrame(panel, "Time stamp");
 !         rc = CreateVContainer(fr);
-! 
+  
 ! 	timestamp_active_item = CreateToggleButton(rc, "Enable");
 ! 	timestamp_font_item = CreateFontChoice(rc, "Font:");
 ! 	timestamp_color_item = CreateColorChoice(rc, "Color:");
@@ -42256,7 +42156,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !       instantupdate_item = CreateToggleButton(panel, "Instant update");
 !       SetToggleButtonState( instantupdate_item, instantupdate );
 !       AddToggleButtonCB(instantupdate_item, (TB_CBProc)plotwin_iu,  NULL);
-! 
+  
 !       fr = CreateFrame(panel, "Page background");
 !       rc = CreateHContainer(fr);
 !       bg_color_item = CreateColorChoice(rc, "Color:");
@@ -42265,7 +42165,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !       bg_fill_item = CreateToggleButton(rc, "Fill");
 !       AddToggleButtonCB( bg_fill_item, (TB_CBProc)oc_plot_cb,
 !               (void *)bg_fill_item);
-! 
+  
 !       fr = CreateFrame(panel, "Time stamp");
 !       rc = CreateVContainer(fr);
 ! 
@@ -42318,16 +42218,16 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !     setbgcolor(GetOptionChoice(bg_color_item));
 !     setbgfill(GetToggleButtonState(bg_fill_item));
   
--     timestamp.active = GetToggleButtonState(timestamp_active_item);
--     timestamp.font = GetOptionChoice(timestamp_font_item);
--     timestamp.color = GetOptionChoice(timestamp_color_item);
--     
--     timestamp.charsize = GetCharSizeChoice(timestamp_size_item);
--     
--     timestamp.rot = GetAngleChoice(timestamp_rotate_item);
--     
--     xv_evalexpr(timestamp_x_item, &timestamp.x);
--     xv_evalexpr(timestamp_y_item, &timestamp.y);
+!     timestamp.active = GetToggleButtonState(timestamp_active_item);
+!     timestamp.font = GetOptionChoice(timestamp_font_item);
+!     timestamp.color = GetOptionChoice(timestamp_color_item);
+!     
+!     timestamp.charsize = GetCharSizeChoice(timestamp_size_item);
+!     
+!     timestamp.rot = GetAngleChoice(timestamp_rotate_item);
+!     
+!     xv_evalexpr(timestamp_x_item, &timestamp.x);
+!     xv_evalexpr(timestamp_y_item, &timestamp.y);
       set_dirtystate();
       xdrawgraph();
 !     
@@ -42346,7 +42246,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   {
 !     if(!instantupdate && data!=NULL)
 !       return RETURN_SUCCESS;
-! 
+  
 !     if(data==bg_color_item || data==NULL)
 !       setbgcolor(GetOptionChoice(bg_color_item));
 !     if(data==bg_fill_item || data==NULL)
@@ -42374,16 +42274,16 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !       set_project_description(s);
 !       XtFree(s);
 !     }
-  
+! 
       set_dirtystate();
       xdrawgraph();
 ! 
       return RETURN_SUCCESS;
   }
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/regionutils.c ../grace-5.1.25iu/src/regionutils.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/regionutils.c ../grace-5.1.25iu/src/regionutils.c
 *** ./src/regionutils.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/regionutils.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/regionutils.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 152,157 ****
 --- 152,159 ----
@@ -42415,9 +42315,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   }
   
   void load_poly_region(int r, int gno, int n, WPoint *wps)
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/regionwin.c ../grace-5.1.25iu/src/regionwin.c
 *** ./src/regionwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/regionwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/regionwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 60,67 ****
   static void do_clear_region(Widget w, XtPointer client_data, XtPointer call_data);
@@ -42473,9 +42373,26 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   static void do_reporton_region(Widget w, XtPointer client_data, XtPointer call_data)
   {
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/rstdrv.c ../grace-5.1.25iu/src/rstdrv.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/rstdrv.c ../grace-5.1.25iu/src/rstdrv.c
 *** ./src/rstdrv.c	Sat Jan 29 22:37:25 2011
---- ../grace-5.1.25iu/src/rstdrv.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/rstdrv.c	Fri Jun 21 10:27:18 2024
+***************
+*** 30,36 ****
+   * Grace generic raster format driver
+   */
+  
+! #include <config.h>
+  #include <cmath.h>
+  
+  #include <stdio.h>
+--- 30,36 ----
+   * Grace generic raster format driver
+   */
+  
+! #include "config.h"
+  #include <cmath.h>
+  
+  #include <stdio.h>
 ***************
 *** 45,51 ****
 --- 45,55 ----
@@ -42838,9 +42755,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       jpg_setup_quality = (int) GetSpinChoice(jpg_setup_quality_item);
       jpg_setup_smoothing = (int) GetSpinChoice(jpg_setup_smoothing_item);
       jpg_setup_dct = GetChoice(jpg_setup_dct_item);
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/setappwin.c ../grace-5.1.25iu/src/setappwin.c
 *** ./src/setappwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/setappwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/setappwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 64,70 ****
   static Widget duplegs_item;
@@ -42900,7 +42817,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   static OptionStructure *errbar_pattern_item;
   static Widget errbar_size_item;
 ***************
-*** 105,129 ****
+*** 105,130 ****
   static SpinStructure *errbar_cliplen_item;
   
   static Widget avalue_active_item;
@@ -42926,7 +42843,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
   /*
    * create the symbols popup
---- 105,151 ----
+   */
+--- 105,152 ----
   static SpinStructure *errbar_cliplen_item;
   
   static Widget avalue_active_item;
@@ -42953,7 +42871,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   static void csync_cb(int value, void *data);
 + static int oc_setapp_cb( int c, void *data );
 + int sp_setapp_cb( double a, void *data );
-+ 
+  
 + /* 
 +  * callback functions to do incremental set appearance updates
 +  */
@@ -42971,9 +42889,10 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + {
 +     instantupdate = a;
 + }
-  
++ 
   /*
    * create the symbols popup
+   */
 ***************
 *** 134,140 ****
       
@@ -43113,7 +43032,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   
           /* ------------ Symbols tab -------------- */
 ***************
-*** 257,276 ****
+*** 257,277 ****
   
           rc2 = CreateHContainer(rc);
           symlines_item = CreateLineStyleChoice(rc2, "Style:");
@@ -43130,11 +43049,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           symskip_item = CreateSpinChoice(rc, "Symbol skip:",
               5, SPIN_TYPE_INT, (double) 0, (double) 100000, (double) 1);
           char_font_item = CreateFontChoice(rc, "Font for char symbol:");
-! 
   
+- 
           /* ------------ Line tab -------------- */
           
---- 310,341 ----
+          setapp_line = CreateTabPage(setapp_tab, "Line");
+--- 310,342 ----
   
           rc2 = CreateHContainer(rc);
           symlines_item = CreateLineStyleChoice(rc2, "Style:");
@@ -43162,11 +43082,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + 		AddSpinButtonCB( symskip_item, (Spin_CBProc)sp_setapp_cb,
 +                                                  (void *)(&symskip_item)  );
           char_font_item = CreateFontChoice(rc, "Font for char symbol:");
-! 		AddOptionChoiceCB( char_font_item, (OC_CBProc)oc_setapp_cb,
-!                                              (void *)char_font_item );
++ 		AddOptionChoiceCB( char_font_item, (OC_CBProc)oc_setapp_cb,
++                                              (void *)char_font_item );
   
           /* ------------ Line tab -------------- */
           
+          setapp_line = CreateTabPage(setapp_tab, "Line");
 ***************
 *** 279,285 ****
 --- 344,354 ----
@@ -43207,27 +43128,29 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           fr = CreateFrame(setapp_line, "Base line");
           rc = CreateHContainer(fr);
 ***************
-*** 310,317 ****
+*** 310,318 ****
                                                "Graph max",
                                                "Set average",
                                                NULL);
           baseline_item = CreateToggleButton(rc, "Draw line");
-!         
           
+-         
           /* ------------ AValue tab -------------- */
           
---- 387,397 ----
+          setapp_avalue = CreateTabPage(setapp_tab, "Ann. values");
+--- 387,398 ----
                                                "Graph max",
                                                "Set average",
                                                NULL);
 + 		AddOptionChoiceCB( baselinetype_item, (OC_CBProc)oc_setapp_cb,
 +                                              (void *)baselinetype_item );
           baseline_item = CreateToggleButton(rc, "Draw line");
-! 		AddToggleButtonCB( baseline_item, (OC_CBProc)oc_setapp_cb,
-!                                              (void *)baseline_item  );        
++ 		AddToggleButtonCB( baseline_item, (OC_CBProc)oc_setapp_cb,
++                                              (void *)baseline_item  );        
           
           /* ------------ AValue tab -------------- */
           
+          setapp_avalue = CreateTabPage(setapp_tab, "Ann. values");
 ***************
 *** 322,343 ****
 --- 402,437 ----
@@ -43425,7 +43348,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !             p.setfillpen.color = fillcol;
 !             if (cd == 1 || duplegs) {
 !                 strcpy(p.lstr, GetTextString(legend_str_item));
-!             }
+              }
 !             p.sym = sym;
 !             p.linet = linet;
 !             p.lines = line;
@@ -43460,7 +43383,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
               setno = selset[i];
 !             if(data==type_item || data==NULL){
 !                 set_dataset_type(get_cg(), setno, GetOptionChoice(type_item));
-!             }
+              }
 !             get_graph_plotarr( get_cg(), setno, &p );
 !             if(data == &symskip_item || data == NULL){
 !                 p.symskip = GetSpinChoice(symskip_item);
@@ -43713,9 +43636,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       }
   }
 + 
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/setutils.c ../grace-5.1.25iu/src/setutils.c
 *** ./src/setutils.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/setutils.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/setutils.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 622,628 ****
   
@@ -43733,9 +43656,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           return;
       }
       
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/setwin.c ../grace-5.1.25iu/src/setwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/setwin.c ../grace-5.1.25iu/src/setwin.c
 *** ./src/setwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/setwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/setwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 129,134 ****
 --- 129,136 ----
@@ -43766,9 +43689,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       Widget length_item;
       Widget start_item;
       Widget stop_item;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/strwin.c ../grace-5.1.25iu/src/strwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/strwin.c ../grace-5.1.25iu/src/strwin.c
 *** ./src/strwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/strwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/strwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 61,93 ****
   static OptionStructure *strings_font_item;
@@ -43856,8 +43779,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       Widget x2_item;
       Widget y1_item;
 ***************
-*** 557,562 ****
---- 557,606 ----
+*** 557,563 ****
+--- 557,607 ----
       }
   }
   
@@ -43866,7 +43789,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 +     EditBoxUI *ui = (EditBoxUI *) client_data;
 +     int ellipno = ui->boxno;
 +     double a, b, c, d;
-+ 
+  
 +     if (xv_evalexpr( ui->x1_item, &a ) != RETURN_SUCCESS ||
 +         xv_evalexpr( ui->x2_item, &b ) != RETURN_SUCCESS ||
 +         xv_evalexpr( ui->y1_item, &c ) != RETURN_SUCCESS ||
@@ -43905,11 +43828,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 + 	ellipse_edit_proc( NULL, data, NULL );
 + }
 + 
-  
++ 
   void swap_ellipwv_coords(Widget w, XtPointer client_data, XtPointer call_data)
   {
+      EditBoxUI *ui = (EditBoxUI *)client_data;
 ***************
-*** 587,619 ****
+*** 587,620 ****
   }
   
   
@@ -43918,7 +43842,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 -     EditBoxUI *ui = (EditBoxUI *) client_data;
 -     int ellipno = ui->boxno;
 -     double a, b, c, d;
-- 
+  
 -     if (xv_evalexpr( ui->x1_item, &a ) != RETURN_SUCCESS ||
 -         xv_evalexpr( ui->x2_item, &b ) != RETURN_SUCCESS ||
 -         xv_evalexpr( ui->y1_item, &c ) != RETURN_SUCCESS ||
@@ -43940,10 +43864,11 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 -     xdrawgraph();
 - }
 - 
-  
+- 
   void swap_boxwv_coords(Widget w, XtPointer client_data, XtPointer call_data)
   {
---- 631,636 ----
+      EditBoxUI *ui = (EditBoxUI *)client_data;
+--- 631,637 ----
 ***************
 *** 662,667 ****
 --- 679,699 ----
@@ -44313,8 +44238,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           rc = XtVaCreateWidget("rc", xmRowColumnWidgetClass, panel, NULL);
   
   	string_ui.color_item = CreateColorChoice(rc, "Color: ");
-! 	
   	
+- 	
   	string_ui.font_item = CreateFontChoice(rc, "Font:");
   
           string_ui.just_item = CreateJustChoice(rc, "Justification:");
@@ -44349,7 +44274,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           rc = XtVaCreateWidget("rc", xmRowColumnWidgetClass, panel, NULL);
   
   	string_ui.color_item = CreateColorChoice(rc, "Color: ");
-! 	AddOptionChoiceCB( string_ui.color_item, oc_string_edit_cb, &string_ui );
++ 	AddOptionChoiceCB( string_ui.color_item, oc_string_edit_cb, &string_ui );
   	
   	string_ui.font_item = CreateFontChoice(rc, "Font:");
 + 	AddOptionChoiceCB( string_ui.font_item, oc_string_edit_cb, &string_ui );
@@ -44386,9 +44311,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   						    
   	CreateSeparator(panel);
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/svgdrv.c ../grace-5.1.25iu/src/svgdrv.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/svgdrv.c ../grace-5.1.25iu/src/svgdrv.c
 *** ./src/svgdrv.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/svgdrv.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/svgdrv.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 56,62 ****
       "svg",
@@ -44406,9 +44331,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       NULL
   };
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/tickwin.c ../grace-5.1.25iu/src/tickwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/tickwin.c ../grace-5.1.25iu/src/tickwin.c
 *** ./src/tickwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/tickwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/tickwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 48,55 ****
 --- 48,57 ----
@@ -44774,8 +44699,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           axislabelspec_para = CreateTextItem2(axislabelspec_rc, 7, "Parallel offset:");
           axislabelspec_perp = CreateTextItem2(axislabelspec_rc, 7, "Perpendicular offset:");
 !         AddOptionChoiceCB(axislabelplace, auto_spec_cb, axislabelspec_rc);
-! 
   
+- 
           fr = CreateFrame(axes_label, "Bar properties");
           rc = CreateVContainer(fr);
   
@@ -44828,7 +44753,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
           fr = CreateFrame(axes_ticklabel, "Placement");
           rc = CreateHContainer(fr);
 ***************
-*** 305,315 ****
+*** 305,330 ****
                                       "Opposite",
                                       "Both",
                                       NULL);
@@ -44836,11 +44761,26 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
                                         11,
                           "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
                                         NULL);
-!         
           
+-         
           rc2 = CreateVContainer(rc);
           rc3 = CreateHContainer(rc2);
---- 375,387 ----
+          tlstarttype = CreatePanelChoice(rc3, "Start at:",
+                                          3,
+                                          "Axis min", "Specified:",
+                                          NULL);
+          tlstart = CreateTextItem2(rc3, 8, "");
+  
+          rc3 = CreateHContainer(rc2);
+          tlstoptype = CreatePanelChoice(rc3, "Stop at:",
+                                         3,
+                                         "Axis max", "Specified:",
+                                         NULL);
+          tlstop = CreateTextItem2(rc3, 8, "");
+  
+          fr = CreateFrame(axes_ticklabel, "Extra");
+          rc = CreateVContainer(fr);
+--- 375,408 ----
                                       "Opposite",
                                       "Both",
                                       NULL);
@@ -44849,14 +44789,12 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
                                         11,
                           "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
                                         NULL);
-! 		AddOptionChoiceCB( tlstagger, (OC_CBProc)oc_axes_cb, (void *)tlstagger
-! );
++ 		AddOptionChoiceCB( tlstagger, (OC_CBProc)oc_axes_cb, (void *)tlstagger
++ );
           
           rc2 = CreateVContainer(rc);
           rc3 = CreateHContainer(rc2);
-***************
-*** 317,330 ****
---- 389,408 ----
+          tlstarttype = CreatePanelChoice(rc3, "Start at:",
                                           3,
                                           "Axis min", "Specified:",
                                           NULL);
@@ -45089,43 +45027,43 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !     double axestart, axestop;
 !     char *cp;
 !     world w;
-!     
-!     applyto = GetChoice(axis_applyto);
-!     
-!     t = new_graph_tickmarks();
-!     if (!t) {
-!         return RETURN_FAILURE;
-!     }
-! 
-!     t->active = GetToggleButtonState(axis_active);
       
-!     t->zero = GetToggleButtonState(axis_zero);
+      applyto = GetChoice(axis_applyto);
+-     
+-     t = new_graph_tickmarks();
+-     if (!t) {
+-         return RETURN_FAILURE;
+-     }
   
-!     if (xv_evalexpr(tmajor, &t->tmajor) != RETURN_SUCCESS) {
-! 	errmsg( "Specify major tick spacing" );
-!         free_graph_tickmarks(t);
-!         return RETURN_FAILURE;
-!     }
-!     t->nminor = (int) GetSpinChoice(nminor);
-! 
-!     t->tl_flag = GetToggleButtonState(tlonoff);
-!     t->t_flag = GetToggleButtonState(tonoff);
-!     t->t_drawbar = GetToggleButtonState(baronoff);
-!     set_plotstr_string(&t->label, GetTextString(axislabel));
-! 
-!     xv_evalexpr(offx, &t->offsx);
-!     xv_evalexpr(offy, &t->offsy);
-! 
-!     t->label_layout = GetChoice(axislabellayout) ? LAYOUT_PERPENDICULAR : LAYOUT_PARALLEL;
-!     t->label_place = GetOptionChoice(axislabelplace);
-!     if (t->label_place == TYPE_SPEC) {
-!         xv_evalexpr(axislabelspec_para, &t->label.x);
-!         xv_evalexpr(axislabelspec_perp, &t->label.y);
-!     }
-!     t->label.font = GetOptionChoice(axislabelfont);
-!     t->label.color = GetOptionChoice(axislabelcolor);
-!     t->label.charsize = GetCharSizeChoice(axislabelcharsize);
-  
+-     t->active = GetToggleButtonState(axis_active);
+-     
+-     t->zero = GetToggleButtonState(axis_zero);
+- 
+-     if (xv_evalexpr(tmajor, &t->tmajor) != RETURN_SUCCESS) {
+- 	errmsg( "Specify major tick spacing" );
+-         free_graph_tickmarks(t);
+-         return RETURN_FAILURE;
+-     }
+-     t->nminor = (int) GetSpinChoice(nminor);
+- 
+-     t->tl_flag = GetToggleButtonState(tlonoff);
+-     t->t_flag = GetToggleButtonState(tonoff);
+-     t->t_drawbar = GetToggleButtonState(baronoff);
+-     set_plotstr_string(&t->label, GetTextString(axislabel));
+- 
+-     xv_evalexpr(offx, &t->offsx);
+-     xv_evalexpr(offy, &t->offsy);
+- 
+-     t->label_layout = GetChoice(axislabellayout) ? LAYOUT_PERPENDICULAR : LAYOUT_PARALLEL;
+-     t->label_place = GetOptionChoice(axislabelplace);
+-     if (t->label_place == TYPE_SPEC) {
+-         xv_evalexpr(axislabelspec_para, &t->label.x);
+-         xv_evalexpr(axislabelspec_perp, &t->label.y);
+-     }
+-     t->label.font = GetOptionChoice(axislabelfont);
+-     t->label.color = GetOptionChoice(axislabelcolor);
+-     t->label.charsize = GetCharSizeChoice(axislabelcharsize);
+- 
       /* somehow the value of axislabelop gets automagically correctly
          applied to all selected axes without checking for the value of
          applyto directly here (strange...) */
@@ -45163,7 +45101,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 -         xv_evalexpr(tlgap_para, &t->tl_gap.x);
 -         xv_evalexpr(tlgap_perp, &t->tl_gap.y);
 -     }
--     
+      
 -     t->tl_angle = GetAngleChoice(tlangle);
 -     
 -     t->tl_charsize = GetCharSizeChoice(tlcharsize);
@@ -45226,7 +45164,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 -             }
 -         }
 -     }
-      
+-     
       switch (applyto) {
       case 0:                     /* current axis */
           axis_start = curaxis;
@@ -45278,7 +45216,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !                 w.yg1 = axestart; 
 !                	w.yg2 = axestop;
               }
--             set_graph_world(i, w);
+!             set_graph_world(i, w);
               
               scale = GetOptionChoice(axis_scale);
               if (is_xaxis(j)) {
@@ -45318,10 +45256,10 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !     double axeslim;
 !     world wo;
       
-!     if(!instantupdate && data!=NULL)
-!         return RETURN_SUCCESS;
-  
-!     applyto = GetChoice(axis_applyto);
++     if(!instantupdate && data!=NULL)
++         return RETURN_SUCCESS;
++ 
+      applyto = GetChoice(axis_applyto);
   
       /* somehow the value of axislabelop gets automagically correctly
          applied to all selected axes without checking for the value of
@@ -45378,7 +45316,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !                     free_graph_tickmarks(ot);
 !                     continue;
 !                 }
-!             }
+              }
 ! 
 !             get_graph_world(gno, &wo);
 !             if(data == axis_world_start || data == NULL){
@@ -45405,7 +45343,7 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !             }
 !             if(data==axis_world_start || data==axis_world_stop || data==NULL) {
 !                 set_graph_world(gno, wo);
-              }
+!             }
               
 +             if(data==axis_scale || data==NULL) {
               scale = GetOptionChoice(axis_scale);
@@ -45413,8 +45351,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !                 set_graph_xscale(gno, scale);
               } else {
 !                 set_graph_yscale(gno, scale);
-!             }
               }
++             }
   
 +             if(data==axis_invert || data==NULL)  {
               invert = GetToggleButtonState(axis_invert);
@@ -45422,8 +45360,8 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
 !                 set_graph_xinvert(gno, invert);
               } else {
 !                 set_graph_yinvert(gno, invert);
-!             }
               }
++             }
               
 !             if(data==axislabel || data==NULL){
 !                 set_plotstr_string(&ot->label, GetTextString(axislabel));
@@ -45731,9 +45669,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       SetSensitive(rc, value);
   }
 + 
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/utils.c ../grace-5.1.25iu/src/utils.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/utils.c ../grace-5.1.25iu/src/utils.c
 *** ./src/utils.c	Thu Feb 15 23:36:54 2007
---- ../grace-5.1.25iu/src/utils.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/utils.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 1389,1395 ****
       update_app_title();
@@ -45751,9 +45689,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   {
       dirtystate_lock = flag;
   }
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/worldwin.c ../grace-5.1.25iu/src/worldwin.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/worldwin.c ../grace-5.1.25iu/src/worldwin.c
 *** ./src/worldwin.c	Sat Jul  3 22:47:46 2004
---- ../grace-5.1.25iu/src/worldwin.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/worldwin.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 240,249 ****
           SetSpinChoice(ui->nrows, (double) 1);
@@ -45794,9 +45732,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   } Auto_ui;
   
   static Auto_ui aui;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/x11drv.c ../grace-5.1.25iu/src/x11drv.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/x11drv.c ../grace-5.1.25iu/src/x11drv.c
 *** ./src/x11drv.c	Sun May  3 22:51:57 2009
---- ../grace-5.1.25iu/src/x11drv.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/x11drv.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 95,101 ****
             "",
@@ -45814,9 +45752,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
             NULL
            };
   
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/xmgrace.c ../grace-5.1.25iu/src/xmgrace.c
 *** ./src/xmgrace.c	Fri Aug 29 18:38:21 2014
---- ../grace-5.1.25iu/src/xmgrace.c	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/xmgrace.c	Fri Jun 21 09:52:57 2024
 ***************
 *** 183,188 ****
 --- 183,189 ----
@@ -46173,9 +46111,9 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
       case WSTACK_PUSH_ZOOM:
           push_and_zoom();
           break;
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./src/xprotos.h ../grace-5.1.25iu/src/xprotos.h
 *** ./src/xprotos.h	Sat Nov 12 21:09:51 2005
---- ../grace-5.1.25iu/src/xprotos.h	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/src/xprotos.h	Fri Jun 21 09:52:57 2024
 ***************
 *** 101,106 ****
 --- 101,108 ----
@@ -46205,20 +46143,21 @@ diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -
   void update_view(int gno);
   
 ***************
-*** 197,200 ****
---- 199,207 ----
+*** 196,200 ****
+--- 198,207 ----
+  void update_all_cb(void *data);
   
   void set_barebones(int onoff);
-  
++ 
 + void setwin_iu(int, void *);
 + void plotwin_iu(int, void *);
 + void graphwin_iu(int, void *);
 + void axeswin_iu(int, void *);
-+ 
+  
   #endif /* __XPROTOS_H_ */
-diff -C 3 -P --new-file --exclude-from=/Users/vigmond/Software/exclude-iu-file -r ./templates/Default.agr ../grace-5.1.25iu/templates/Default.agr
+diff -C 3 -P --new-file --exclude-from=/Users/edward.vigmond/Software/exclude-iu-file -r ./templates/Default.agr ../grace-5.1.25iu/templates/Default.agr
 *** ./templates/Default.agr	Fri Feb 16 23:43:31 2007
---- ../grace-5.1.25iu/templates/Default.agr	Thu Apr  8 09:00:28 2021
+--- ../grace-5.1.25iu/templates/Default.agr	Fri Jun 21 09:52:57 2024
 ***************
 *** 104,110 ****
   @    world 0, 0, 1, 1
