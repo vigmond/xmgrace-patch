@@ -24,14 +24,19 @@ patch -E -p1 < patch.instup.<version>
     In addition to the previously mentioned libraries, make sure the following libraries are available: 
     - libpng
     - libjpeg
-   - motif
-2. Run configure with the following options:
+   - motif/openmotif
+2. Run configure telling it where to find installed packages:
 
     ```
     ./configure --with-extra-ldpath=/usr/local/lib --with-extra-incpath=/usr/local/include
     ```
-3. Edit `Make.conf` with a text editor. Replace `-O2` with `-O0`
-4. Compile: `make -j`
+    or if using homebrew and bash, you could specify 
+   
+   ```
+    ./configure --with-extra-ldpath=$(brew --prefix)/lib --with-extra-incpath=$(brew --prefix)/include
+    ```
+4. Edit `Make.conf` with a text editor. Replace `-O2` with `-O0`
+5. Compile: `make -j`
 
 ## Improved functionality
 
